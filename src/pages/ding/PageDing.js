@@ -22,7 +22,7 @@ import './PageDing.less';
 function ShowFMWeb() {
     const version = dd.version;
     let parames =  new Array();
-    parames.push({ name: "url", value: "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://192.168.0.102:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName });
+    parames.push({ name: "url", value: "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName });
     parames.push({ name: "version", value: version});
 
     Post("http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=openFM", parames);
@@ -238,7 +238,7 @@ export default class Page extends Component {
 
        // window.location.href ="http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://liuzheng750417.imwork.net:8088/v0.5.3/webdirecthomehtml.html#流程集合-2?script=转到相关的记录和布局php&param=2235%20刘正";
 
-      /*  window.location.href = " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://192.168.0.102:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528";*/
+      /*  window.location.href = " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528";*/
         ShowFMWeb();
     }
 
@@ -246,8 +246,8 @@ export default class Page extends Component {
 
         // window.location.href ="http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://liuzheng750417.imwork.net:8088/v0.5.3/webdirecthomehtml.html#流程集合-2?script=转到相关的记录和布局php&param=2235%20刘正";
 
-        /*  window.location.href = " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://192.168.0.102:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528";*/
-        window.open("http://192.168.0.102:3001/indexFM.html?script=1")
+        /*  window.location.href = " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528";*/
+        window.open("http://localhost:3001/indexFM.html?script=1")
     }
 
   componentDidMount() {

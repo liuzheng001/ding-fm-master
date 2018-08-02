@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97c3c9ee-544a-4a80-ac1f-8a64b39d3490" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/app.js" afterPath="$PROJECT_DIR$/dist/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indexFM.html" afterPath="$PROJECT_DIR$/indexFM.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/ding.js" afterPath="$PROJECT_DIR$/src/app/ding.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/ding/PageDing.js" afterPath="$PROJECT_DIR$/src/pages/ding/PageDing.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,11 +17,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="indexFM.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PageDing.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/ding/PageDing.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="594">
+              <caret line="41" column="27" lean-forward="true" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexFM.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indexFM.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="478">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="586">
+              <caret line="35" column="21" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -28,13 +40,13 @@
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+            <state relative-caret-position="407">
+              <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
               <folding>
-                <marker date="1533224544000" expanded="true" signature="57238:57255" ph="..." />
-                <marker date="1533224544000" expanded="true" signature="57238:57273" ph="..." />
-                <marker date="1533224544000" expanded="true" signature="57238:57286" ph="..." />
-                <marker date="1533224544000" expanded="true" signature="57238:57301" ph="..." />
+                <marker date="1533225514000" expanded="true" signature="60979:60996" ph="..." />
+                <marker date="1533225514000" expanded="true" signature="60979:61014" ph="..." />
+                <marker date="1533225514000" expanded="true" signature="60979:61027" ph="..." />
+                <marker date="1533225514000" expanded="true" signature="60979:61042" ph="..." />
               </folding>
             </state>
           </provider>
@@ -59,16 +71,6 @@
       </file>
       <file leaf-file-name="abc.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/abc.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".eslintignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.eslintignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -112,11 +114,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dist/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="113596" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="540858" />
+            <state relative-caret-position="786">
+              <caret line="0" column="119834" lean-forward="true" selection-start-line="0" selection-start-column="119834" selection-end-line="0" selection-end-column="119834" />
               <folding />
             </state>
           </provider>
@@ -143,21 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>prototype</find>
-      <find>getContent</find>
-      <find>re</find>
-      <find>extend</find>
-      <find>setState</find>
-      <find>_UserID</find>
-      <find>ref</find>
-      <find>danger</find>
-      <find>(e)=&gt;</find>
-      <find>login.loginDOM = e</find>
-      <find>imj</find>
-      <find>i</find>
-      <find>im</find>
-      <find>imy</find>
-      <find>imya</find>
       <find>测试</find>
       <find>172</find>
       <find>182</find>
@@ -166,14 +153,33 @@
       <find>182.1</find>
       <find>182.</find>
       <find>1</find>
-      <find>192</find>
-      <find>192.168</find>
-      <find>192.168.0</find>
-      <find>192.168.0.102</find>
       <find>192.168.0.102http://r1w8478651.imwork.net:9998/firstSalt-master/dist/#/?_k=0wl82w</find>
       <find>_UserName</find>
       <find>confirm</find>
+      <find>192</find>
+      <find>192.</find>
+      <find>192.1</find>
+      <find>192.168</find>
+      <find>192.168.</find>
+      <find>192.168.0</find>
+      <find>192.168.0.</find>
+      <find>192.168.0.1</find>
+      <find>192.168.0.10</find>
+      <find>192.168.0.102</find>
+      <find>192.168.0.102:</find>
+      <find>192.168.0.102:3</find>
+      <find>192.168.0.102:30</find>
+      <find>192.168.0.102:300</find>
+      <find>192.168.0.102:3001/&quot;),type:&quot;GET&quot;,dataType:&quot;json&quot;,success:function(response){0===response.errcode?config={agentId:response.agentId||&quot;&quot;,corpId:response.corpId||&quot;&quot;,timeStamp:response.timeStamp||&quot;&quot;,nonceStr:response.nonceStr||&quot;&quot;,signature:response.signature||&quot;&quot;}:alert(JSON.stringify(response)+&quot;sign&quot;)},error:function(){alert(&quot;系统错误/LIU&quot;)}});case 4:return _context.abrupt(&quot;return&quot;,{agentId:config.agentId,corpId:config.corpId,timeStamp:config.timeStamp,nonceStr:config.nonceStr,signature:config.signature,jsApiList:apiList});case 5:case&quot;end&quot;:return _context.stop()}},_callee,void 0)})),function(){return _ref.apply(this,arguments)}),loginCheck=(_ref2=_asyncToGenerator(_regenerator2.default.mark(function _callee2(){var _ref3,list,i,j;return _regenerator2.default.wrap(function(_context2){for(;;)switch(_context2.prev=_context2.next){case 0:return _context2.next=2,_db2.default.Contacts.getContacts();case 2:_ref3=_context2.sent,list=_ref3.list,i=0,j=list.length;case 5:if(!(i&lt;j)){_context2.next=16;break}if(list[i].name!==_variables2.default._UserName){_context2.next=12;break}return _variables2.default.isLogin=!0,_variables2.default.loginDOM.innerHTML=&quot;登录&quot;,_context2.abrupt(&quot;break&quot;,16);case 12:(i=j)&amp;&amp;(_variables2.default.isLogin=!1,alert(&quot;登录失败&quot;));case 13:i++,_context2.next=5;break;case 16:case&quot;end&quot;:return _context2.stop()}},_callee2,void 0)})),function(){return _ref2.apply(this,arguments)});exports.DDReady=new Promise(function(resolve,reject){getDingtalkConfig().then(function(data){dd.config(data),getUserId(&quot;ding1fdec36666e1349d35c2f4657eb6378f&quot;),dd.error(function(err){alert(&quot;dd error: &quot;+JSON.stringify(err)),reject(err)})})})},function(module,exports){&quot;use strict&quot;;Object.defineProperty(exports,&quot;__esModule&quot;,{value:!0}),exports.default=function(_ref){var error=_ref</find>
+      <find>192.168.0.102:3001</find>
+      <find>l</find>
+      <find>loca</find>
+      <find>localhost</find>
     </findStrings>
+    <replaceStrings>
+      <replace>Public</replace>
+      <replace>localhost:3001</replace>
+    </replaceStrings>
     <dirStrings>
       <dir>$USER_HOME$/PhpstormProjects/v0.5.3</dir>
     </dirStrings>
@@ -221,6 +227,7 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/indexFM.html" />
+        <option value="$PROJECT_DIR$/dist/app.js" />
       </list>
     </option>
   </component>
@@ -623,21 +630,23 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196049000" />
+    <option name="totallyTimeSpent" value="196897000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2048" height="1061" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18554688" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.5019531" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.49804688" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18554688" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45541838" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -658,7 +667,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18541667" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -708,13 +716,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/info/Info.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/saltui/src/Popup/Popup.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -958,16 +959,6 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/PhpstormProjects/firstSalt-master/dist/app.js" />
-    <entry file="file://$PROJECT_DIR$/src/pages/ding/PageDing.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4332">
-          <caret line="236" column="22" lean-forward="false" selection-start-line="236" selection-start-column="22" selection-end-line="236" selection-end-column="22" />
-          <folding>
-            <element signature="e#81#111#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/variables.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1008,14 +999,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="113596" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="540858" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/popwin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1046,21 +1029,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        <state relative-caret-position="407">
+          <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
           <folding>
-            <marker date="1533224544000" expanded="true" signature="57238:57255" ph="..." />
-            <marker date="1533224544000" expanded="true" signature="57238:57273" ph="..." />
-            <marker date="1533224544000" expanded="true" signature="57238:57286" ph="..." />
-            <marker date="1533224544000" expanded="true" signature="57238:57301" ph="..." />
+            <marker date="1533225514000" expanded="true" signature="60979:60996" ph="..." />
+            <marker date="1533225514000" expanded="true" signature="60979:61014" ph="..." />
+            <marker date="1533225514000" expanded="true" signature="60979:61027" ph="..." />
+            <marker date="1533225514000" expanded="true" signature="60979:61042" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indexFM.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="478">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="586">
+          <caret line="35" column="21" lean-forward="true" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.eslintignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/ding/PageDing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="41" column="27" lean-forward="true" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="786">
+          <caret line="0" column="119834" lean-forward="true" selection-start-line="0" selection-start-column="119834" selection-end-line="0" selection-end-column="119834" />
           <folding />
         </state>
       </provider>

@@ -105,7 +105,7 @@ const _CorpId = 'ding1fdec36666e1349d35c2f4657eb6378f';
     function authCode(corpId){
         return new Promise(function(resolve, reject){
             dd.ready(function(){
-                /*var src="http://192.168.0.102:3001/";
+                /*var src="http://localhost:3001/";
                 if(dd.ios){
                     dd.biz.navigation.setLeft({
                         control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
@@ -127,7 +127,7 @@ const _CorpId = 'ding1fdec36666e1349d35c2f4657eb6378f';
                              {}
                              *!/
                             dd.biz.navigation.replace({
-                                url:  window.location.href ="http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://192.168.0.102:3001/#流程集合-2?script=转到相关的记录和布局php&param=2235%20刘正",// 新的页面链接
+                                url:  window.location.href ="http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001/#流程集合-2?script=转到相关的记录和布局php&param=2235%20刘正",// 新的页面链接
                                 onSuccess : function(result) {
                                     /!*
                                      {}
@@ -218,7 +218,7 @@ const getDingtalkConfig = async () => {
     ];
 
     await   $.ajax({
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'),
+        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://localhost:3001/'),
         type: 'GET',
         dataType: 'json',
         success: function (response) {
