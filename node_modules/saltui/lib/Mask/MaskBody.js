@@ -1,0 +1,190 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _rcAnimate = require('rc-animate');
+
+var _rcAnimate2 = _interopRequireDefault(_rcAnimate);
+
+var _cssAnimation = require('css-animation');
+
+var _cssAnimation2 = _interopRequireDefault(_cssAnimation);
+
+var _classnames2 = require('classnames');
+
+var _classnames3 = _interopRequireDefault(_classnames2);
+
+var _Context = require('../Context');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var MaskBody = function (_React$Component) {
+  _inherits(MaskBody, _React$Component);
+
+  function MaskBody(props) {
+    _classCallCheck(this, MaskBody);
+
+    var _this = _possibleConstructorReturn(this, (MaskBody.__proto__ || Object.getPrototypeOf(MaskBody)).call(this, props));
+
+    _this.state = {
+      visible: props.visible
+    };
+    return _this;
+  }
+
+  _createClass(MaskBody, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      this.setState({
+        visible: nextProps.visible
+      });
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate(prevPorps) {
+      if (this.props.visible && !prevPorps.visible) {
+        document.body.style.overflow = 'hidden';
+      } else if (!this.props.visible && prevPorps.visible) {
+        document.body.style.overflow = '';
+      }
+    }
+  }, {
+    key: 'handleClick',
+    value: function handleClick() {
+      var t = this;
+      if (t.props.closeable === false || t.props.onWillHide() === false) {
+        return;
+      }
+      t.setState({
+        visible: false
+      }, function () {
+        t.props.onDidHide();
+      });
+    }
+  }, {
+    key: 'toggle',
+    value: function toggle(node, show, done) {
+      var opacity = this.props.opacity;
+
+      var nodeNew = node;
+      (0, _cssAnimation2.default)(nodeNew, '__css-animation__' + (0, _Context.prefixClass)('mask'), {
+        start: function start() {
+          if (show) {
+            nodeNew.style.opacity = 0;
+          }
+        },
+        active: function active() {
+          nodeNew.style.opacity = show ? opacity : 0;
+        },
+        end: function end() {
+          done();
+        }
+      });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var t = this;
+
+      var _t$props = t.props,
+          className = _t$props.className,
+          zIndex = _t$props.zIndex,
+          visible = _t$props.visible,
+          onWillHide = _t$props.onWillHide,
+          onDidHide = _t$props.onDidHide,
+          closeable = _t$props.closeable,
+          other = _objectWithoutProperties(_t$props, ['className', 'zIndex', 'visible', 'onWillHide', 'onDidHide', 'closeable']);
+      // const { className, zIndex, ...other } = t.props;
+      // const { visible } = t.state;
+
+      var styleMap = {
+        display: visible ? 'block' : 'none',
+        zIndex: zIndex
+      };
+
+      return _react2.default.createElement(
+        _rcAnimate2.default,
+        {
+          component: '',
+          animation: {
+            appear: function appear(node, done) {
+              _this2.toggle(node, true, done);
+            },
+            enter: function enter(node, done) {
+              _this2.toggle(node, true, done);
+            },
+            leave: function leave(node, done) {
+              _this2.toggle(node, false, done);
+            }
+          }
+        },
+        visible ? _react2.default.createElement('div', _extends({
+          ref: function ref(c) {
+            _this2.root = c;
+          },
+          className: (0, _classnames3.default)((0, _Context.prefixClass)('mask'), _defineProperty({
+            visible: visible
+          }, className, !!className)),
+          style: styleMap,
+          onClick: function onClick() {
+            t.handleClick();
+          }
+        }, other)) : null
+      );
+    }
+  }]);
+
+  return MaskBody;
+}(_react2.default.Component);
+
+MaskBody.defaultProps = {
+  opacity: 0.4,
+  closeable: true,
+  onDidHide: _Context.noop,
+  onWillHide: _Context.noop,
+  visible: false,
+  zIndex: 1000,
+  className: undefined
+};
+
+// http://facebook.github.io/react/docs/reusable-components.html
+MaskBody.propTypes = {
+  className: _propTypes2.default.string,
+  closeable: _propTypes2.default.bool,
+  opacity: _propTypes2.default.number,
+  onDidHide: _propTypes2.default.func,
+  onWillHide: _propTypes2.default.func,
+  visible: _propTypes2.default.bool,
+  zIndex: _propTypes2.default.number
+};
+
+MaskBody.displayName = 'MaskBody';
+
+exports.default = MaskBody;
+module.exports = exports['default'];

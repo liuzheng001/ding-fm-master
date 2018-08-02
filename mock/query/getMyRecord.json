@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "content": {
+    "list": [{
+      "No": "1",
+      "name": "语文",
+      "total": "77"
+    }, {
+      "No": "2",
+      "name": "数字",
+      "total": "88"
+    }, {
+      "No": "3",
+      "name": "英文",
+      "total": "99"
+    }
+
+    ]
+  }
+}
