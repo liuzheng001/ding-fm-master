@@ -4,7 +4,7 @@
 
 An awesome project
 
-**如果你刚拿到这个项目，请先在项目目录下执行 `npm install`！**
+**如果你刚拿到这个项目，请先在项目目录下执 行 `npm install`！**
 
 ## 项目相关链接
 
