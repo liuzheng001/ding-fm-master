@@ -269,8 +269,9 @@ export default class Page extends Component {
     pushWorkflow() {
         //fm中通过插入url推送到钉钉企业普通信息
         //参数方案名,用户名,其它param,比如workflowID等
+        const touser =
         $.ajax({
-            url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=pushFM&programme=流程合集-2&sender=' + login._UserID + "&param=2",
+                url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=pushFM&touser=' + "1960580858678987|0968625005678987" + "&programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2283|刘正",
             type: 'GET',
             dataType: 'json',
             success: function (response) {
