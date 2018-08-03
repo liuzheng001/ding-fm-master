@@ -17,16 +17,17 @@
      *创建时间：20160713
      *创建人：
      */
-    function showFMWeb() {
-        var version = dd.version;
-        let parames =  new  Array();
-        //测试git,返回
+    function showFMWeb(Fmprogramme,FmScriptName,param) {
+        const host = "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#";
+        const version = dd.version; //判断是否在钉钉内打开fm,但需要更安全的参数
+        const url = host+Fmprogramme+"?script="+FmScriptName+"&param="+param;
 
+/*        parames.push({ name: "url", value: "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20刘正" });*/
+        parames.push({ name: "host", value: host});
+        parames.push({ name: "Fmprogramme", value: Fmprogramme});
+        parames.push({ name: "FmScriptName", value: FmScriptName});
+        parames.push({ name: "param", value: param});
 
-//        parames.push({ name: "url", value: "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName });
-        parames.push({ name: "url", value: "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20刘正" });
-
-        parames.push({ name: "version", value: version});
 
         Post("http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=openFM", parames);
         // return false;
@@ -68,11 +69,12 @@
         return null;
     }
 
-    var homeurl = getUrlParms('homeurl');
-    var FmScriptName = getUrlParms("script");
+    //indexFM的调用格式,indexFM.html?programe=流程集合-2&scriptname=钉钉转到相关的记录和布局php&param=2303%20刘正
+    const Fmprogramme = getUrlParms('programe')
+    var FmScriptName = getUrlParms("scriptname");
     var param = getUrlParms("param");
 
 //    var url = "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"
-    showFMWeb();
+    showFMWeb(Fmprogramme,FmScriptName,param);
 </script>
 </html>

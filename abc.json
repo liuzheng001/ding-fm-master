@@ -16,10 +16,16 @@
       "saltui"
     ],
     "alias": {
-      "pages":"pages",
-      "components":"components",
-      "db":"app/db.js",
-      "variables":"app/variables.js"
-    }
+      "pages": "pages",
+      "components": "components",
+      "db": "app/db.js",
+      "variables": "app/variables.js"
+    },
+    "src": "src",
+    "port": "3001",
+    "entry": "app/app.js",
+    "lazyload": true,
+    "open": true,
+    "https": false
   }
 }

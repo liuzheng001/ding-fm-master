@@ -252,7 +252,7 @@ export default class Page extends Component {
 
   componentDidMount() {
     this.handleClick('1');
-    DDReady.then((dd) => {
+   /* DDReady.then((dd) => {
       dd.device.notification.alert({
         message: 'dd.device.notification.alert',
         title: 'This is title',
@@ -264,8 +264,28 @@ export default class Page extends Component {
           alert('fail: ' + JSON.stringify(err));
         },
       });
-    });
+    });*/
   }
+    pushWorkflow() {
+        //fm中通过插入url推送到钉钉企业普通信息
+        //参数方案名,用户名,其它param,比如workflowID等
+        $.ajax({
+            url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=pushFM&programme=流程合集-2&sender=' + login._UserID + "&param=2",
+            type: 'GET',
+            dataType: 'json',
+            success: function (response) {
+                if (response.errcode === 0) {
+                    alert("发送信息成功")
+                } else {
+                    alert(JSON.stringify(response));
+                }
+            },
+            error: function (response) {
+                alert(JSON.stringify(response));
+            }
+        });
+    }
+
 
   render() {
       const t = this;
@@ -285,6 +305,7 @@ export default class Page extends Component {
               <Button onClick={this.proFile.bind(this)}>钉钉页面</Button>
               <Button onClick={this.openFM.bind(this)}>filemaker页面</Button>
               <Button onClick={this.openFM1.bind(this)}>打开filemaker页面</Button>
+              <Button onClick={this.pushWorkflow.bind(this)}>发送企业通知</Button>
 
           </div>
     );
