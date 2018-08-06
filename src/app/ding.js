@@ -105,13 +105,64 @@ const _CorpId = 'ding1fdec36666e1349d35c2f4657eb6378f';
     function authCode(corpId){
         return new Promise(function(resolve, reject){
             dd.ready(function(){
-                /*var src="http://localhost:3001/";
+               /* // 退到后台的事件监听(webview)
+                document.addEventListener('pause', function(e) {
+                    e.preventDefault();
+                    console.log('事件：pause')
+                    alert('事件：pause')
+                }, false);
+
+                // 页面被唤醒的事件监听(webview)
+                document.addEventListener('resume', function(e) {
+                    e.preventDefault();
+                    console.log('事件：resume')
+                    alert('事件：resume')
+
+                }, false);
+
+
+                //返回按钮点击的事件监听(android)
+                document.addEventListener('backbutton', function(e) {
+                    e.preventDefault();
+                    dd.device.notification.alert({
+                        message: '哎呀，你不小心点到返回键啦!',
+                        title: '...警告...'
+                    });
+                }, false);
+
+                // 网络连接成功的事件监听
+                document.addEventListener('online', function(e) {
+                    e.preventDefault();
+                    console.log('事件：online')
+                    alert('事件：online')
+                }, false);
+
+                // 网络连接断开的事件监听
+                document.addEventListener('offline', function(e) {
+                    e.preventDefault();
+                    console.log('事件：offline')
+                   alert('事件：offline')
+
+                }, false);*/
+
+                // var src="http://localhost:3001/";
+
                 if(dd.ios){
                     dd.biz.navigation.setLeft({
                         control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
-                        text: '上一级',//控制显示文本，空字符串表示显示默认文本
+                        // show:false,
+                        text: '退出',//控制显示文本，空字符串表示显示默认文本
                         onSuccess : function(result) {
-                            window.location.href = src;
+                            // window.location.href = document.referrer;
+
+                            dd.biz.navigation.close({
+                                onSuccess : function(result) {
+                                    /*result结构
+                                     {}
+                                     */
+                                },
+                                onFail : function(err) {}
+                            })
                         },
                         onFail : function(err) {
                             alert(JSON.stringify(err));
@@ -120,18 +171,18 @@ const _CorpId = 'ding1fdec36666e1349d35c2f4657eb6378f';
                     dd.biz.navigation.setRight({
                         show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
                         control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
-                        text: '返回',//控制显示文本，空字符串表示显示默认文本
+                        text: '已登录',//控制显示文本，空字符串表示显示默认文本
                         onSuccess : function(result) {
                             //如果control为true，则onSuccess将在发生按钮点击事件被回调
-                            /!*
+                            /*
                              {}
-                             *!/
+                             */
                             dd.biz.navigation.replace({
                                 url:  window.location.href ="http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001/#流程集合-2?script=转到相关的记录和布局php&param=2235%20刘正",// 新的页面链接
                                 onSuccess : function(result) {
-                                    /!*
+                                    /*
                                      {}
-                                     *!/
+                                     */
                                     alert("dadf")
                                 },
                                 onFail : function(err) {}
@@ -141,7 +192,7 @@ const _CorpId = 'ding1fdec36666e1349d35c2f4657eb6378f';
                         },
                         onFail : function(err) {}
                     });
-                }*/
+                }
                 dd.runtime.permission.requestAuthCode({
                     corpId: corpId,
                     onSuccess: function(result) {
@@ -266,8 +317,10 @@ const  loginCheck =  async () => {
             //设置全局变量isLogin为true
             login.isLogin = true;
 
+/*
             //刷新home中的未登按钮到登录
             login.loginDOM.innerHTML = "登录"
+*/
 
             break;
         }else if(i=j){
@@ -281,6 +334,9 @@ const  loginCheck =  async () => {
 
 
 export const DDReady = new Promise((resolve, reject) => {
+
+
+
   getDingtalkConfig().then(data => {
     dd.config(data);
     getUserId(_CorpId);
@@ -288,5 +344,21 @@ export const DDReady = new Promise((resolve, reject) => {
       alert('dd error: ' + JSON.stringify(err));
       reject(err);
     });
+  })
+      .catch(function(){
+      //failure
+      dd.biz.navigation.setRight({
+          show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
+          control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
+          text: '未登录',//控制显示文本，空字符串表示显示默认文本
+          onSuccess : function(result) {
+              //如果control为true，则onSuccess将在发生按钮点击事件被回调
+              /*
+               {}
+               */
+              alert("尚未登录")
+          },
+          onFail : function(err) {}
+      });
   });
 });

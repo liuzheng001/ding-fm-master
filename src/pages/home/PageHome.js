@@ -220,10 +220,12 @@ class TestButton extends Component {
     }
 
 
-
     render() {
         return (
-            <Button state = {this.state.change} onClick={()=>{alert("adfad")}}>{this.state.change?"已改变":"父组件驱动子组件改变,尚未变"}</Button>
+            <div>
+                <Button  onClick={()=>{alert("adfad")}}> {this.state.change?"已改变":"父组件驱动子组件改变,尚未变"} </Button>
+                <Button  onClick={()=>{alert("苦")}}> {!this.state.change?"已改变":"父组件驱动子组件改变,尚未变"} </Button>
+            </div>
         )
     }
 }
@@ -268,6 +270,99 @@ export default class PageHome extends Component {
             change:false
         };
     }
+
+
+    componentDidMount() {
+
+        alert("here"+this.props.params.fmFile);
+
+
+        //判断登录后,其它demo和ding页面才能打开哟
+        if(this.state.loginState !=='登录') {
+            this.timer = setInterval(function () {
+
+                if (login.isLogin === true) {
+                    clearInterval(this.timer);
+
+                    this.setState({
+                        loginState: "登录"
+                    });
+                    if(this.props.params.fmFile !== null){
+                        this.openFMLink();
+                    }
+
+                }
+            }.bind(this), 500);
+        }
+
+    }
+
+    /**
+     * 打开fm文件,   调用参数格式?programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2303|user_id
+     * 调用参数从home,page的路由获取this.props.params.fmfile
+     * 转化为格式,并由服务器通过user_id,判断是否合法,合法的情况下打开,服务器调用:http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=openFM
+     *
+     */
+
+
+    /*
+     *功能： 模拟form表单的提交
+     *参数： URL 跳转地址 PARAMTERS 参数
+     *返回值：
+     *创建时间：20160713
+     *创建人：
+     */
+    Post(URL, PARAMTERS) {
+        //创建form表单
+        var temp_form = document.createElement("form");
+        temp_form.action = URL;
+        //如需打开新窗口，form的target属性要设置为'_blank'
+        temp_form.target = "_self";
+        temp_form.method = "post";
+        temp_form.style.display = "none";
+        //添加参数
+        for (var item in PARAMTERS) {
+            var opt = document.createElement("textarea");
+            opt.name = PARAMTERS[item].name;
+            opt.value = PARAMTERS[item].value;
+            temp_form.appendChild(opt);
+        }
+        document.body.appendChild(temp_form);
+        //提交数据
+        temp_form.submit();
+    }
+
+    openFMLink() {
+
+        // const urlparam =  {"programme":"流程集合-2","script":"钉钉转到相关的记录和布局php","param":"2303"}
+        const urlparam = JSON.parse("{" + this.props.params.fmFile + "}");
+
+        const {programme,script,param } = urlparam;
+        if( !programme ) {
+            return;
+        }
+        const user_ID = login._UserID;
+        const host = "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=about:blank#";
+        // const version = dd.version; //判断是否在钉钉内打开fm,但需要更安全的参数
+        let parames =  new  Array();
+        alert(programme+param+script);
+
+
+//        const url = host+Fmprogramme+"?script="+FmScriptName+"&param="+param;
+        /*        parames.push({ name: "url", value: "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20刘正" });*/
+        parames.push({ name: "host", value: host});
+        parames.push({ name: "programme", value: programme});
+        parames.push({ name: "script", value: script});
+        parames.push({ name: "param", value: param});
+        parames.push({ name: "userID", value: user_ID})
+//        console.log(parames)
+
+        this.Post("http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=openFM", parames);
+
+    }
+
+
+
 
 
 
@@ -334,11 +429,22 @@ export default class PageHome extends Component {
 
   render() {
     const t = this;
+    // router 传递的参数
+    //   alert(this.props.params.param);
+      /*if(this.state.loginState==="登录") {
+            alert("user_id:"+login._UserID+login._UserName);
+      }*/
     return (
+
+        //this.state.loginState
+
 
       <div className="page-home">
           <TestButton change={this.state.change}  />
-          <button ref = {(e)=>login.loginDOM = e} >{this.state.loginState}</button>
+          <div>
+              <Button  type="danger" onClick={t.handleChange.bind(t)}>change子组件</Button>
+          </div>
+          <button  >{this.state.loginState}</button>
 
           <Button type="danger"  onClick={t.loginCheck.bind(t)}>{this.state.loginState}</Button>
 
@@ -380,9 +486,7 @@ export default class PageHome extends Component {
             <div className="t-PL10 t-PR10 t-PT10">
               <Button type="secondary" onClick={t.handleLink2.bind(t)}>DingTalk</Button>
             </div>
-            <div>
-                <Button  type="danger" onClick={t.handleChange.bind(t)}>change子组件</Button>
-            </div>
+
               <div>
                   <TestPopup/>
                   <Button

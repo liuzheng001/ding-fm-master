@@ -4,6 +4,7 @@ import { Component } from 'react';
 import { render } from 'react-dom';
 import FastClick from 'fastclick';
 import { Toast, Dialog ,Button} from 'saltui';
+
 //加载ding免登鉴权
 import { DDReady } from './ding';
 
@@ -79,7 +80,9 @@ class App extends Component {
             {/*<li><Link to={path}>demo</Link></li>*/}
             <li><Link to="/demo">demo</Link></li>
               <li><Link to="/ding">钉钉</Link></li>
-         </ul>
+              {/*<Link to="/home/{""programme"":""流程集合-2"",""script"":""钉钉转到相关的记录和布局php"",""param"":""2303""}">打开filemaker页面</Link>*/}
+
+          </ul>
         {this.props.children}
       </div>
     );
@@ -108,7 +111,7 @@ render(
 <Router history={customHistory}>
     <Route name="app" path="/" component={App} >
       <IndexRoute component={PageHome} />
-      <Route path="home" component={PageHome}   />
+      <Route path="home/:fmFile" component={PageHome}   />
       <Route path="demo" component={PageDemo} onEnter = {authRequired}/>
       <Route path="ding" component={PageDing} onEnter = {authRequired}  />
     </Route>
