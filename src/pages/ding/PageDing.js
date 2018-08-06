@@ -1,6 +1,9 @@
 import { Component } from 'refast';
 // import { DDReady } from '../../app/ding';
 import {Button} from 'saltui';
+
+import { Link} from 'react-router';
+
 import Record from 'components/record';
 import Info from 'components/info';
 import  login  from '../../app/variables';
@@ -239,7 +242,15 @@ export default class Page extends Component {
        // window.location.href ="http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://liuzheng750417.imwork.net:8088/v0.5.3/webdirecthomehtml.html#流程集合-2?script=转到相关的记录和布局php&param=2235%20刘正";
 
       /*  window.location.href = " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528";*/
-        ShowFMWeb();
+        dd.biz.util.openLink({
+            url: " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=about:blank#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528",//要打开链接的地址
+            onSuccess : function(result) {
+                /**/
+                console.log(result);
+
+            },
+            onFail : function(err) {}
+        })
     }
 
     openFM1(fileName) {
@@ -247,7 +258,7 @@ export default class Page extends Component {
         // window.location.href ="http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://liuzheng750417.imwork.net:8088/v0.5.3/webdirecthomehtml.html#流程集合-2?script=转到相关的记录和布局php&param=2235%20刘正";
 
         /*  window.location.href = " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528";*/
-        window.open("http://localhost:3001/indexFM.html?script=1")
+        window.open('http://localhost:3001/#/home/{"programme":"流程集合-2","script":"钉钉转到相关的记录和布局php","param":"2303"}')
     }
 
   componentDidMount() {
@@ -269,9 +280,10 @@ export default class Page extends Component {
     pushWorkflow() {
         //fm中通过插入url推送到钉钉企业普通信息
         //参数方案名,用户名,其它param,比如workflowID等
+        //不适应多个userID,因为第个链接登录的人不一样
         const touser =
         $.ajax({
-                url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=pushFM&touser=' + "1960580858678987|0968625005678987" + "&programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2283|刘正",
+                url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=pushFM&touser=' + "1960580858678987" + "&programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2283|刘正",
             type: 'GET',
             dataType: 'json',
             success: function (response) {
@@ -306,6 +318,7 @@ export default class Page extends Component {
               <Button onClick={this.proFile.bind(this)}>钉钉页面</Button>
               <Button onClick={this.openFM.bind(this)}>filemaker页面</Button>
               <Button onClick={this.openFM1.bind(this)}>打开filemaker页面</Button>
+              <Link to='home/{"programme":"流程集合-2","script":"钉钉转到相关的记录和布局php","param":"2303"}'>打开filemaker页面</Link>
               <Button onClick={this.pushWorkflow.bind(this)}>发送企业通知</Button>
 
           </div>

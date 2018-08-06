@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="97c3c9ee-544a-4a80-ac1f-8a64b39d3490" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/indexFM.html" afterPath="$PROJECT_DIR$/indexFM.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/app.js" afterPath="$PROJECT_DIR$/src/app/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/ding.js" afterPath="$PROJECT_DIR$/src/app/ding.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/ding/PageDing.js" afterPath="$PROJECT_DIR$/src/pages/ding/PageDing.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/pages/home/PageHome.js" afterPath="$PROJECT_DIR$/src/pages/home/PageHome.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,9 +21,11 @@
       <file leaf-file-name="PageDing.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/ding/PageDing.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1090">
-              <caret line="294" column="13" lean-forward="false" selection-start-line="294" selection-start-column="12" selection-end-line="294" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="593">
+              <caret line="313" column="36" lean-forward="true" selection-start-line="313" selection-start-column="36" selection-end-line="313" selection-end-column="36" />
+              <folding>
+                <element signature="e#81#111#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -29,8 +33,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/html/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="33" column="31" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+            <state relative-caret-position="198">
+              <caret line="11" column="39" lean-forward="false" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -39,79 +43,32 @@
       <file leaf-file-name="indexFM.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/indexFM.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1260">
-              <caret line="69" column="61" lean-forward="true" selection-start-line="69" selection-start-column="61" selection-end-line="69" selection-end-column="61" />
+            <state relative-caret-position="1080">
+              <caret line="60" column="39" lean-forward="false" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <file leaf-file-name="ding.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/app/ding.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1001">
-              <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+            <state relative-caret-position="210">
+              <caret line="207" column="0" lean-forward="true" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
               <folding>
-                <element signature="e#11283#11289#0" expanded="true" />
-                <element signature="e#11296#11302#0" expanded="true" />
-                <element signature="e#11305#11311#0" expanded="true" />
-                <element signature="e#11321#11327#0" expanded="true" />
-                <element signature="e#11331#11337#0" expanded="true" />
-                <element signature="e#11420#11426#0" expanded="true" />
-                <element signature="e#11426#11432#0" expanded="true" />
-                <element signature="e#11457#11463#0" expanded="true" />
-                <element signature="e#11463#11469#0" expanded="true" />
-                <element signature="e#11500#11506#0" expanded="true" />
-                <element signature="e#11506#11512#0" expanded="true" />
-                <element signature="e#11541#11547#0" expanded="true" />
-                <element signature="e#11547#11553#0" expanded="true" />
-                <element signature="e#11584#11590#0" expanded="true" />
-                <element signature="e#11590#11596#0" expanded="true" />
-                <element signature="e#11629#11635#0" expanded="true" />
-                <element signature="e#11639#11645#0" expanded="true" />
-                <element signature="e#11671#11677#0" expanded="true" />
-                <element signature="e#11685#11691#0" expanded="true" />
-                <element signature="e#11726#11732#0" expanded="true" />
-                <element signature="e#11738#11744#0" expanded="true" />
-                <element signature="e#11900#11906#0" expanded="true" />
-                <element signature="e#11909#11915#0" expanded="true" />
-                <element signature="e#12350#12354#0" expanded="true" />
-                <element signature="e#12532#12538#0" expanded="true" />
-                <element signature="e#12540#12546#0" expanded="true" />
-                <element signature="e#12564#12570#0" expanded="true" />
-                <element signature="e#12575#12581#0" expanded="true" />
-                <element signature="e#12599#12604#0" expanded="true" />
-                <element signature="e#12604#12609#0" expanded="true" />
-                <element signature="e#12647#12653#0" expanded="true" />
-                <element signature="e#12657#12663#0" expanded="true" />
-                <element signature="e#12713#12719#0" expanded="true" />
-                <element signature="e#12722#12728#0" expanded="true" />
-                <element signature="e#12942#12948#0" expanded="true" />
-                <element signature="e#12984#12990#0" expanded="true" />
-                <element signature="e#13021#13027#0" expanded="true" />
-                <element signature="e#13037#13043#0" expanded="true" />
-                <element signature="e#13109#13115#0" expanded="true" />
-                <element signature="e#13125#13131#0" expanded="true" />
-                <element signature="e#13162#13168#0" expanded="true" />
-                <element signature="e#13178#13184#0" expanded="true" />
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#54#85#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="486">
-                <caret line="27" column="48" lean-forward="false" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
-                <folding>
-                  <marker date="1533204613000" expanded="true" signature="3199:3255" ph="{...}" />
-                  <marker date="1533204613000" expanded="true" signature="3402:3457" ph="{...}" />
-                  <marker date="1533204613000" expanded="true" signature="3475:3516" ph="{...}" />
-                </folding>
-              </first_editor>
-              <second_editor />
+      <file leaf-file-name="getContacts.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mock/query/getContacts.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="162">
+              <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -119,52 +76,50 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+            <state relative-caret-position="746">
+              <caret line="96" column="22" lean-forward="true" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
               <folding>
                 <element signature="e#0#85#0" expanded="true" />
-                <element signature="e#298#331#0" expanded="true" />
-                <marker date="1533020012000" expanded="true" signature="2700:3015" ph="..." />
-                <marker date="1533020012000" expanded="true" signature="2749:3003" ph="..." />
+                <element signature="e#299#332#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PageHome.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/home/PageHome.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="452">
+              <caret line="491" column="25" lean-forward="true" selection-start-line="491" selection-start-column="25" selection-end-line="491" selection-end-column="25" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="variables.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/variables.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="gulpfile.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/node_modules/saltui/gulpfile.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dist/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="db.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/app/db.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dist/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="popwin.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dist/popwin.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -184,36 +139,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>测试</find>
-      <find>172</find>
-      <find>182</find>
-      <find>182.169</find>
-      <find>182.16</find>
-      <find>182.1</find>
-      <find>182.</find>
-      <find>1</find>
-      <find>192.168.0.102http://r1w8478651.imwork.net:9998/firstSalt-master/dist/#/?_k=0wl82w</find>
+      <find>dd.biz.navigation.setLeft</find>
+      <find>console.log</find>
+      <find>getOapiByName</find>
+      <find>http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=send_message&amp;cid=</find>
+      <find>http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=send_message&amp;cid</find>
+      <find>http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=send_message&amp;ci</find>
+      <find>http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=send_message&amp;c</find>
+      <find>http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=send_message&amp;</find>
+      <find>http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=send_message</find>
+      <find>http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=send_messag</find>
+      <find>http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=send_messa</find>
+      <find>http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=send_mess</find>
+      <find>http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=</find>
+      <find>pushFM</find>
+      <find>hashHistory</find>
+      <find>setS</find>
+      <find>_UserID</find>
       <find>_UserName</find>
-      <find>confirm</find>
-      <find>192</find>
-      <find>192.</find>
-      <find>192.1</find>
-      <find>192.168</find>
-      <find>192.168.</find>
-      <find>192.168.0</find>
-      <find>192.168.0.</find>
-      <find>192.168.0.1</find>
-      <find>192.168.0.10</find>
-      <find>192.168.0.102</find>
-      <find>192.168.0.102:</find>
-      <find>192.168.0.102:3</find>
-      <find>192.168.0.102:30</find>
-      <find>192.168.0.102:300</find>
-      <find>192.168.0.102:3001/&quot;),type:&quot;GET&quot;,dataType:&quot;json&quot;,success:function(response){0===response.errcode?config={agentId:response.agentId||&quot;&quot;,corpId:response.corpId||&quot;&quot;,timeStamp:response.timeStamp||&quot;&quot;,nonceStr:response.nonceStr||&quot;&quot;,signature:response.signature||&quot;&quot;}:alert(JSON.stringify(response)+&quot;sign&quot;)},error:function(){alert(&quot;系统错误/LIU&quot;)}});case 4:return _context.abrupt(&quot;return&quot;,{agentId:config.agentId,corpId:config.corpId,timeStamp:config.timeStamp,nonceStr:config.nonceStr,signature:config.signature,jsApiList:apiList});case 5:case&quot;end&quot;:return _context.stop()}},_callee,void 0)})),function(){return _ref.apply(this,arguments)}),loginCheck=(_ref2=_asyncToGenerator(_regenerator2.default.mark(function _callee2(){var _ref3,list,i,j;return _regenerator2.default.wrap(function(_context2){for(;;)switch(_context2.prev=_context2.next){case 0:return _context2.next=2,_db2.default.Contacts.getContacts();case 2:_ref3=_context2.sent,list=_ref3.list,i=0,j=list.length;case 5:if(!(i&lt;j)){_context2.next=16;break}if(list[i].name!==_variables2.default._UserName){_context2.next=12;break}return _variables2.default.isLogin=!0,_variables2.default.loginDOM.innerHTML=&quot;登录&quot;,_context2.abrupt(&quot;break&quot;,16);case 12:(i=j)&amp;&amp;(_variables2.default.isLogin=!1,alert(&quot;登录失败&quot;));case 13:i++,_context2.next=5;break;case 16:case&quot;end&quot;:return _context2.stop()}},_callee2,void 0)})),function(){return _ref2.apply(this,arguments)});exports.DDReady=new Promise(function(resolve,reject){getDingtalkConfig().then(function(data){dd.config(data),getUserId(&quot;ding1fdec36666e1349d35c2f4657eb6378f&quot;),dd.error(function(err){alert(&quot;dd error: &quot;+JSON.stringify(err)),reject(err)})})})},function(module,exports){&quot;use strict&quot;;Object.defineProperty(exports,&quot;__esModule&quot;,{value:!0}),exports.default=function(_ref){var error=_ref</find>
-      <find>192.168.0.102:3001</find>
-      <find>l</find>
-      <find>loca</find>
-      <find>localhost</find>
+      <find>login.loginDOM</find>
+      <find>子组件</find>
+      <find>\n</find>
+      <find>u</find>
+      <find>user</find>
+      <find>user_</find>
+      <find>user_i</find>
+      <find>user_id</find>
+      <find>setState</find>
+      <find>button</find>
+      <find>customHistory</find>
+      <find>const</find>
     </findStrings>
     <replaceStrings>
       <replace>Public</replace>
@@ -256,18 +211,18 @@
         <option value="$PROJECT_DIR$/src/pages/demo/PageDemo.js" />
         <option value="$PROJECT_DIR$/src/app/db.js" />
         <option value="$PROJECT_DIR$/mock/query/getContacts.json" />
-        <option value="$PROJECT_DIR$/src/app/app.js" />
-        <option value="$PROJECT_DIR$/src/pages/home/PageHome.js" />
         <option value="$PROJECT_DIR$/src/app/variables.js" />
         <option value="$PROJECT_DIR$/dist/index.html" />
         <option value="$USER_HOME$/PhpstormProjects/firstSalt-master/dist/index.html" />
         <option value="$USER_HOME$/PhpstormProjects/firstSalt-master/dist/app.js" />
-        <option value="$PROJECT_DIR$/src/app/ding.js" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/dist/app.js" />
-        <option value="$PROJECT_DIR$/indexFM.html" />
-        <option value="$PROJECT_DIR$/src/pages/ding/PageDing.js" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/indexFM.html" />
+        <option value="$PROJECT_DIR$/src/app/ding.js" />
+        <option value="$PROJECT_DIR$/src/pages/ding/PageDing.js" />
+        <option value="$PROJECT_DIR$/src/app/app.js" />
+        <option value="$PROJECT_DIR$/src/pages/home/PageHome.js" />
       </list>
     </option>
   </component>
@@ -307,6 +262,174 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pages">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="home">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pages">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ding">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="pages">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="app">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="mock">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="query">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="html">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="dist">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT=".idea">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -466,148 +589,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="pages">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="pages">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ding">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="app">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="mock">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="html">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="dist">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="ding-fm-master">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT=".idea">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -738,31 +719,42 @@
       <workItem from="1533101405229" duration="12698000" />
       <workItem from="1533206653966" duration="597000" />
       <workItem from="1533223519016" duration="231000" />
-      <workItem from="1533227334974" duration="9814000" />
+      <workItem from="1533227334974" duration="14288000" />
+      <workItem from="1533319496186" duration="27603000" />
+      <workItem from="1533481613375" duration="3356000" />
     </task>
+    <task id="LOCAL-00001" summary="test filemaker">
+      <created>1533310472146</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1533310472146</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="207830000" />
+    <option name="totallyTimeSpent" value="243263000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="2048" height="1061" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.49804688" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5019531" order="10" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1850586" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1850586" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5019531" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45541838" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32925585" sideWeight="0.49804688" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="PHP-CGI Server" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -792,11 +784,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/home/PageHome.js</url>
-          <line>370</line>
+          <line>476</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/app.js</url>
-          <line>74</line>
+          <line>75</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -806,21 +798,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/pages/home/PageHome.js</url>
-          <line>226</line>
+          <line>228</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/app/app.js</url>
-          <line>62</line>
+          <line>63</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/app/ding.js</url>
+          <line>320</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="13" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Downloads/saltui-master/demo/Button/ButtonDemo.jsx" />
     <entry file="file://$PROJECT_DIR$/src/pages/home/PageHome.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -963,13 +959,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mock/query/getContacts.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mock/query/getMyRecord.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1016,21 +1005,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/home/PageHome.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="352" column="0" lean-forward="false" selection-start-line="352" selection-start-column="0" selection-end-line="352" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/abc.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1533300589000" expanded="true" signature="348:601" ph="{&quot;pages&quot;: &quot;pages&quot;...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1044,45 +1022,10 @@
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/PhpstormProjects/firstSalt-master/dist/app.js" />
-    <entry file="file://$PROJECT_DIR$/src/app/variables.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/ding.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#54#85#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/popwin.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="486">
-            <caret line="27" column="48" lean-forward="false" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
-            <folding>
-              <marker date="1533204613000" expanded="true" signature="3199:3255" ph="{...}" />
-              <marker date="1533204613000" expanded="true" signature="3402:3457" ph="{...}" />
-              <marker date="1533204613000" expanded="true" signature="3475:3516" ph="{...}" />
-            </folding>
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -1098,42 +1041,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/.eslintrc.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="21" column="65" lean-forward="false" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="486">
+            <caret line="27" column="48" lean-forward="false" selection-start-line="27" selection-start-column="48" selection-end-line="27" selection-end-column="48" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#37#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/dist/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
-          <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <caret line="3" column="22" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" column="39" lean-forward="false" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/indexFM.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1260">
-          <caret line="69" column="61" lean-forward="true" selection-start-line="69" selection-start-column="61" selection-end-line="69" selection-end-column="61" />
+        <state relative-caret-position="1080">
+          <caret line="60" column="39" lean-forward="false" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/ding/PageDing.js">
+    <entry file="file://$PROJECT_DIR$/mock/query/getContacts.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1090">
-          <caret line="294" column="13" lean-forward="false" selection-start-line="294" selection-start-column="12" selection-end-line="294" selection-end-column="13" />
+        <state relative-caret-position="162">
+          <caret line="9" column="19" lean-forward="false" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/html/index.html">
+    <entry file="file://$PROJECT_DIR$/src/app/variables.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="33" column="31" lean-forward="true" selection-start-line="33" selection-start-column="31" selection-end-line="33" selection-end-column="31" />
+        <state relative-caret-position="450">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.eslintrc.json">
+    <entry file="file://$PROJECT_DIR$/node_modules/saltui/gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="180">
+          <caret line="10" column="6" lean-forward="false" selection-start-line="10" selection-start-column="6" selection-end-line="10" selection-end-column="6" />
           <folding />
         </state>
       </provider>
@@ -1146,76 +1131,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/db.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="86" column="0" lean-forward="true" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state relative-caret-position="746">
+          <caret line="96" column="22" lean-forward="true" selection-start-line="96" selection-start-column="22" selection-end-line="96" selection-end-column="22" />
           <folding>
             <element signature="e#0#85#0" expanded="true" />
-            <element signature="e#298#331#0" expanded="true" />
-            <marker date="1533020012000" expanded="true" signature="2700:3015" ph="..." />
-            <marker date="1533020012000" expanded="true" signature="2749:3003" ph="..." />
+            <element signature="e#299#332#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+    <entry file="file://$PROJECT_DIR$/src/pages/home/PageHome.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1001">
-          <caret line="118" column="0" lean-forward="false" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+        <state relative-caret-position="452">
+          <caret line="491" column="25" lean-forward="true" selection-start-line="491" selection-start-column="25" selection-end-line="491" selection-end-column="25" />
           <folding>
-            <element signature="e#11283#11289#0" expanded="true" />
-            <element signature="e#11296#11302#0" expanded="true" />
-            <element signature="e#11305#11311#0" expanded="true" />
-            <element signature="e#11321#11327#0" expanded="true" />
-            <element signature="e#11331#11337#0" expanded="true" />
-            <element signature="e#11420#11426#0" expanded="true" />
-            <element signature="e#11426#11432#0" expanded="true" />
-            <element signature="e#11457#11463#0" expanded="true" />
-            <element signature="e#11463#11469#0" expanded="true" />
-            <element signature="e#11500#11506#0" expanded="true" />
-            <element signature="e#11506#11512#0" expanded="true" />
-            <element signature="e#11541#11547#0" expanded="true" />
-            <element signature="e#11547#11553#0" expanded="true" />
-            <element signature="e#11584#11590#0" expanded="true" />
-            <element signature="e#11590#11596#0" expanded="true" />
-            <element signature="e#11629#11635#0" expanded="true" />
-            <element signature="e#11639#11645#0" expanded="true" />
-            <element signature="e#11671#11677#0" expanded="true" />
-            <element signature="e#11685#11691#0" expanded="true" />
-            <element signature="e#11726#11732#0" expanded="true" />
-            <element signature="e#11738#11744#0" expanded="true" />
-            <element signature="e#11900#11906#0" expanded="true" />
-            <element signature="e#11909#11915#0" expanded="true" />
-            <element signature="e#12350#12354#0" expanded="true" />
-            <element signature="e#12532#12538#0" expanded="true" />
-            <element signature="e#12540#12546#0" expanded="true" />
-            <element signature="e#12564#12570#0" expanded="true" />
-            <element signature="e#12575#12581#0" expanded="true" />
-            <element signature="e#12599#12604#0" expanded="true" />
-            <element signature="e#12604#12609#0" expanded="true" />
-            <element signature="e#12647#12653#0" expanded="true" />
-            <element signature="e#12657#12663#0" expanded="true" />
-            <element signature="e#12713#12719#0" expanded="true" />
-            <element signature="e#12722#12728#0" expanded="true" />
-            <element signature="e#12942#12948#0" expanded="true" />
-            <element signature="e#12984#12990#0" expanded="true" />
-            <element signature="e#13021#13027#0" expanded="true" />
-            <element signature="e#13037#13043#0" expanded="true" />
-            <element signature="e#13109#13115#0" expanded="true" />
-            <element signature="e#13125#13131#0" expanded="true" />
-            <element signature="e#13162#13168#0" expanded="true" />
-            <element signature="e#13178#13184#0" expanded="true" />
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/ding/PageDing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="593">
+          <caret line="313" column="36" lean-forward="true" selection-start-line="313" selection-start-column="36" selection-end-line="313" selection-end-column="36" />
+          <folding>
+            <element signature="e#81#111#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/ding.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="207" column="0" lean-forward="true" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#54#85#0" expanded="true" />
           </folding>
         </state>
       </provider>
