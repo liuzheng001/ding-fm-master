@@ -174,20 +174,30 @@ const _CorpId = 'ding1fdec36666e1349d35c2f4657eb6378f';
                         text: '已登录',//控制显示文本，空字符串表示显示默认文本
                         onSuccess : function(result) {
                             //如果control为true，则onSuccess将在发生按钮点击事件被回调
-                            /*
-                             {}
-                             */
-                            dd.biz.navigation.replace({
-                                url:  window.location.href ="http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001/#流程集合-2?script=转到相关的记录和布局php&param=2235%20刘正",// 新的页面链接
+                            dd.device.notification.confirm({
+                                message: "退出登录",
+                                title: "是否登出?",
+                                buttonLabels: ['取消', '确认'],
                                 onSuccess : function(result) {
-                                    /*
-                                     {}
-                                     */
-                                    alert("dadf")
+                                    //onSuccess将在点击button之后回调
+
+                                    {
+                                        // buttonIndex: 0 //被点击按钮的索引值，Number类型，从0开始
+                                        if (result.buttonIndex == 1) {
+                                            dd.biz.navigation.close({
+                                                onSuccess : function(result) {
+                                                    /*result结构
+                                                    {}
+                                                    */
+                                                },
+                                                onFail : function(err) {}
+                                            })
+                                        }
+                                    }
+
                                 },
                                 onFail : function(err) {}
                             });
-
 
                         },
                         onFail : function(err) {}
@@ -224,7 +234,11 @@ if (!dd) {
                     proper.userInfo = response;
                     //得到用户名,到服务器查询是否可以登录
                     login._UserName = response.name;
-                    loginCheck();
+                    // loginCheck();
+
+                    //调试时使用,未到后台验证fm员工档案
+                    login.isLogin = true;
+
                     Dialog.alert({
                         title: '测试',
                         content: login._UserName+":登录成功"+'</br></br></br>'+JSON.stringify(response),
@@ -321,14 +335,11 @@ const  loginCheck =  async () => {
             //刷新home中的未登按钮到登录
             login.loginDOM.innerHTML = "登录"
 */
-
-            break;
-        }else if(i=j){
-            login.isLogin = false;
-            alert("登录失败");
-
+        return;
         }
     }
+    // login.isLogin = false;
+    alert("你不是新建化工公司的员工,登录失败");
     // console.log(JSON.stringify(list))
 }
 

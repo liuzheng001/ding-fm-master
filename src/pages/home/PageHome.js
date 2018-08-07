@@ -274,7 +274,6 @@ export default class PageHome extends Component {
 
     componentDidMount() {
 
-        alert("here"+this.props.params.fmFile);
 
 
         //判断登录后,其它demo和ding页面才能打开哟
@@ -342,10 +341,11 @@ export default class PageHome extends Component {
             return;
         }
         const user_ID = login._UserID;
+        // const host = "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001/closepage.html#";
         const host = "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=about:blank#";
         // const version = dd.version; //判断是否在钉钉内打开fm,但需要更安全的参数
         let parames =  new  Array();
-        alert(programme+param+script);
+        // alert(programme+param+script);
 
 
 //        const url = host+Fmprogramme+"?script="+FmScriptName+"&param="+param;
@@ -357,6 +357,15 @@ export default class PageHome extends Component {
         parames.push({ name: "userID", value: user_ID})
 //        console.log(parames)
 
+       /* dd.biz.util.openLink({
+            url: "about:blank",//要打开链接的地址
+            onSuccess : function(result) {
+                /!**!/
+                console.log(result);
+
+            },
+            onFail : function(err) {}
+        })*/
         this.Post("http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=openFM", parames);
 
     }
