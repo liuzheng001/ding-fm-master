@@ -257,8 +257,10 @@ export default class Page extends Component {
 
         // window.location.href ="http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://liuzheng750417.imwork.net:8088/v0.5.3/webdirecthomehtml.html#流程集合-2?script=转到相关的记录和布局php&param=2235%20刘正";
 
-        /*  window.location.href = " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528";*/
-        window.open('http://localhost:3001/#/home/{"programme":"流程集合-2","script":"钉钉转到相关的记录和布局php","param":"2303"}')
+          window.location.href = " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=about:blank#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528";
+
+
+        // window.open('http://localhost:3001/#/home/{"programme":"流程集合-2","script":"钉钉转到相关的记录和布局php","param":"2303"}')
     }
 
   componentDidMount() {
