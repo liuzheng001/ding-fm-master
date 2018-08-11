@@ -1,9 +1,6 @@
 import { Component } from 'refast';
 import {Group, Button, IconSetting, IconButton, TextButton, ButtonGroup, Dialog} from 'saltui';
 import { Scroller } from 'saltui'
-// import { Linking } from 'react-native'
-
-
 import List from 'components/list';
 import Info from 'components/info';
 import logic from './logic';
@@ -28,6 +25,8 @@ class TestScrller extends React.Component {
         // );
     }
 }
+
+
 
 class Demo extends React.Component {
     handleClick(evt) {
@@ -90,6 +89,7 @@ export default class Page extends Component {
     }
 
   handleClick(workNo) {
+      // alert(workNo)
     this.dispatch('fetch', { workNo });
   }
 
@@ -111,6 +111,7 @@ export default class Page extends Component {
     return (
 
       <div className="page-demo">
+
           {/*<Scroller className="page"  ref={(iScroller)=>{this.iScroller = iScroller}} onScrollEnd={this.handleScrollEnd.bind(this)} style={{zIndex:101}}>*/}
           {/*<Scroller className="page"  ref="iScroller" onScrollEnd={this.handleScrollEnd.bind(this)} style={{zIndex:101}}>
 
@@ -170,6 +171,7 @@ export default class Page extends Component {
                   <div className="t-LH44 t-PL10">aa</div>
               </Group.List>
           </Scroller>*/}
+
         <Group>
           <Group.Head>DEMO</Group.Head>
           <Group.List lineIndent={15} itemIndent={15}>
@@ -182,7 +184,6 @@ export default class Page extends Component {
         </Group>
           <Demo/>
          {/* <Button className={'page'} style={{zIndex:102}} onClick={this.scroller.bind(this)} >滚动</Button>*/}
-         <iframe src=" http://liuzheng750417.imwork.net:591/fmi/webd"></iframe>
       </div>
 
 

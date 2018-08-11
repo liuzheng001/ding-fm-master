@@ -14,6 +14,8 @@ import  login  from 'variables';
 import PageHome from 'pages/home';
 import PageDemo from 'pages/demo';
 import PageDing from 'pages/ding';
+import PageTree from 'pages/tree';
+
 import DB from 'db';
 import './app.less';
 // import Button from "saltui/src/Button/Button";
@@ -80,6 +82,7 @@ class App extends Component {
             {/*<li><Link to={path}>demo</Link></li>*/}
             <li><Link to="/demo">demo</Link></li>
               <li><Link to="/ding">钉钉</Link></li>
+              <li><Link to="/tree">树型组件</Link></li>
               {/*<Link to="/home/{""programme"":""流程集合-2"",""script"":""钉钉转到相关的记录和布局php"",""param"":""2303""}">打开filemaker页面</Link>*/}
 
           </ul>
@@ -113,7 +116,8 @@ render(
       <IndexRoute component={PageHome} />
       <Route path="home/:fmFile" component={PageHome}   />
       <Route path="demo" component={PageDemo} onEnter = {authRequired}/>
-      <Route path="ding" component={PageDing} onEnter = {authRequired}  />
+        <Route path="ding" component={PageDing} onEnter = {authRequired}  />
+        <Route path="tree" component={PageTree}   />
     </Route>
   </Router>,
   document.getElementById('App'),

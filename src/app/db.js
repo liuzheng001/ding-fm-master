@@ -69,4 +69,17 @@ context.create('Contacts',{
     },
 })
 
+context.create('DeptList',{
+    getDeptList: {
+        mockUrl: 'query/getDeptList.json',
+        url: 'query/getDeptList.json',
+        willFetch() {
+            Toast.show({
+                type: 'loading',
+                content: '读取部门结构',
+            });
+        },
+    },
+})
+
 export default context.api;

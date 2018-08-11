@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import  React,{ Component } from 'react';
 
 
 import { Toast, Button, Dialog,Popup,Popover ,Avatar,Badge,Gallery,Slot} from 'saltui';
@@ -142,6 +142,9 @@ class TestPopup extends React.Component {
     }
 
     render() {
+        const button =  '<Button>关闭 Popup</Button>'
+        let =React.createElement({button}, null, null)
+
         return (
             <div className="testPopup">
                 <Button onClick={() => {this.instance = Popup.show(
@@ -185,6 +188,7 @@ class TestPopup extends React.Component {
                                 onChange={(e) => { this.setState({ keyword: e.target.value }); }}
                             />
                             <Button onClick={() => { this.setState({ visible: false }); }}>关闭 Popup</Button>
+
                         </div>
                     }
                     animationType="slide-up"
