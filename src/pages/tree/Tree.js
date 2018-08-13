@@ -14,59 +14,6 @@ import 'rc-tree/assets/index.css';
 import logic from "./logic";
 // import './Tree.less';
 
-//递归排序组织机构
-
-let treenodeResult ;
-
-function markNode(tree) {
-    let nodes
-    if (Object.prototype.toString.call(tree) == "[object Array]") {
-        nodes = tree.map((v) => {
-            let node = <TreeNode key={v.pos} title = {v.name}/>
-            if (v.children && v.children.length) {
-                node = (<TreeNode key={v.pos} title ={v.name}>
-                    {markNode(v.children)}
-                </TreeNode>)
-            }
-            return node
-        })
-
-    }
-    return (nodes);
-
-}
-
-function  convert(tree){
-    //递归将多元数组,带子结构,结果是字符串,类似* <TreeNode title = "重庆新建化工有限责任公司" key="0-0"><TreeNode title = "技术部" key="0-0-0"/><TreeNode title = "生产部" key="0-0-1"><TreeNode title = "生产班组" key="0-0-1-0"/></TreeNode><TreeNode title = "财务部" key="0-0-2"/><TreeNode title = "行政部" key="0-0-3"/></TreeNode> */
-    /*treenodeStr += '<TreeNode title = ' + '"'+treenode.name+'"'+ ' key="'+treenode.pos+'"'
-    if(treenode.children.length === 0){
-        treenodeStr += "/>";
-    }else{
-        treenodeStr += ">";
-
-    }
-    if (treenode.children.length!==0) {
-
-        treenode.children.map(function (item) {
-            convert(item)
-        });
-      treenodeStr  += "</TreeNode>"
-
-    }*/
-
-
-
-   /* // 第一步：将树展开为一元数组,无意义
-        return tree.reduce((list, { id,  name,  children }) => {
-            list.push({ id,  name, children });
-            if (children) {
-                return list.concat(convert(children));
-            }
-            return list;
-        }, []);*/
-
-}
-
 
 class TestTree extends React.Component {
 
@@ -96,23 +43,6 @@ class TestTree extends React.Component {
     }
 }
 
-const treeData = [
-    { key: '0-0', title: 'parent 1', children:
-            [
-                { key: '0-0-0', title: 'parent 1-1', children:
-                        [
-                            { key: '0-0-0-0', title: 'parent 1-1-0' },
-                        ],
-                },
-                { key: '0-0-1', title: 'parent 1-2', disableCheckbox: true,children:
-                        [
-                            { key: '0-0-1-0', title: 'parent 1-2-0',disableCheckbox: true  },
-                            { key: '0-0-1-1', title: 'parent 1-2-1' },
-                        ],
-                },
-            ],
-    },
-];
 
 
 class DemoTree extends React.Component {
@@ -134,127 +64,11 @@ class DemoTree extends React.Component {
         };
     }
 
-
-    onExpand = (expandedKeys) => {
-        console.log('onExpand', expandedKeys, arguments);
-    };
-    onSelect = (selectedKeys, info) => {
-        console.log('selected', selectedKeys, info);
-        this.selKey = info.node.props.eventKey;
-        alert(this.selKey)
-    };
-    onCheck = (checkedKeys, info) => {
-        console.log('onCheck', checkedKeys, info);
-    };
-    onEdit = () => {
-        setTimeout(() => {
-            console.log('current key: ', this.selKey);
-        }, 0);
-    };
-    onDel = (e) => {
-        if (!window.confirm('sure to delete?')) {
-            return;
-        }
-        e.stopPropagation();
-    };
-
-    render() {
-
-
-        const customLabel = (
-            <span className="cus-label">
-        <span>operations: </span>
-        <span style={{color: 'blue'}} onClick={this.onEdit}>Edit</span>&nbsp;
-                <label onClick={(e) => e.stopPropagation()}>
-          <input type="checkbox"/> checked
-        </label>
-                &nbsp;
-                <span style={{color: '#EB0000'}} onClick={this.onDel}>Delete</span>
-      </span>
-        );
-
-         const {list = "", error, list1 ="" } = this.props
-        console.log("list1:"+list1)
-
-
-        /*const  list = <TreeNode title="parent 1" key="0-0">
-             <TreeNode title={customLabel} key="0-0-0">
-                 <TreeNode title="leaf" key="0-0-0-0" style={{background: 'rgba(255, 0, 0, 0.1)'}}/>
-                 <TreeNode title="leaf" key="0-0-0-1"/>
-             </TreeNode>
-             <TreeNode title="parent 1-1" key="0-0-1"/>
-             <TreeNode title="parent 1-2" key="0-0-2" disabled>
-                 <TreeNode title="parent 1-2-0" key="0-0-2-0" disabled/>
-                 <TreeNode title="parent 1-2-1" key="0-0-2-1"/>
-             </TreeNode>
-         </TreeNode>;*/
-        // if(list.length === 0){
-        //     list.push({"name":1,"id":2})
-        //     list.push({"name":2,"id":1});
-        // }
-
-
-
-
-       /* const treenode1 = (list)=> {
-            list.map(item =>
-                return (
-                    <li title="重庆新建化工有限责任公司" key="0-0">item.name</li>
-                )
-          )
-        }*/
-
-
-        return (
-            <div className="page-tree">
-
-                    <h2>SINGIE</h2>
-                    <Tree
-                        className="myCls" showLine checkable defaultExpandAll
-                        defaultExpandedKeys={this.state.defaultExpandedKeys}
-                        onExpand={this.onExpand}
-                        defaultSelectedKeys={this.state.defaultSelectedKeys}
-                        defaultCheckedKeys={this.state.defaultCheckedKeys}
-                        onSelect={this.onSelect} onCheck={this.onCheck}
-                    >
-
-
-                        {/* <TreeNode title="parent 1" key="0-0">
-                            <TreeNode title={customLabel} key="0-0-0">
-                                <TreeNode title="leaf" key="0-0-0-0" style={{background: 'rgba(255, 0, 0, 0.1)'}}/>
-                                <TreeNode title="leaf" key="0-0-0-1"/>
-                            </TreeNode>
-                            <TreeNode title="parent 1-1" key="0-0-1"/>
-
-                            <TreeNode title="parent 1-2" key="0-0-2" disabled>
-                                <TreeNode title="parent 1-2-0" key="0-0-2-0" disabled/>
-                                <TreeNode title="parent 1-2-1" key="0-0-2-1"/>
-                            </TreeNode>
-                        </TreeNode>*/}
-                        {list1}
-                    </Tree>
-                {/*{list1}*/}
-            </div>
-        );
-    }
-}
-
-
-export default class Page extends Component {
-    constructor(props) {
-        super(props, logic);
-
-    }
-
-    handleClick(workNo) {
-        this.dispatch('fetch',{workNo});
-    }
-
-    componentDidMount() {
-        this.handleClick(1);
-    }
-
-
+    /**
+     * 将list数据转为jsx树型结构TreeNode组件
+     * @param data
+     * @returns {*}
+     */
     sortTreeData(data){
         var pos = {}
         var tree=[];
@@ -299,100 +113,186 @@ export default class Page extends Component {
                 i=0;
             }
         }
-        console.log(tree)
-        /*if(tree.length!==0) {
-            var treeNode = convert(tree);
-            console.log("treeNode:"+treeNode)
+        //递归调用,转成树型
+        // const result =this.orderMarkNode(tree);
+        const result =this.markNode(tree);
 
-        }else{
-            return
-        }*/
-
-// 渲染树型结构 ,3层
-        const result =tree.map( items => (
-                <TreeNode key={items.pos} title={items.name}>
-                    {items.children.map( item => (
-                    <TreeNode key ={item.pos} title={item.name}>
-                        {item.children.map(thirditem =>(
-                            <TreeNode key = {thirditem.pos} title= {thirditem.name}/>
-                            ))
-                        }
-                    </TreeNode>
-                ))}
-                </TreeNode>
-            ))
-
-         console.log(result)
-         return result;
-
-    }
-
-    sortTreeData1(data){
-        var pos = {}
-        var tree=[];
-        var i=0;
-        while(data.length!=0){
-            if(!data[i].parentid){
-                tree.push({
-                    id:data[i].id,
-                    name:data[i].name,
-                    pos:"0-"+(tree.length),
-                    children:[]
-                });
-                pos[data[i].id]=[tree.length-1];
-                // data[i].pos = "0-"+(tree.length-1);
-                data.splice(i,1);
-                i--;
-            }else{
-                var posArr=pos[data[i].parentid];
-                if(posArr!=undefined){
-
-                    var obj=tree[posArr[0]];
-                    for(var j=1;j<posArr.length;j++){
-                        obj=obj.children[posArr[j]];
-                    }
-
-                    obj.children.push({
-                        id:data[i].id,
-                        name:data[i].name,
-                        pos : "0-"+ posArr.concat([obj.children.length]).join("-"),
-                        children:[]
-                    });
-                    pos[data[i].id]=posArr.concat([obj.children.length-1]);
-                    // data[i].pos = posArr.concat([obj.children.length-1]);
-                    // data[i].pos = "0-"+ posArr.concat([obj.children.length-1]).join("-")
-
-                    data.splice(i,1);
-                    i--;
-                }
-            }
-            i++;
-            if(i>data.length-1){
-                i=0;
-            }
-        }
-        console.log(tree)
-        /*if(tree.length!==0) {
-            var treeNode = convert(tree);
-            console.log("treeNode:"+treeNode)
-
-        }else{
-            return
-        }*/
-
-        const result =markNode(tree);
-
-        console.log("markNote"+result)
         return result;
 
     }
+
+    /**
+     * 递归调用将数组[{pos:,name:,childrend[array[4]}]转换为TreeNode
+     * 类似<TreeNode title = "重庆新建化工有限责任公司" key="0-0"><TreeNode title = "技术部" key="0-0-0"/><TreeNode title = "生产部" key="0-0-1"><TreeNode title = "生产班组" key="0-0-1-0"/></TreeNode><TreeNode title = "财务部" key="0-0-2"/><TreeNode title = "行政部" key="0-0-3"/></TreeNode>
+     * @param tree
+     * @returns {*}
+     */
+
+    markNode(tree) {
+        let nodes
+        if (Object.prototype.toString.call(tree) == "[object Array]") {
+            nodes = tree.map((v) => {
+                let node = <TreeNode key={v.pos} title = {v.name}/>
+                if (v.children && v.children.length) {
+                    node = (<TreeNode key={v.pos} title ={v.name}>
+                        {this.markNode(v.children)}
+                    </TreeNode>)
+                }
+                return node
+            })
+
+        }
+        return (nodes);
+
+    }
+
+    /**
+     * 顺序渲染TreeNode,需要明确渲染层数
+     * @param tree
+     * @returns {*}
+     */
+    orderMarkNode(tree) {
+        // 渲染树型结构 ,3层
+        const nodes =tree.map( items => (
+            <TreeNode key={items.pos} title={items.name}>
+                {items.children.map( item => (
+                    <TreeNode key ={item.pos} title={item.name}>
+                        {item.children.map(thirditem =>(
+                            <TreeNode key = {thirditem.pos} title= {thirditem.name}/>
+                        ))
+                        }
+                    </TreeNode>
+                ))}
+            </TreeNode>
+        ))
+        return nodes;
+    }
+
+    /**
+     * 递归方式将数组转为子符串格式
+     * 递归将多元数组,带子结构,结果是字符串,类似* <TreeNode title = "重庆新建化工有限责任公司" key="0-0"><TreeNode title = "技术部" key="0-0-0"/><TreeNode title = "生产部" key="0-0-1"><TreeNode title = "生产班组" key="0-0-1-0"/></TreeNode><TreeNode title = "财务部" key="0-0-2"/><TreeNode title = "行政部" key="0-0-3"/></TreeNode>
+     * @param tree
+     */
+    convertStr(tree){
+
+         let treenodeStr =""
+         treenodeStr += '<TreeNode title = ' + '"'+treenode.name+'"'+ ' key="'+treenode.pos+'"'
+        if(treenode.children.length === 0){
+            treenodeStr += "/>";
+        }else{
+            treenodeStr += ">";
+
+        }
+        if (treenode.children.length!==0) {
+
+            treenode.children.map(function (item) {
+                this.convert(item)
+            });
+          treenodeStr  += "</TreeNode>"
+
+        }
+        return treenodeStr;
+
+        /* // 第一步：将树展开为一元数组,无意义
+             return tree.reduce((list, { id,  name,  children }) => {
+                 list.push({ id,  name, children });
+                 if (children) {
+                     return list.concat(convert(children));
+                 }
+                 return list;
+             }, []);*/
+
+    }
+
+
+
+    onExpand = (expandedKeys) => {
+        console.log('onExpand', expandedKeys, arguments);
+    };
+    onSelect = (selectedKeys, info) => {
+        console.log('selected', selectedKeys, info);
+        this.selKey = info.node.props.eventKey;
+        alert(this.selKey)
+    };
+    onCheck = (checkedKeys, info) => {
+        console.log('onCheck', checkedKeys, info);
+    };
+    onEdit = () => {
+        setTimeout(() => {
+            console.log('current key: ', this.selKey);
+        }, 0);
+    };
+    onDel = (e) => {
+        if (!window.confirm('sure to delete?')) {
+            return;
+        }
+        e.stopPropagation();
+    };
+
     render() {
 
+
+       /* const customLabel = (
+            <span className="cus-label">
+        <span>operations: </span>
+        <span style={{color: 'blue'}} onClick={this.onEdit}>Edit</span>&nbsp;
+                <label onClick={(e) => e.stopPropagation()}>
+          <input type="checkbox"/> checked
+        </label>
+                &nbsp;
+                <span style={{color: '#EB0000'}} onClick={this.onDel}>Delete</span>
+      </span>
+        );*/
+
+        //从page组件即父主件,传递过来的值,通过props
+
+         const {list = "", error } = this.props;
+        console.log("list:"+list)
+        //将list处理为jsx组件,树型结构
+
+        const nodes = this.sortTreeData(list);
+
+        return (
+            <div className="page-tree">
+
+                    <h2>SINGIE</h2>
+                    <Tree
+                        className="myCls" showLine checkable defaultExpandAll
+                        defaultExpandedKeys={this.state.defaultExpandedKeys}
+                        onExpand={this.onExpand}
+                        defaultSelectedKeys={this.state.defaultSelectedKeys}
+                        defaultCheckedKeys={this.state.defaultCheckedKeys}
+                        onSelect={this.onSelect} onCheck={this.onCheck}
+                    >
+                        {nodes}
+                    </Tree>
+            </div>
+        );
+    }
+}
+
+
+export default class Page extends Component {
+    constructor(props) {
+        super(props, logic);
+
+    }
+
+    handleClick(workNo) {
+        this.dispatch('fetch',{workNo});
+    }
+
+    componentDidMount() {
+        this.handleClick(1);
+    }
+
+
+
+
+    render() {
+        //list,error从logic获取,数据来自后端
         let { list , error } = this.state;
         const Tag = list && list.length ? DemoTree : Info;
-        const result1 =  this.sortTreeData1(list);
-
-       const result =  this.sortTreeData(list);
 
 
         //渲染动态组件方法1
@@ -415,9 +315,8 @@ export default class Page extends Component {
         return (
 
             <div className="page-demo">
-                <Tag  list={result} list1={result1}
+                <Tag   list={list}
                 />
-                <Button>sf</Button>
             </div>
 
         );
