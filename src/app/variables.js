@@ -1,5 +1,6 @@
 // 这里放置全局的变量
 const isDev = __LOCAL__;
+// const isDev = false;//关闭mock模式
 const urlPrefix = isDev ? '/mock/' : '/';
 const isLogin = false ;
 const loginDOM ="";

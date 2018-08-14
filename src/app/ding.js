@@ -7,7 +7,6 @@ import  login  from './variables';
 // let _UserID = '';
 // let _UserName = '';
 
-const _CorpId = 'ding1fdec36666e1349d35c2f4657eb6378f';
 
     // var OPENAPIHOST = 'http://'+location.host;
     let OPENAPIHOST = 'http://r1w8478651.imwork.net:9998/corp_demo_php-master';
@@ -145,8 +144,6 @@ const _CorpId = 'ding1fdec36666e1349d35c2f4657eb6378f';
 
                 }, false);*/
 
-                // var src="http://localhost:3001/";
-
                 if(dd.ios){
                     dd.biz.navigation.setLeft({
                         control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
@@ -171,33 +168,8 @@ const _CorpId = 'ding1fdec36666e1349d35c2f4657eb6378f';
                     dd.biz.navigation.setRight({
                         show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
                         control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
-                        text: '已登录',//控制显示文本，空字符串表示显示默认文本
+                        text: '未登录',//控制显示文本，空字符串表示显示默认文本
                         onSuccess : function(result) {
-                            //如果control为true，则onSuccess将在发生按钮点击事件被回调
-                            dd.device.notification.confirm({
-                                message: "退出登录",
-                                title: "是否登出?",
-                                buttonLabels: ['取消', '确认'],
-                                onSuccess : function(result) {
-                                    //onSuccess将在点击button之后回调
-
-                                    {
-                                        // buttonIndex: 0 //被点击按钮的索引值，Number类型，从0开始
-                                        if (result.buttonIndex == 1) {
-                                            dd.biz.navigation.close({
-                                                onSuccess : function(result) {
-                                                    /*result结构
-                                                    {}
-                                                    */
-                                                },
-                                                onFail : function(err) {}
-                                            })
-                                        }
-                                    }
-
-                                },
-                                onFail : function(err) {}
-                            });
 
                         },
                         onFail : function(err) {}
@@ -235,6 +207,42 @@ if (!dd) {
                     //得到用户名,到服务器查询是否可以登录
                     login._UserName = response.name;
                     // loginCheck();
+
+
+                    dd.biz.navigation.setRight({
+                        show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
+                        control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
+                        text: '已登录',//控制显示文本，空字符串表示显示默认文本
+                        onSuccess : function(result) {
+                            //如果control为true，则onSuccess将在发生按钮点击事件被回调
+                            dd.device.notification.confirm({
+                                message: "退出登录",
+                                title: "是否登出?",
+                                buttonLabels: ['取消', '确认'],
+                                onSuccess : function(result) {
+                                    //onSuccess将在点击button之后回调
+
+                                    {
+                                        // buttonIndex: 0 //被点击按钮的索引值，Number类型，从0开始
+                                        if (result.buttonIndex == 1) {
+                                            dd.biz.navigation.close({
+                                                onSuccess : function(result) {
+                                                    /*result结构
+                                                    {}
+                                                    */
+                                                },
+                                                onFail : function(err) {}
+                                            })
+                                        }
+                                    }
+
+                                },
+                                onFail : function(err) {}
+                            });
+
+                        },
+                        onFail : function(err) {}
+                    });
 
                     //调试时使用,未到后台验证fm员工档案
                     login.isLogin = true;
@@ -346,11 +354,9 @@ const  loginCheck =  async () => {
 
 export const DDReady = new Promise((resolve, reject) => {
 
-
-
   getDingtalkConfig().then(data => {
     dd.config(data);
-    getUserId(_CorpId);
+    getUserId(data.corpId);
     dd.error(function(err) {
       alert('dd error: ' + JSON.stringify(err));
       reject(err);

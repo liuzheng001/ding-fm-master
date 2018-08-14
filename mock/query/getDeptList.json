@@ -1,15 +1,16 @@
 {
     "success": true,
-    "content": {
-        "list": [
+    "content":
+         [
             {"id": 1, "createDeptGroup": true, "name": "重庆新建化工有限责任公司", "autoAddUser": true},
             {"id": 69525103, "createDeptGroup": false, "name": "技术部", "parentid": 1, "autoAddUser": false},
             {"id": 70016223, "createDeptGroup": true, "name": "生产部", "parentid": 1, "autoAddUser": true},
             {"id": 70016224, "createDeptGroup": true, "name": "财务部", "parentid": 1, "autoAddUser": true},
             {"id": 70217300, "createDeptGroup": true, "name": "生产班组", "parentid": 70016223, "autoAddUser": true},
-            {"id": 73749093, "createDeptGroup": true, "name": "行政部", "parentid": 1, "autoAddUser": true}
+             {"id": 73749093, "createDeptGroup": true, "name": "行政部", "parentid": 1, "autoAddUser": true},
+             {"id": 73749033, "createDeptGroup": true, "name": "软件系统部", "parentid": 73749093, "autoAddUser": true}
         ]
-    }
+
 }
 
 

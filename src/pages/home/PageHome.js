@@ -143,7 +143,7 @@ class TestPopup extends React.Component {
 
     render() {
         const button =  '<Button>关闭 Popup</Button>'
-        let =React.createElement({button}, null, null)
+        // let a=React.createElement({button}, null, null)
 
         return (
             <div className="testPopup">
@@ -188,9 +188,11 @@ class TestPopup extends React.Component {
                                 onChange={(e) => { this.setState({ keyword: e.target.value }); }}
                             />
                             <Button onClick={() => { this.setState({ visible: false }); }}>关闭 Popup</Button>
+                            {button}
 
                         </div>
                     }
+
                     animationType="slide-up"
                     onMaskClick={() => { this.setState({ visible: false }); }}
                     visible={this.state.visible}

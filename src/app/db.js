@@ -28,6 +28,17 @@ const context = nattyFetch.context({
       },
     };
   },
+  /*  fit(response) {
+        return {
+            success: response.errcode === 0 ,
+            content: response.department,
+            error: {
+                errorMsg: response.errmsg,
+                errorCode: response.errcode,
+                // errorLevel: response.errorLevel,
+            },
+        };
+    },*/
 });
 
 context.create('SomeModuleAPI', {
@@ -70,14 +81,33 @@ context.create('Contacts',{
 })
 
 context.create('DeptList',{
+
+    // http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=get_department_list
+
     getDeptList: {
+
+        mock: false,
         mockUrl: 'query/getDeptList.json',
-        url: 'query/getDeptList.json',
+        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php',
+        data:{
+            event:'get_department_list'
+        },
         willFetch() {
             Toast.show({
                 type: 'loading',
                 content: '读取部门结构',
             });
+        },
+        fit(response) {
+            return {
+                success: response.errcode === 0 ,
+                content: response.department,
+                error: {
+                    errorMsg: response.errmsg,
+                    errorCode: response.errcode,
+                    // errorLevel: response.errorLevel,
+                },
+            };
         },
     },
 })
