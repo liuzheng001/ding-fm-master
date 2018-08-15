@@ -69,13 +69,27 @@ context.create('MyRecordApi',{
 
 context.create('Contacts',{
     getContacts: {
+        mock: false,
         mockUrl: 'query/getContacts.json',
-        url: 'query/getContacts.json',
+        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getcontract.php',
+        data:{
+            action:'getrecords'
+        },
         willFetch() {
             Toast.show({
                 type: 'loading',
                 content: '正在读取',
             });
+        },fit(response) {
+            return {
+                success: response.messages[0].code === "0" ,
+                content: response.response,
+                error: {
+                    errorMsg: response.messages[0].message,
+                    errorCode: response.messages[0].code,
+                    // errorLevel: response.errorLevel,
+                },
+            };
         },
     },
 })
