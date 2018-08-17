@@ -481,7 +481,7 @@
       <workItem from="1533959922351" duration="21879000" />
       <workItem from="1534423171448" duration="5775000" />
       <workItem from="1534437888730" duration="851000" />
-      <workItem from="1534444656039" duration="154000" />
+      <workItem from="1534444656039" duration="893000" />
     </task>
     <task id="LOCAL-00001" summary="test filemaker">
       <created>1533310472146</created>
@@ -508,11 +508,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="344182000" />
+    <option name="totallyTimeSpent" value="344921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="533" width="80" height="22" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="7" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5004883" side_tool="true" weight="0.32921812" />
