@@ -206,8 +206,7 @@ if (!dd) {
                     proper.userInfo = response;
                     //得到用户名,到服务器查询是否可以登录
                     login._UserName = response.name;
-                    // loginCheck();
-
+                    loginCheck(login._UserName);
 
                     dd.biz.navigation.setRight({
                         show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
@@ -244,16 +243,14 @@ if (!dd) {
                         onFail : function(err) {}
                     });
 
-                    //调试时使用,未到后台验证fm员工档案
-                    login.isLogin = true;
-
+/*
                     Dialog.alert({
                         title: '测试',
                         content: login._UserName+":登录成功"+'</br></br></br>'+JSON.stringify(response),
                         onConfirm() {
                             console.log('alert confirm');
                         },
-                    });
+                    });*/
                 } else {
                     alert(JSON.stringify(response) + 'getUserInfo');
                 }
@@ -324,31 +321,72 @@ const getDingtalkConfig = async () => {
 
 
 //通过mock数据模拟,得到contacts清单,然后与当前钉钉用户名_UserName匹配,若成功则显示登录,并通过Router onEnter判断,打开其它页面
-const  loginCheck =  async () => {
-    //只能是list接受,用其它数组不行
-    const { list } = await DB.Contacts.getContacts();
+const  loginCheck =  async (username) => {
+    try {
+        const { data } = await DB.Contacts.getContacts();
+        let authernation = false;
+        for(let i=0;i<data.length;i++){
 
-   /* list.forEach(item =>{
-        if(item.name === _UserName) {
-            alert("登录成功");
-            return
-        }
-    })*/
-    for(let i=0,j=list.length;i<j;i++){
-        if(list[i].name === login._UserName){
-            //设置全局变量isLogin为true
-            login.isLogin = true;
+            if(data[i].fieldData.name === username){
+                authernation = true;
 
-/*
-            //刷新home中的未登按钮到登录
-            login.loginDOM.innerHTML = "登录"
-*/
-        return;
+                //设置全局变量isLogin为true
+                login.isLogin  = true;
+
+                Dialog.alert({
+                    title:"",
+                    content: username+":登录成功"
+                });
+              /*  会出现弹框两次
+              dd.device.notification.alert({
+                    message: "登录成功",
+                    title: "提示",//可传空
+                    buttonName: "确认",
+                    onSuccess : function() {
+                        login.isLogin  = true;
+                        //onSuccess将在点击button之后回调
+                        /!*回调*!/
+                    },
+                    onFail : function(err) {}
+                });*/
+                break;
+            }
         }
+        if (authernation === false) {
+
+            dd.device.notification.alert({
+                message: "你不是公司的成员,不能登录",
+                title: "提示",//可传空
+                buttonName: "确认",
+                onSuccess : function() {
+                    //onSuccess将在点击button之后回调
+                    /*回调*/
+                },
+                onFail : function(err) {}
+            });
+            dd.biz.navigation.close({
+                onSuccess : function(result) {
+                    /*result结构
+                    {}
+                    */
+                },
+                onFail : function(err) {}
+            })
+        }
+    } catch (err) {
+        alert("验证用户失败:"+JSON.stringify(err))
+        dd.biz.navigation.close({
+            onSuccess : function(result) {
+                /*result结构
+                {}
+                */
+            },
+            onFail : function(err) {}
+        })
     }
-    // login.isLogin = false;
-    alert("你不是新建化工公司的员工,登录失败");
-    // console.log(JSON.stringify(list))
+
+
+
 }
 
 

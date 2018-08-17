@@ -86,7 +86,7 @@ context.create('Contacts',{
                 content: response.response,
                 error: {
                     errorMsg: response.messages[0].message,
-                    errorCode: response.messages[0].code,
+                    errorCode: parseInt(response.messages[0].code),
                     // errorLevel: response.errorLevel,
                 },
             };
