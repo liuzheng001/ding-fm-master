@@ -5,7 +5,96 @@ import List from 'components/list';
 import Info from 'components/info';
 import logic from './logic';
 import './PageDemo.less';
+import { Calendar } from 'saltui';
 
+class DemoCalendar extends React.Component {
+
+    // day.setDate(1);//本月第一天
+    // var str = day.format("yyyy-MM-dd");
+    // day.setMonth(day.getMonth()+1);//下个月
+    // day.setDate(day.getDate() - 1);//下个月第一天减1得到本月最后一天
+
+    constructor(props) {
+        var day = new Date();
+        var first = day.setDate(1)
+        day.setMonth(day.getMonth()+1)
+        var last = day.setDate(day.getDate() - 1)
+
+
+        super(props);
+        this.state = {
+            value: {
+                value: '2016-01-02',
+                startDate: '2016-01-02', startDateType: 'AM', endDate: '2016-01-03', endDateType: 'AM'
+            },
+
+            visible: true,
+            singleMode: false,
+            // animationType: 'slideRight',
+            showHalfDay: false,
+            // value: 1489702400000, // 1499961600000
+        };
+        // 禁用钉钉容器的 webViewBounce
+        // window.dd && window.dd.ui.webViewBounce.disable();
+        this.calendarProps = {
+            // maskClosable: true,
+            renderDayBadge: Calendar.util.generateSpecialWorkdayOrHolidayRender({
+                '2017-07-22': 'work',
+                '2017-07-25': 'leave',
+            }),
+            renderCustomDayLabel(curren, value) {
+                if (Calendar.util.isSameDay(curren, '2017.7.31')) {
+                    return (
+                        <span className="special-day">端午节</span>
+                    );
+                }
+                return null;
+            },
+        };
+    }
+
+    onOk(value) {
+        console.log('onOk, and value is: ', value);
+        this.setState({
+            value,
+            visible: false,
+        });
+    }
+
+    onCancel() {
+        console.log('onCancel');
+        this.setState({
+            visible: false,
+        });
+    }
+
+    onMaskClose() {
+        console.log('onMaskClose');
+    }
+
+    render() {
+        return (
+            <div className="t-calendar-demo">
+               {/* <Button onClick={() => {
+                    this.setState({
+                        visible: true,
+                        singleMode: true,
+                        animationType: 'slideLeft',
+                        showHalfDay: false,
+                    });
+                }}
+                >打开单点日历</Button>*/}
+                <Calendar
+                    {...this.calendarProps}
+                    {...this.state}
+                    onOk={(value) => { this.onOk(value); }}
+                    onCancel={() => { this.onCancel(); }}
+                    onMaskClose={() => { this.onMaskClose(); }}
+                />
+            </div>
+        );
+    }
+}
 
 
 class TestScrller extends React.Component {
@@ -89,7 +178,7 @@ export default class Page extends Component {
     }
 
   handleClick(workNo) {
-      // alert(workNo)
+      alert(workNo)
     this.dispatch('fetch', { workNo });
   }
 
@@ -111,6 +200,7 @@ export default class Page extends Component {
     return (
 
       <div className="page-demo">
+          <DemoCalendar/>
 
           {/*<Scroller className="page"  ref={(iScroller)=>{this.iScroller = iScroller}} onScrollEnd={this.handleScrollEnd.bind(this)} style={{zIndex:101}}>*/}
           {/*<Scroller className="page"  ref="iScroller" onScrollEnd={this.handleScrollEnd.bind(this)} style={{zIndex:101}}>

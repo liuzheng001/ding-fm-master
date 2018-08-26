@@ -15,13 +15,13 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "~2.1.2",
-    "refast": "~1.2.3",
-    "natty-storage": "~2.0.2",
+    "moment": "^2.22.2",
     "natty-fetch": "~2.4.2",
-    "saltui": "^3.1.17",
-    "rc-tree": "1.12.7",
-    "prop-types": "^15.5.8"
-
+    "natty-storage": "~2.0.2",
+    "prop-types": "^15.5.8",
+    "react-icons": "^3.0.5",
+    "refast": "~1.2.3",
+    "saltui": "^3.1.17"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.6.2"

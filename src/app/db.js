@@ -69,7 +69,7 @@ context.create('MyRecordApi',{
 
 context.create('Contacts',{
     getContacts: {
-        mock: false,
+        // mock: false,
         mockUrl: 'query/getContacts.json',
         url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getcontract.php',
         data:{

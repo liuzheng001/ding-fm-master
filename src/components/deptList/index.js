@@ -1,1 +1,1 @@
-export default from './deptList';
+export default from './deptList'

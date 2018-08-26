@@ -17,6 +17,7 @@ module.exports = function webpackConfig(config, webpack) {
     },
   ];
 
+
   if (process.argv[2] === 'server') {
     config.externals.push((context, request, callback, matches) => {
       if ((matches = /saltui$/.exec(request))) {
@@ -37,4 +38,6 @@ module.exports = function webpackConfig(config, webpack) {
       }
     });
   }
+
+
 };

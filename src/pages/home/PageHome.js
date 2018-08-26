@@ -1,6 +1,5 @@
 import  React,{ Component } from 'react';
 
-
 import { Toast, Button, Dialog,Popup,Popover ,Avatar,Badge,Gallery,Slot} from 'saltui';
 
 import './PageHome.less';
@@ -9,6 +8,8 @@ import { Router, Route, IndexRoute, hashHistory ,Link,IndexLink} from 'react-rou
 
 // import { isLogin } from '../../app/variables';
 import  login  from '../../app/variables';
+
+import Calendar from '../../components/calendar'
 
 class TestSolt extends React.Component{
     constructor(props) {
@@ -450,11 +451,9 @@ export default class PageHome extends Component {
             alert("user_id:"+login._UserID+login._UserName);
       }*/
     return (
-
         //this.state.loginState
-
-
       <div className="page-home">
+          <Calendar/>
           <TestButton change={this.state.change}  />
           <div>
               <Button  type="danger" onClick={t.handleChange.bind(t)}>change子组件</Button>
@@ -524,7 +523,7 @@ export default class PageHome extends Component {
                     <Avatar name="钉钉" colors={avatarColors} />
               <Avatar src="https://img.alicdn.com/tps/TB1amOaKpXXXXbsXVXXXXXXXXXX-144-144.png" />
 
-              <Avatar name="马明" defaultColor={'#000'} />
+              <Avatar name="马明宇" defaultColor={'#000'} />
                 </div>
       </div>
     );
