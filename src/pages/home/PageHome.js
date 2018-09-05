@@ -9,7 +9,7 @@ import { Router, Route, IndexRoute, hashHistory ,Link,IndexLink} from 'react-rou
 // import { isLogin } from '../../app/variables';
 import  login  from '../../app/variables';
 
-import Calendar from '../../components/calendar'
+import ContainerCalender from '../../containers/ContainerCalender'
 
 class TestSolt extends React.Component{
     constructor(props) {
@@ -453,8 +453,9 @@ export default class PageHome extends Component {
     return (
         //this.state.loginState
       <div className="page-home">
-          <Calendar/>
-          <TestButton change={this.state.change}  />
+          <ContainerCalender/>
+          <input type="text"/>
+         {/* <TestButton change={this.state.change}  />
           <div>
               <Button  type="danger" onClick={t.handleChange.bind(t)}>change子组件</Button>
           </div>
@@ -467,14 +468,10 @@ export default class PageHome extends Component {
               onGalleryClick={(index, image) => alert(index, image)}
               images={this.state.images}
               showNav
-          />
+          />*/}
 
-          <div>
 
-              <TestDialog/>
-          </div>
-
-            <div className="t-PL10 t-PR10 t-PT10">
+           {/* <div className="t-PL10 t-PR10 t-PT10">
             <Popover overlayClassName="t-popover-demo" placement="left" overlay="come on">
                   <Button type="primary" onClick={t.handleClick.bind(t, {
                     type: 'success',
@@ -483,13 +480,11 @@ export default class PageHome extends Component {
                   >点我</Button>
             </Popover>
 
-            </div>
-            <div className="t-PL10 t-PR10 t-PT10">
+            </div>*/}
+           {/* <div className="t-PL10 t-PR10 t-PT10">
                 <Button type="secondary"  onClick={t.handlePush.bind(t)}>pop new window</Button>
                <div>
-                <Badge text={100} overflowCount={99}>
-                    <a href="#1"  style={{backgroundColor:"red",display:"block", width: "300px", height: "100px"}} >badge</a>
-                </Badge>
+
                </div>
             </div>
             <div className="t-PL10 t-PR10 t-PT10">
@@ -512,19 +507,8 @@ export default class PageHome extends Component {
                       })
                   }}
                   >error</Button>
-              </div>
+              </div>*/}
 
-          <div className="t-FBH">
-                    {/*<Avatar name="tingle" colors={avatarColors} /> */}
-                    <Avatar name="天晟" colors={avatarColors} />
-                    <Avatar name="马天" colors={avatarColors} />
-                    {/*<Avatar name="欧阳夏丹" colors={avatarColors} />*/}
-
-                    <Avatar name="钉钉" colors={avatarColors} />
-              <Avatar src="https://img.alicdn.com/tps/TB1amOaKpXXXXbsXVXXXXXXXXXX-144-144.png" />
-
-              <Avatar name="马明宇" defaultColor={'#000'} />
-                </div>
       </div>
     );
   }

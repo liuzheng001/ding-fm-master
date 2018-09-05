@@ -178,7 +178,6 @@ export default class Page extends Component {
     }
 
   handleClick(workNo) {
-      alert(workNo)
     this.dispatch('fetch', { workNo });
   }
 

@@ -1,21 +1,17 @@
 import React  from 'react'
 import moment from 'moment'
+
+import DB from '../../app/db';
+
 /*import DoubleRight from 'react-icons/fa/angle-double-right'
 import DoubleLeft from 'react-icons/fa/angle-double-left'*/
 
 import {FaAngleLeft} from 'react-icons/fa'
 import {FaAngleRight} from 'react-icons/fa'
-
+import {Icon, Group, Boxs, List,Button,Scroller} from 'saltui';
 // import Cancel from 'react-icons/md/cancel'
 import  classnames from 'classnames'
 import './Calender.css'
-// import {Simulate} from "react-dom/test-utils";
-// import ended = Simulate.ended;
-
-// const noop = () => {
-// }
-
-let cache;
 
 function daysInMonth(year) {
   // if (cache[year]) return cache[year]
@@ -43,6 +39,7 @@ function daysInMonth(year) {
   return daysOfYear
 }
 
+
 class Calendar extends React.Component {
   constructor(props) {
     super(props)
@@ -51,6 +48,7 @@ class Calendar extends React.Component {
     let value = props.value || props.defaultValue
     let hasDefaultValue = false
 
+      //默认是当前月
     if (!value) value = moment()
     else if (moment.isMoment(value)) hasDefaultValue = true
     else {
@@ -58,25 +56,46 @@ class Calendar extends React.Component {
       console.warn('Value and default value must be instance of Moment')
     }
 
-    const open = (props.disabled ? false : props.open) || false
+    // const open = (props.disabled ? false : props.open) || false
     const format = props.format || 'YYYY-MM-DD'
     const inputValue = value.format(format)
 
     this.state = {
       open:true,
-      value,
+      value, // date value
       format,
       inputValue,
       isUnderControl,
       dirty: hasDefaultValue,
       year: value.year(),
       month: value.month(),
-      date: value.date()
+      date: value.date(),
+      // scheduleList:this.getScheduleListforMonth(value.month())
     }
   }
 
+  /*async getScheduleListforMonth(month){
+      //后台查询当前用户的某月日程
+      // const { scheduleList } = await DB.Schedule.getScheduleList(month+1);
+      // // return scheduleList;
+      //     this.setState({scheduleList});
+      dispatch(scheduleListforMonth(this.props.year,this.props.month))
+
+  }*/
+
+  getScheduleListforMonth(month){
+        //后台查询当前用户的某月日程
+        // const { scheduleList } = await DB.Schedule.getScheduleList(month+1);
+        // // return scheduleList;
+        //     this.setState({scheduleList});
+      const {OnScheduleList} =  this.props
+      OnScheduleList(this.props.year,this.props.month)
+}
+
+
+
   componentWillReceiveProps(nextProps) {
-    let {value, format} = nextProps
+   /* let {value, format} = nextProps
 
     if (typeof format !== 'string' || format.trim() === '') format = this.state.format
 
@@ -85,93 +104,119 @@ class Calendar extends React.Component {
       const month = value.month()
       const date = value.date()
       this.setState({year, month, date, value, inputValue: value.format(format), format, dirty: true})
+    }*/
+  }
+
+  pick(date) {
+      const { year,month,onChangeDate } = this.props
+
+
+      // const {year, month, format} = this.state
+        /*const value = moment([year, month, date])
+        const inputValue = value.format(format)
+        const disableDate = this.props.disabledDate
+        let disabled = false*/
+
+        /*if (typeof disableDate === 'function') disabled = disableDate(value, inputValue)
+
+        // this.onOpen(true)
+
+        if (disabled) return
+
+        const onChange = this.props.onChange
+        typeof onChange === 'function' && onChange(value, inputValue)
+
+        if (this.state.isUnderControl) return*/
+        // this.setState({date, value, dirty: true, inputValue})
+        onChangeDate(date,year,month)
     }
-  }
 
-  onInputChange = (e) => {
 
-    const inputValue = e.target.value
-    const value = moment(inputValue, this.state.format)
-
-    if (value.isValid() && /^\s*\d{4}.+\d{2}.+\d{2}.*$/.test(inputValue)) {
-
-      const onChange = this.props.onChange
-      typeof onChange === 'function' && onChange(value, inputValue)
-
-      if (this.state.isUnderControl) return
-
-      const year = value.year()
-      const month = value.month()
-      const date = value.date()
-      this.setState({year, month, date, value, dirty: true, inputValue})
-
-    } else this.setState({dirty: true, inputValue})
-  }
 
   onPick = (date, whichMonth) => {
-
-    const pick = (date)  => {
-
-      const {year, month, format} = this.state
-      const value = moment([year, month, date])
-      const inputValue = value.format(format)
-      const disableDate = this.props.disabledDate
-      let disabled = false
-
-      if (typeof disableDate === 'function') disabled = disableDate(value, inputValue)
-
-      this.onOpen(true)
-
-      if (disabled) return
-
-      const onChange = this.props.onChange
-      typeof onChange === 'function' && onChange(value, inputValue)
-
-      if (this.state.isUnderControl) return
-
-      this.setState({date, value, dirty: true, inputValue})
-    }
-    if (whichMonth !== 0) whichMonth === 1 ? this.nextMonth(pick(date)) : this.preMonth(pick(date))
-    else pick(date)()
+    console.log(date+whichMonth)
+    if (whichMonth !== 0) whichMonth === 1 ? this.nextMonth() : this.preMonth()
+    else
+      this.pick(date)
   }
 
-  preMonth = (callback) => {
+  preMonth = () => {
 
-    const {month} = this.state
+      let { year,month,onChangeDate } = this.props
+      if (month === 0) {
+          month = 11;
+          year--;
+      }else {
+         month--;
+      }
+    this.getScheduleListforMonth(month)
 
-    if (month === 0) {
-      this.setState({month: 11})
-      this.preYear()
-      return
-    }
+      const today = moment();
+      let date;
+      if(year === today.year() && month === today.month()){
+          date = today.date();
+      }else {
+          date = 1;
+      }
+    onChangeDate(date,year,month)
 
-    this.setState(
-      {month: month - 1},
-      typeof callback === 'function' ? callback : null
-    )
   }
 
   nextMonth = (callback) => {
 
-    const {month} = this.state
+   /* const {month} = this.state
 
     if (month === 11) {
       this.setState({month: 0})
       this.nextYear()
-      return
-    }
 
-    this.setState(
-      {month: month + 1},
-      typeof callback === 'function' ? callback : null
-    )
+    }else {
+
+        this.setState(
+            {   month: month + 1,
+                date:1
+            },
+            typeof callback === 'function' ? callback : null,
+        )
+    }
+      this.getScheduleListforMonth(month)
+      this.setState({value:moment([this.state.year, month+1, 1])})*/
+      let { year,month,onChangeDate } = this.props
+
+      // const {month} = this.state;
+      if (month === 11) {
+          // this.setState({month: 11})
+          month = 0;
+          year++;
+          // this.preYear()
+      }else {
+
+          /* this.setState(
+               {
+                   month: month - 1,
+               },
+           )*/
+          month++;
+      }
+      this.getScheduleListforMonth(month)
+      // this.setState({value:moment([this.state.year, month-1, 1])}
+      let date;
+      const today = moment();
+      if(year === today.year() && month === today.month()){
+          date = today.date();
+      }else {
+          date = 1;
+      }
+      onChangeDate(date,year,month)
+
+
   }
 
-  preYear = () => this.setState({year: this.state.year - 1})
+ /* preYear = () => this.setState({year: this.state.year - 1})
 
-  nextYear = () => this.setState({year: this.state.year + 1})
+  nextYear = () => this.setState({year: this.state.year + 1})*/
 
-  clear = (e) => {
+  /*clear = (e) => {
     e.stopPropagation()
 
     const {disabled} = this.props
@@ -184,91 +229,66 @@ class Calendar extends React.Component {
     const month = value.month()
     const date = value.date()
     this.setState({dirty: false, value, inputValue, year, month, date, open: false})
-  }
+  }*/
 
-  onOpen = (status) => {
+  /*onOpen = (status) => {
 
-    /*if (typeof status !== 'boolean') status = this.state.open
+    /!*if (typeof status !== 'boolean') status = this.state.open
 
     const onOpenChange = this.props.onOpenChange
     typeof onOpenChange === 'function' && onOpenChange(!status)
-    this.setState({open: !status})*/
-  }
+    this.setState({open: !status})*!/
+  }*/
 
   render() {
 
-    const {value, year, month, dirty, open, inputValue,} = this.state
-    const days = daysInMonth(year)[month];
+
+
+      // const {value, year, month, dirty, open, inputValue,date} = this.state
+      const { date, year, month,scheduleList, onChangeDate } = this.props
+
+      const days = daysInMonth(year)[month];
     const dateName = ["日","一","二","三","四","五","六"];
+    const scheduleDay=[];//当天的日程,显示在list中
+      if (Array.isArray(scheduleList)) {
+          scheduleList.forEach(function (item) {
+              if (item.date === year + '-' + (month+1) + '-' + date) {
+                  scheduleDay.push({
+                      "title": item.name, "text": item.address,
+                      imgUrl: 'https://img.alicdn.com/tps/TB1j2u5JFXXXXaEXVXXXXXXXXXX-564-1004.jpg',
+                  })
+              }
+          })
+      }
+
     const {
       disabled = false,
       placeholder = 'Select date',
       allowClear = true,
       className = ''
     } = this.props
+
     const calendarClass = classnames({calendar: true, opened: open})
-    const {onInputChange, onPick, preYear, nextYear, preMonth, nextMonth, clear, onOpen} = this
+    const {onPick, preYear, nextYear, preMonth, nextMonth} = this
     const today = moment();
-    return (
+    const { HBox, VBox, Box } = Boxs;
+
+      return (
       <div style={{
-        position: 'relative',
+        // position: 'relative',
       }} className={className}>
-       {/* <div onClick={onOpen} style={{width: "100%"}}>
-          <input type="text"
-                 style={{
-                   boxSizing: 'border-box',
-                   height: 28,
-                   width: "100%",
-                   outline: 'none',
-                   borderRadius: 4,
-                   border: '1px solid #ccc',
-                   paddingLeft: 20,
-                   color: 'rgba(0,0,0,0.6)'
-                 }}
-                 value={dirty ? inputValue : ''}
-                 disabled={disabled}
-                 onChange={noop}
-                 placeholder={placeholder}/>
-          {dirty && allowClear && <Cancel onClick={clear} style={{
-            position: 'absolute',
-            left: 190,
-            top: 6,
-            color: 'rgba(0,0,0,0.25)',
-            cursor: 'pointer'
-          }}/>}
-        </div>*/}
-        {
           <div
             className={calendarClass}
             style={{
               overflow: 'hidden',
               // transition: 'all 0.2s',
               // transitionTimingFunction: 'ease-in',
-              marginTop: -28,
+              // marginTop: -28,
               zIndex: 1,
               width: "100%",
               boxShadow: '0 1px 6px rgba(0,0,0,.2)',
             }}>
 
-
-
-            {/*<div style={{position: 'relative'}}>
-              <input
-                type="text"
-                style={{
-                  boxSizing: 'border-box',
-                  height: 34,
-                  width: "100%",
-                  outline: 'none',
-                  border: 'none',
-                  borderBottom: '1px solid #eee',
-                  paddingLeft: 20,
-                  color: 'rgba(0,0,0,0.6)'
-                }}
-                placeholder={placeholder}
-                value={dirty ? inputValue : ''}
-                onChange={onInputChange}/>
-            </div>*/}
             <div style={{
               overflow: 'hidden',
             }}>
@@ -331,9 +351,9 @@ class Calendar extends React.Component {
                   if (day < 15 && index > 20) whichMonth = 1
                   if (
                     whichMonth === 0 &&
-                    value.date() === day &&
+                    date === day /*&&
                     value.month() === month &&
-                    value.year() === year
+                    value.year() === year*/
                   ) active = true
                   return (
                     <div style={{
@@ -343,11 +363,11 @@ class Calendar extends React.Component {
                       width: "13.2%",
                       color: whichMonth === 0 ? 'rgba(0,0,0,.65)' : 'rgba(0,0,0,.25)'
                     }}
-                         onClick={() => onPick(day, whichMonth)}
+                         onClick={() => {onPick(day, whichMonth)}}
                          key={index}>
 
                       {/*将today用其它色标识,用条件表达式*/}
-                    {(day !== today.date() ||  month !== today.month() || year !== today.year()) ?
+                    {(day !== today.date() ||  month !== today.month() || year !== today.year() || whichMonth !==0) ?
                       <div className={'calender-date'}
                            style={{
                              fontSize: 20,
@@ -369,7 +389,7 @@ class Calendar extends React.Component {
                                        borderRadius: 4,
                                        padding: '4px 0',
                                        color: active ? 'white' : 'inherit',
-                                       backgroundColor: "red"
+                                       backgroundColor: "orange"
                                    }}>
                             {day}
                         </div>
@@ -378,22 +398,39 @@ class Calendar extends React.Component {
 
               </div>)
                 })}
-
               </div>
             </div>
-          </div>}
-          {/*日程内容*/}
-          <div style={{clear:"both"
-          }}>
-              {/*标题项*/}
-              <div>
-                  日程&nbsp;&nbsp;{value.month()+1}-{value.date()}   <button style={{textAlign:"right"}}>日历</button>
-              </div>
           </div>
+          {/*日程内容*/}
+          {/*标题项*/}
+
+        <HBox vAlign="center" style={{width:"100%"}}>
+              <Box style={{width:"70%",paddingLeft:"10px"}}>日程&nbsp;&nbsp;{month+1}-{date}</Box>
+              <Box style={{width:"30%"}}><Button type="primary" display="banner">打开日程</Button></Box>
+        </HBox>
+
+      <VBox style={{height:"300px",border:"solid 1px"}} >
+
+          <Scroller  mouseWheel >
+          { Array.isArray(scheduleDay) && scheduleDay.length !== 0 ?
+              <List style={{width:"100%"}}
+              layout="right"
+              hasRightIcon={false}
+              isDelete={false}
+              data={scheduleDay}
+              // error={error}
+              // onClick={t.handleClick.bind(t)}
+              /> : <p style={{textAlign:"center",marginTop:"200px"}}>尚未设置日程</p>
+          }
+          </Scroller>
+      </VBox>
+
       </div>
+
     )
   }
 }
+
 
 
 export default Calendar

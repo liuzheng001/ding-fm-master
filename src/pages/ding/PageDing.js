@@ -308,7 +308,8 @@ export default class Page extends Component {
       const Tag = list && list.length ? Record : Info;
       return(
           <div className="page-demo">
-            <Tag
+              {this.props.children || "Welcome to your Inbox"}
+              <Tag
               record={list}
               error={error}
               onClick={t.handleClick.bind(t)}

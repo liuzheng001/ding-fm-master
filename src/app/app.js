@@ -1,9 +1,15 @@
-import { Router, Route, IndexRoute, hashHistory ,Link,IndexLink} from 'react-router';
+import { Router, Route, IndexRoute, hashHistory ,Link,IndexLink,browserHistory} from 'react-router';
 import Refast, { LogicRender } from 'refast';
 import { Component } from 'react';
 import { render } from 'react-dom';
 import FastClick from 'fastclick';
-import { Toast, Dialog ,Button} from 'saltui';
+import { Toast, Dialog ,Button,TabBar } from 'saltui';
+import Time from 'salt-icon/lib/Time';
+import Plus from 'salt-icon/lib/Plus';
+
+import { Provider } from 'react-redux';
+import { createStore } from 'redux'
+import   rootReducer   from '../reducers/index'
 
 //加载ding免登鉴权
 import { DDReady } from './ding';
@@ -20,7 +26,7 @@ import DB from 'db';
 import './app.less';
 // import Button from "saltui/src/Button/Button";
 
-const customHistory = hashHistory;
+const customHistory = browserHistory;
 // let isLogin = false;
 
 if (isDev && window.chrome && window.chrome.webstore) { // This is a Chrome only hack
@@ -58,35 +64,98 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state={
-            loginState:login.isLogin
+            loginState:login.isLogin,
+            activeIndex: 0,
         }
+        this.tabBarItems = [
+            {
+                title: '首页',
+                icon: <Time />,
+                path: '/star',
+            },
+            {
+                title: 'Demo',
+                icon: <Time />,
+                badge: 'new',
+                badgeStyle: { right: -5 },
+                path: '/a/star',
+            },
+            {
+                title: '隐藏',
+                icon: <Plus />,
+                iconHeight: 40,
+                items: [{
+                    title: '用户',
+                    icon: <Time />,
+                    badge: 8,
+                    name: 'user',
+                    path: '/b/user',
+                }, {
+                    title: '时间',
+                    icon: <Time />,
+                    badge: 8,
+                    name: 'time',
+                    path: '/b/time',
+                }],
+                path: '/center',
+            },
+            { title: 'Ding', icon: <Time />, badge: 8, path: '/b/star' },
+            { title: '我的', icon: <Time />, badge: 8, path: '/c/star' },
+        ];
     }
-
-    /*componentDidMount(){
-      // login.loginDOM =ReactDOM.findDOMNode(this.refs['login']).getElementsByTagName("span")[0]
-        login.loginDOM =this.loginstate
-
-    }*/
-
-
-
 
   render() {
         // alert(isLogin);
-    return (
+      const onChange = (activeIndex) => {
+          // 这里是触发每个item之后的回调，会返回当前点击的item的index 值
+          // console.log(activeIndex);
+          let path;
+          switch (activeIndex){
+              case 0:
+                  path = '/'
+                  break;
+              case 1:
+                   path = '/demo'
+                  break;
+              case 3:
+                  path = '/ding'
+                  break;
+              case 4:
+                  path = '/tree'
+                  break;
+          }
+          customHistory.push(path);
+      };
+
+      const tabBarStyle = {};
+
+      return (
         <div>
-            {/*<Button loginState={this.state.loginState}  ref = {(e)=>login.loginDOM = e}>{this.state.loginState?"登录":"未登"}</Button>*/}
-            <Button loginState={this.state.loginState}  >{this.state.loginState?"登录":"未登"}</Button>
+
+            <TabBar
+                tabBarStyle={tabBarStyle}
+                activeIndex={this.state.activeIndex}
+                onChange={onChange}
+                iconHeight={24}
+                cIconHeight={50}
+                items={this.tabBarItems}
+            />
+            {this.props.children}
+
+            {/*<Button loginState={this.state.loginState}  >{this.state.loginState?"登录":"未登"}</Button>*/}
           <ul>
             <li><IndexLink to="/">Home</IndexLink></li>
-            {/*<li><Link to={path}>demo</Link></li>*/}
             <li><Link to="/demo">demo</Link></li>
               <li><Link to="/ding">钉钉</Link></li>
               <li><Link to="/tree">树型组件</Link></li>
+              <li><Link to="/tree">树型组件</Link></li>
+              <li><Link to="/ding/router">son router</Link></li>
+              <li><Link to="/ding/router1">ding 下面的 son router</Link></li>
+
+
               {/*<Link to="/home/{""programme"":""流程集合-2"",""script"":""钉钉转到相关的记录和布局php"",""param"":""2303""}">打开filemaker页面</Link>*/}
 
           </ul>
-        {this.props.children}
       </div>
     );
   }
@@ -108,21 +177,29 @@ function loadData(nextState, replace) {
     }
 }
 
+const store = createStore(
+    rootReducer,
+)
+
 render(
+    <Provider store={store}>
 
+    <Router history={customHistory}>
+              <Route name="app" path="/" component={App} >
+                  <IndexRoute component={PageHome} />
+                  <Route path="/home/:fmFile" component={PageHome}/>
+                  <Route path="/demo" component={PageDemo} onEnter = {authRequired}/>
+                  {/*<Route path="demo" component={PageDemo}/>*/}
+                  {/*<Route path="ding" component={PageDing} onEnter = {authRequired}/>*/}
+                  <Route  path="/ding" component={PageDing} >
+                     <Route  path="router1"  component={()=>(<h1>this is test router</h1>)} />
+                  </Route>
+                  <Route path="/tree" component={PageTree}   />
+                  <Route path="/ding/router"  component={()=>(<h1>this is test router</h1>)} />
 
-<Router history={customHistory}>
-    <Route name="app" path="/" component={App} >
-      <IndexRoute component={PageHome} />
-      <Route path="home/:fmFile" component={PageHome}   />
-      <Route path="demo" component={PageDemo} onEnter = {authRequired}/>
-        <Route path="ding" component={PageDing} onEnter = {authRequired}  />
-        <Route path="tree" component={PageTree}   />
-    </Route>
-  </Router>,
+              </Route>
+        </Router>
+    </Provider>,
   document.getElementById('App'),
-
-
 );
-
 

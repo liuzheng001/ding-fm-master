@@ -10,7 +10,6 @@
              {"id": 73749093, "createDeptGroup": true, "name": "行政部", "parentid": 1, "autoAddUser": true},
              {"id": 73749033, "createDeptGroup": true, "name": "软件系统部", "parentid": 73749093, "autoAddUser": true}
         ]
-
 }
 
 
