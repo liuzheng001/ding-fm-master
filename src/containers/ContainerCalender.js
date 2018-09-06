@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
         date:state.selectDate.date,
         year:state.selectDate.year,
         month:state.selectDate.month,
-        scheduleList:state.selectDate.scheduleList
+        monthSchedule:state.selectDate.monthSchedule.items
     };
 };
 

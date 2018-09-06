@@ -7,8 +7,11 @@ import { Toast, Dialog ,Button,TabBar } from 'saltui';
 import Time from 'salt-icon/lib/Time';
 import Plus from 'salt-icon/lib/Plus';
 
+import thunk from 'redux-thunk'
+import { createLogger } from 'redux-logger'
+
 import { Provider } from 'react-redux';
-import { createStore } from 'redux'
+import { createStore ,applyMiddleware } from 'redux'
 import   rootReducer   from '../reducers/index'
 
 //加载ding免登鉴权
@@ -177,8 +180,16 @@ function loadData(nextState, replace) {
     }
 }
 
+const middleware = [ thunk ]
+/*if (process.env.NODE_ENV !== 'production') {
+    middleware.push(createLogger())
+}*/
+middleware.push(createLogger())
+
+
 const store = createStore(
     rootReducer,
+    applyMiddleware(...middleware)
 )
 
 render(

@@ -239,19 +239,23 @@ class Calendar extends React.Component {
     typeof onOpenChange === 'function' && onOpenChange(!status)
     this.setState({open: !status})*!/
   }*/
+    componentWillMount(){
+        this.getScheduleListforMonth(0)  ;
+    }
+
 
   render() {
 
 
 
       // const {value, year, month, dirty, open, inputValue,date} = this.state
-      const { date, year, month,scheduleList, onChangeDate } = this.props
+      const { date, year, month,monthSchedule, onChangeDate } = this.props
 
       const days = daysInMonth(year)[month];
     const dateName = ["日","一","二","三","四","五","六"];
     const scheduleDay=[];//当天的日程,显示在list中
-      if (Array.isArray(scheduleList)) {
-          scheduleList.forEach(function (item) {
+      if (Array.isArray(monthSchedule)) {
+          monthSchedule.forEach(function (item) {
               if (item.date === year + '-' + (month+1) + '-' + date) {
                   scheduleDay.push({
                       "title": item.name, "text": item.address,
