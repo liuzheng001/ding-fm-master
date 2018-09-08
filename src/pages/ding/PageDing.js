@@ -243,7 +243,8 @@ export default class Page extends Component {
 
       /*  window.location.href = " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528";*/
         dd.biz.util.openLink({
-            url: " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=about:blank#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528",//要打开链接的地址
+           /* url: " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=about:blank#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528",//要打开链接的地址*/
+            url:"http://localhost:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=朱祥见%202018-9-6&user=刘正&pwd=030528",
             onSuccess : function(result) {
                 /**/
                 console.log(result);
@@ -257,7 +258,7 @@ export default class Page extends Component {
 
         // window.location.href ="http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://liuzheng750417.imwork.net:8088/v0.5.3/webdirecthomehtml.html#流程集合-2?script=转到相关的记录和布局php&param=2235%20刘正";
 
-          window.location.href = " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=about:blank#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528";
+          window.location.href = " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=about:blank#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528"
 
 
         // window.open('http://localhost:3001/#/home/{"programme":"流程集合-2","script":"钉钉转到相关的记录和布局php","param":"2303"}')
@@ -285,7 +286,7 @@ export default class Page extends Component {
         //不适应多个userID,因为第个链接登录的人不一样
         const touser =
         $.ajax({
-                url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=pushFM&touser=' + "1960580858678987" + "&programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2283|刘正",
+                url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=pushFM&touser=' + "1960580858678987" + "&programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2340|刘正",
             type: 'GET',
             dataType: 'json',
             success: function (response) {

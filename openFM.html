@@ -9,7 +9,7 @@
 </body>
 
 
-<script src="//g.alicdn.com/dingding/open-develop/1.5.3/dingtalk-ali.js"></script>
+<!--<script src="//g.alicdn.com/dingding/open-develop/1.5.3/dingtalk-ali.js"></script>-->
 
 <script type="text/javascript">
     /*
@@ -19,24 +19,28 @@
      *创建时间：20160713
      *创建人：
      */
-    function showFMWeb(Fmprogramme,FmScriptName,param) {
+    function showFMWeb(Fmprogramme,FmScriptName,param,user) {
 
-        const host = "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#";
-        const version = dd.version; //判断是否在钉钉内打开fm,但需要更安全的参数
+        const host = "http://r1w8478651.imwork.net:591/fmi/webd/";
+        // const version = dd.version; //判断是否在钉钉内打开fm,但需要更安全的参数
         let parames =  new  Array();
-        alert(Fmprogramme+param+FmScriptName+version)
+        // alert(Fmprogramme+param+FmScriptName+user+pwd)
 
 
 //        const url = host+Fmprogramme+"?script="+FmScriptName+"&param="+param;
 /*        parames.push({ name: "url", value: "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20刘正" });*/
-        parames.push({ name: "host", value: host});
+     /*   parames.push({ name: "host", value: host});
         parames.push({ name: "Fmprogramme", value: Fmprogramme});
         parames.push({ name: "FmScriptName", value: FmScriptName});
-        parames.push({ name: "param", value: param});
-        parames.push({ name: "version", value: version})
+        parames.push({ name: "param", value: param});*/
+        parames.push({ name: "user", value: user});
+        parames.push({ name: "pwd", value: pwd});
+
+        // parames.push({ name: "version", value: version})
 //        console.log(parames)
 
-        Post("http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=openFM", parames);
+        // Post("http://r1w8478651.imwork.net:591/fmi/webd/日程方案?homeurl=about:blank&script=转到日历详情php&param=朱祥见%202018-9-6", parames);
+        Post(host+Fmprogramme+'?homeurl=about:blank&script='+FmScriptName+'&param='+param, parames);
         // return false;
     }
 
@@ -47,6 +51,24 @@
      *创建时间：20160713
      *创建人：
      */
+   /* <form
+        id="myForm"
+        action="http://r1w8478651.imwork.net:591/fmi/webd/日程方案?homeurl=about:blank&script=转到日历详情php&param=刘正%202018-9-6"
+        method="post">
+
+        Account name:<br>
+        <input name="user" value="accountname" />
+        <br>
+            Password:<br>
+            <input type="password" name="pwd" value="password" />
+            <br><br>
+                <input type="submit" value="Login">
+                </input>
+            </br>
+            </br>
+        </br>*/
+
+
     function Post(URL, PARAMTERS) {
         //创建form表单
         var temp_form = document.createElement("form");
@@ -66,6 +88,8 @@
         //提交数据
         temp_form.submit();
     }
+
+
     //从地址栏,获得script参数和用户参数
     //获取地址栏参数，name:参数名称
     function getUrlParms(name){
@@ -78,13 +102,16 @@
         return null;
     }
 
-    //indexFM的调用格式,indexFM.html?programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2303%20刘正
+    //indexFM的调用格式,openFM.html?programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2303%20刘正
 //    alert( decodeURI(window.location.search))
     const Fmprogramme = getUrlParms('programme')
     var FmScriptName = getUrlParms("script");
     var param = getUrlParms("param");
+    var user = getUrlParms("user");
+    var pwd = getUrlParms("pwd");
+
 
 //    var url = "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"
-    showFMWeb(Fmprogramme,FmScriptName,param);
+    showFMWeb(Fmprogramme,FmScriptName,param,user,pwd);
 </script>
 </html>

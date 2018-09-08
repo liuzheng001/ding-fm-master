@@ -69,18 +69,20 @@ context.create('MyRecordApi',{
 
 context.create('Contacts',{
     getContacts: {
-        // mock: false,
+        mock: false,
         mockUrl: 'query/getContacts.json',
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getcontract.php',
+        // url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=identityDingID',
+        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getcontract.php?action=identityDingID',
         data:{
-            action:'getrecords'
         },
+
         willFetch() {
             Toast.show({
                 type: 'loading',
-                content: '正在读取',
+                content: '验证用户',
             });
-        },fit(response) {
+        },
+        /*fit(response) {
             return {
                 success: response.messages[0].code === "0" ,
                 content: response.response,
@@ -90,7 +92,7 @@ context.create('Contacts',{
                     // errorLevel: response.errorLevel,
                 },
             };
-        },
+        },*/
     },
 });
 
@@ -100,11 +102,11 @@ context.create('Schedule',{
 
     getScheduleList: {
 
-        // mock: false,
+        mock: false,
         mockUrl: 'query/getSchedule.json',
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php',
+        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getSchdule.php',
         data:{
-            event:'get_schedule_list_month'
+            action:'get_schedule_list_month'
         },
         willFetch() {
             Toast.show({
@@ -112,17 +114,17 @@ context.create('Schedule',{
                 content: '读取日程例表',
             });
         },
-      /*  fit(response) {
-            return {
-                success: response.errcode === 0 ,
-                content: response.department,
-                error: {
-                    errorMsg: response.errmsg,
-                    errorCode: response.errcode,
-                    // errorLevel: response.errorLevel,
-                },
-            };
-        },*/
+        /*fit(response) {
+              return {
+                  success: response.messages[0].code === "0" ,
+                  content: response.response,
+                  error: {
+                      errorMsg: response.messages[0].message,
+                      errorCode: parseInt(response.messages[0].code),
+                      // errorLevel: response.errorLevel,
+                  },
+              };
+          },*/
     },
 })
 

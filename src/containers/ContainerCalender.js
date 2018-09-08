@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
     onChangeDate: (day,year,month) => dispatch(selectDate(day, year, month)),
-    OnScheduleList:(year,month) => dispatch(scheduleListforMonth(year,month))
+    OnScheduleList:(date,year,month) => dispatch(scheduleListforMonth(date,year,month))
 })
 
 export default connect(

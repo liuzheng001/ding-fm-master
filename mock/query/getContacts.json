@@ -1,15 +1,7 @@
 {
   "success": true,
   "content": {
-    "list": [{
-      "id": "1",
-      "name": "刘正",
-      "job": "总经理"
-    }, {
-      "id": "2",
-      "name": "刘帅",
-      "job": "员工"
-    }
-    ]
+    "code": 0
   }
 }
+

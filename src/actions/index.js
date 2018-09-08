@@ -1,22 +1,16 @@
 import DB from '../app/db'
+import  login  from '../app/variables';
 export const SELECT_DATE = "SELECT_DATE";
 export const SCHEDULELISTFORMONTH = "SCHEDULELISTFORMONTH";
 export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
 
+
+
 export const selectDate = (date, year, month) => ({
     type: SELECT_DATE,
     date,year, month
-})
-
-/*export const scheduleListforMonth = (year,month) => ({
-    type: SCHEDULELISTFORMONTH,
-    year,
-    month
-})*/
-export const invalidateSubreddit = () => ({
-    type: INVALIDATE_SUBREDDIT,
 })
 
 export const requestPosts = () => ({
@@ -25,34 +19,52 @@ export const requestPosts = () => ({
 
 export const receivePosts = ( response) => ({
     type: RECEIVE_POSTS,
-    posts: response.scheduleList.map(child => child),
+    posts: response.map(child => child),
     receivedAt: Date.now()
 })
 
-const fetchPosts = (year,month) => dispatch => {
+const fetchPosts = (date,year,month) => dispatch => {
     dispatch(requestPosts())
     // return fetch('https://www.reddit.com/r/${subreddit}.json')
-    // return fetch('http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapibyname.php?event='+subreddit)
-    DB.Schedule.getScheduleList(year, month + 1)
+    //鉴权未完成时login._UserName为空,所以calendar组件是空
+    DB.Schedule.getScheduleList({
+        year:year,
+        month:month+1,
+        username:login._UserName
+
+        //调试
+        // username:"朱祥见"
+
+    })
         .then(response => {
+            // alert(JSON.stringify(response))
             dispatch(receivePosts(response));
             })
+        .then(
+            dispatch(selectDate(date, year, month))
+            )
+        .catch(error=>{
+                alert('error'+JSON.stringify(error))
+            }
+        )
+
+
 }
 
 const shouldFetchPosts = (state) => {
-    const posts = state.scheduleList
+    const posts = state.selectDate.monthSchedule
     if (!posts) {
         return true
     }
     if (posts.isFetching) {
         return false
     }
-    return posts.didInvalidate
+    return true
 }
 
-export const scheduleListforMonth = (year,month) => (dispatch, getState) => {
+export const scheduleListforMonth = (date,year,month) => (dispatch, getState) => {
     if (shouldFetchPosts(getState())) {
-        return dispatch(fetchPosts(year,month))
+        return dispatch(fetchPosts(date,year,month))
     }
 }
 

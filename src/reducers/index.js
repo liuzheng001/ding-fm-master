@@ -2,7 +2,6 @@ import { combineReducers } from 'redux'
 import moment from 'moment'
 import {
     SELECT_DATE, SCHEDULELISTFORMONTH,
-    INVALIDATE_SUBREDDIT,
     REQUEST_POSTS, RECEIVE_POSTS
 } from '../actions/index'
 const currentDate = moment();
@@ -39,7 +38,6 @@ const currentDate = moment();
 
 const selectDate = (state = {date:currentDate.date(), year:currentDate.year(), month:currentDate.month(),
     monthSchedule : {   isFetching: false,
-                       didInvalidate: false,
                         items: []}} , action) => {
     switch (action.type) {
         case SELECT_DATE:
@@ -49,7 +47,7 @@ const selectDate = (state = {date:currentDate.date(), year:currentDate.year(), m
                 year:action.year,
                 month:action.month,
             }
-        case SCHEDULELISTFORMONTH :
+        /*case SCHEDULELISTFORMONTH :
             //通过year,month异步得到该月的日程
             const scheduleList = [
                         {
@@ -81,23 +79,14 @@ const selectDate = (state = {date:currentDate.date(), year:currentDate.year(), m
                 year:state.year,
                 month:state.month,
                 scheduleList:scheduleList
-            }
+            }*/
 
-        case INVALIDATE_SUBREDDIT:
-                return {
-                    ...state,
-                    monthSchedule:{
-                        ...state.monthSchedule,
-                        didInvalidate: true
-                    }
-                }
         case REQUEST_POSTS :
             return {
                 ...state,
                 monthSchedule:{
                     ...state.monthSchedule,
                         isFetching: true,
-                        didInvalidate: false
                 }
             }
         case RECEIVE_POSTS:
@@ -106,7 +95,6 @@ const selectDate = (state = {date:currentDate.date(), year:currentDate.year(), m
                 monthSchedule:{
                     ...state.monthSchedule,
                     isFetching: false,
-                    didInvalidate: false,
                     items: action.posts,
                     lastUpdated: action.receivedAt
                 }

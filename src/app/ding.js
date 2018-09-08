@@ -3,6 +3,7 @@
 import { Dialog} from 'saltui';
 import DB from 'db';
 import  login  from './variables';
+import {receivePosts, selectDate} from "../actions";
 
 // let _UserID = '';
 // let _UserName = '';
@@ -206,7 +207,8 @@ if (!dd) {
                     proper.userInfo = response;
                     //得到用户名,到服务器查询是否可以登录
                     login._UserName = response.name;
-                    loginCheck(login._UserName);
+
+                    loginCheck(response.userid,response.name);
 
                     dd.biz.navigation.setRight({
                         show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
@@ -288,7 +290,7 @@ const getDingtalkConfig = async () => {
     ];
 
     await   $.ajax({
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://localhost:3001/'),
+        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'),
         type: 'GET',
         dataType: 'json',
         success: function (response) {
@@ -321,12 +323,16 @@ const getDingtalkConfig = async () => {
 
 
 //通过mock数据模拟,得到contacts清单,然后与当前钉钉用户名_UserName匹配,若成功则显示登录,并通过Router onEnter判断,打开其它页面
-const  loginCheck =  async (username) => {
+/*const  loginCheck =  async (username) => {
     try {
-        const { data } = await DB.Contacts.getContacts();
+        const { data } = await DB.Contacts.getContacts({
+            // 动态参数
+            userId:1960580858678987
+        });
+        alert("dfadf")
         let authernation = false;
         for(let i=0;i<data.length;i++){
-
+            alert(data[i].fieldData.name);
             if(data[i].fieldData.name === username){
                 authernation = true;
 
@@ -337,7 +343,7 @@ const  loginCheck =  async (username) => {
                     title:"",
                     content: username+":登录成功"
                 });
-              /*  会出现弹框两次
+              /!*  会出现弹框两次
               dd.device.notification.alert({
                     message: "登录成功",
                     title: "提示",//可传空
@@ -348,7 +354,7 @@ const  loginCheck =  async (username) => {
                         /!*回调*!/
                     },
                     onFail : function(err) {}
-                });*/
+                });*!/
                 break;
             }
         }
@@ -360,15 +366,15 @@ const  loginCheck =  async (username) => {
                 buttonName: "确认",
                 onSuccess : function() {
                     //onSuccess将在点击button之后回调
-                    /*回调*/
+                    /!*回调*!/
                 },
                 onFail : function(err) {}
             });
             dd.biz.navigation.close({
                 onSuccess : function(result) {
-                    /*result结构
+                    /!*result结构
                     {}
-                    */
+                    *!/
                 },
                 onFail : function(err) {}
             })
@@ -377,20 +383,55 @@ const  loginCheck =  async (username) => {
         alert("验证用户失败:"+JSON.stringify(err))
         dd.biz.navigation.close({
             onSuccess : function(result) {
-                /*result结构
+                /!*result结构
                 {}
-                */
+                *!/
             },
             onFail : function(err) {}
         })
     }
 
+   /!* DB.Contacts.getContacts()
+        .then(response => {
+            alert(JSON.stringify("success:"+response))
+        }).catch(error=>{
+        alert(JSON.stringify("error:"+error))
+    })*!/
 
 
-}
+
+}*/
+const loginCheck = (userId,username) => {
+    DB.Contacts.getContacts({
+            // 动态参数
+            userId: userId
+        }
+    )
+        .then(response => {
+            //设置全局变量isLogin为true
+            login.isLogin  = true;
+
+            Dialog.alert({
+                title:"",
+                content: username+":登录成功"
+            });
+        })
+        .catch(err=>{
+            Dialog.alert({
+                title:"",
+                content: username+":验证用户失败"
+            });
+            dd.biz.navigation.close({
+                onSuccess : function(result) {
+                },
+                onFail : function(err) {}
+            })
+        })
+};
 
 
 export const DDReady = new Promise((resolve, reject) => {
+
 
   getDingtalkConfig().then(data => {
     dd.config(data);

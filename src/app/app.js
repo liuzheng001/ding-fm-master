@@ -145,8 +145,7 @@ class App extends Component {
             />
             {this.props.children}
 
-            {/*<Button loginState={this.state.loginState}  >{this.state.loginState?"登录":"未登"}</Button>*/}
-          <ul>
+          {/*<ul>
             <li><IndexLink to="/">Home</IndexLink></li>
             <li><Link to="/demo">demo</Link></li>
               <li><Link to="/ding">钉钉</Link></li>
@@ -156,9 +155,9 @@ class App extends Component {
               <li><Link to="/ding/router1">ding 下面的 son router</Link></li>
 
 
-              {/*<Link to="/home/{""programme"":""流程集合-2"",""script"":""钉钉转到相关的记录和布局php"",""param"":""2303""}">打开filemaker页面</Link>*/}
+              <Link to="/home/{""programme"":""流程集合-2"",""script"":""钉钉转到相关的记录和布局php"",""param"":""2303""}">打开filemaker页面</Link>
 
-          </ul>
+          </ul>*/}
       </div>
     );
   }
@@ -197,7 +196,7 @@ render(
 
     <Router history={customHistory}>
               <Route name="app" path="/" component={App} >
-                  <IndexRoute component={PageHome} />
+                  <IndexRoute component={PageHome}  />
                   <Route path="/home/:fmFile" component={PageHome}/>
                   <Route path="/demo" component={PageDemo} onEnter = {authRequired}/>
                   {/*<Route path="demo" component={PageDemo}/>*/}
