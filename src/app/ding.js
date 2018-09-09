@@ -290,7 +290,7 @@ const getDingtalkConfig = async () => {
     ];
 
     await   $.ajax({
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'),
+        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://localhost:3001/'),
         type: 'GET',
         dataType: 'json',
         success: function (response) {

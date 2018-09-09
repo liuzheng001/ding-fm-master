@@ -192,9 +192,9 @@ export default class PageHome extends Component {
       //重新render calender组件
     return (
       <div className="page-home">
-          {login.isLogin === true ?
-          <ContainerCalender/> : null}
-          {/*<ContainerCalender/>*/}
+         {/* {login.isLogin === true ?
+          <ContainerCalender/> : null}*/}
+          <ContainerCalender/>
       </div>
     );
   }

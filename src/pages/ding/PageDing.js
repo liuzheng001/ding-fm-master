@@ -142,9 +142,10 @@ export default class Page extends Component {
                 var lat = result.latitude;
                 var long = result.longitude;
 
-                dd.biz.map.locate({
+                dd.biz.map.view({
                     latitude:lat, // 纬度
                     longitude: long, // 经度
+                    title:"测试",
                     onSuccess: function (result) {
                         /* result 结构 */
                         {

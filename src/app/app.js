@@ -27,6 +27,7 @@ import PageTree from 'pages/tree';
 
 import DB from 'db';
 import './app.less';
+import Sign from "../components/sign/Sign";
 // import Button from "saltui/src/Button/Button";
 
 const customHistory = browserHistory;
@@ -74,7 +75,7 @@ class App extends Component {
             {
                 title: '首页',
                 icon: <Time />,
-                path: '/star',
+                path: '/',
             },
             {
                 title: 'Demo',
@@ -145,17 +146,17 @@ class App extends Component {
             />
             {this.props.children}
 
-          {/*<ul>
+         {/* <ul>
             <li><IndexLink to="/">Home</IndexLink></li>
             <li><Link to="/demo">demo</Link></li>
               <li><Link to="/ding">钉钉</Link></li>
               <li><Link to="/tree">树型组件</Link></li>
               <li><Link to="/tree">树型组件</Link></li>
               <li><Link to="/ding/router">son router</Link></li>
-              <li><Link to="/ding/router1">ding 下面的 son router</Link></li>
-
+              <li><Link to="/ding/sign">home 下面的  sign</Link></li>
 
               <Link to="/home/{""programme"":""流程集合-2"",""script"":""钉钉转到相关的记录和布局php"",""param"":""2303""}">打开filemaker页面</Link>
+
 
           </ul>*/}
       </div>
@@ -198,6 +199,8 @@ render(
               <Route name="app" path="/" component={App} >
                   <IndexRoute component={PageHome}  />
                   <Route path="/home/:fmFile" component={PageHome}/>
+                  <Route path="/ding/sign"  component={Sign} />
+
                   <Route path="/demo" component={PageDemo} onEnter = {authRequired}/>
                   {/*<Route path="demo" component={PageDemo}/>*/}
                   {/*<Route path="ding" component={PageDing} onEnter = {authRequired}/>*/}

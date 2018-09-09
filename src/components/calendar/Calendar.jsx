@@ -1,5 +1,6 @@
 import React  from 'react'
 import moment from 'moment'
+import {Link} from 'react-router'
 
 import DB from '../../app/db';
 
@@ -352,18 +353,14 @@ class Calendar extends React.Component {
      */
     openFM(url,param) {
         // http://localhost:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=朱祥见%202018-9-6&user=刘正&pwd=030528
-        param = param+"&user=刘正&pwd=030528";
-        alert(url+param)
-
+        param = param+"&user=刘正&pwd=030528"
 
         dd.biz.util.openLink({
 
             url:url+param,
             onSuccess : function(result) {
-                /**/
                 // alert(url+param);
 //创建form表单
-
             },
             onFail : function(err) {}
         })
@@ -403,7 +400,7 @@ class Calendar extends React.Component {
     const today = moment();
     const { HBox, VBox, Box } = Boxs;
 
-      const url = "http://192.168.0.102:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=";
+      const url = "http://localhost:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=";
     //向fm传递日期是2018-9-8格式
     const param = login._UserName+'%20'+year+'-'+(month+1)+'-'+date
       return (
@@ -548,6 +545,8 @@ class Calendar extends React.Component {
               <Box style={{width:"30%"}}><Button type="primary" display="banner" onClick={()=>this.openFM(url,param).bind(this)}>打开日程</Button></Box>
         </HBox>
 
+          <li><Link to="/ding/sign">sign</Link></li>
+
       <VBox style={{height:"300px",border:"solid 1px"}} >
 
           <Scroller  mouseWheel >
@@ -558,7 +557,7 @@ class Calendar extends React.Component {
               isDelete={false}
               data={scheduleDay}
               // error={error}
-              // onClick={t.handleClick.bind(t)}
+              onClick={t.handleClick.bind(t)}
               /> : <p style={{textAlign:"center",marginTop:"200px"}}>尚未设置日程</p>
           }
           </Scroller>
