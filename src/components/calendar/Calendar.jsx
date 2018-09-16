@@ -1,6 +1,6 @@
 import React  from 'react'
 import moment from 'moment'
-import {Link} from 'react-router'
+import {Link,hashHistory} from 'react-router'
 
 import DB from '../../app/db';
 
@@ -9,11 +9,12 @@ import DoubleLeft from 'react-icons/fa/angle-double-left'*/
 
 import {FaAngleLeft} from 'react-icons/fa'
 import {FaAngleRight} from 'react-icons/fa'
-import {Icon, Group, Boxs, List,Button,Scroller} from 'saltui';
+import {Icon, Group, Boxs, List,Button,Scroller,ActionSheet,Grid} from 'saltui';
 // import Cancel from 'react-icons/md/cancel'
 import  classnames from 'classnames'
 import './Calender.css'
 import login from "../../app/variables";
+import {receivePosts, selectDate} from "../../actions";
 
 function daysInMonth(year) {
     // if (cache[year]) return cache[year]
@@ -40,6 +41,90 @@ function daysInMonth(year) {
     // cache[year] = daysOfYear
     return daysOfYear
 }
+
+
+
+
+   /* navigator.geolocation.getCurrentPosition(function (position) {
+
+// 百度地图API功能
+        /!*
+                var map = new BMap.Map("allmap");
+        *!/
+        // 禁止拖拽
+
+        map.disableDragging();
+
+        // 初始化地图,设置中心点坐标和地图级别
+        var r = new BMap.Point(position.coords.longitude, position.coords.latitude);
+
+        //偏差转换
+        // var convertor = new BMap.Convertor();
+        var pointArr = [];
+        pointArr.push(r);
+        convertor.translate(pointArr, 1, 5, function (points) {
+            if (points.status === 0) {
+                var newPoint = points.points[0];
+                var geoc = new BMap.Geocoder();
+                geoc.getLocation(newPoint, function (rs) {
+                    var addComp = rs.addressComponents;
+                    if (confirm(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber) == true) {
+                        var address = addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber;
+
+                        var CTime = new Date();
+
+                        var signTime = (CTime.getMonth() + 1) + "-" + CTime.getDate() + "-" + CTime.getFullYear() + " " + CTime.getHours() + ":" + CTime.getMinutes() + ":" + CTime.getSeconds();
+
+                        var jingdu  = newPoint.lng, weidu = newPoint.lat;//lng经度,lat纬度
+
+                        var url = "http://liuzheng750417.imwork.net:8088/v0.5.3/index.php?m=remotesign&a=submit";
+
+                        //通过ajax将数据传入后端,并存入数据库
+                        $.ajax({
+                            type: "POST",
+                            url: url,
+                            data: "eventID=" + e.data.eventID + "&signTime=" + signTime + "&jingdu=" + jingdu + "&weidu=" + weidu + "&address=" + address ,
+
+                            success: function (data) {
+                                if (data.status == 1) {
+                                    //有更新,下一步back时,更新日历
+                                    $('#updateflag').text('true');
+                                    //更新显示地图
+                                    // showMap(newPoint);
+                                    map.centerAndZoom(newPoint, 15);
+                                    var mk = new BMap.Marker(newPoint);
+                                    map.addOverlay(mk);
+                                    map.panTo(newPoint);
+
+//                                $('#submitButton').html("已签");
+                                    $('#submitButton').hide();
+                                    $('#backMain').show();
+                                    $('#signMessage').html('签到地址:' + address + '<br>签到时间:' + signTime);
+                                }
+                                else {
+                                    alert("发生错误:" + data.msg);
+                                }
+                            },
+                            error: function (jqXHR) {
+                                alert("发生错误" + jqXHR.status);
+                            }
+
+                        })
+                    }
+                    else//取消考勤记录
+                    {
+                        $('#submitButton').attr("disabled", false)
+                            .html("签到");
+
+                    }
+                });
+            }
+        });
+
+    }, onError);
+
+
+}*/
 
 /**
  * 打开fm文件,   调用参数格式?programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2303|user_id
@@ -122,6 +207,11 @@ class Calendar extends React.Component {
    /* const format = props.format || 'YYYY-MM-DD'
     const inputValue = value.format(format)*/
 
+   //弹层操作,通过state值改变
+     /* this.state = {
+          layerIndex: 0,
+      };*/
+
    /* this.state = {
       open:true,
       value, // date value
@@ -144,13 +234,131 @@ class Calendar extends React.Component {
       dispatch(scheduleListforMonth(this.props.year,this.props.month))
 
   }*/
-
-  getScheduleListforMonth(date,year,month){
+    getScheduleListforMonth(date,year,month){
         //后台查询当前用户的某月日程
+        const {OnScheduleList} =  this.props
+        OnScheduleList(date,year,month)
+    }
 
-      const {OnScheduleList} =  this.props
-      OnScheduleList(date,year,month)
-}
+
+    signIn(eventID,OnScheduleList,date,year,month) {
+
+        // const {getScheduleListforMonth} = this
+
+        dd.device.geolocation.get({
+            targetAccuracy: 200,
+            coordinate: 1,//高德坐标
+            withReGeocode: true,
+            useCache: true, //默认是true，如果需要频繁获取地理位置，请设置false
+            onSuccess: function (result) {
+                /* 高德坐标 result 结构
+                 {
+                 longitude : Number,
+                 latitude : Number,
+                 accuracy : Number,
+                 address : String,
+                 province : String,
+                 city : String,
+                 district : String,
+                 road : String,
+                 netType : String,
+                 operatorType : String,
+                 errorMessage : String,
+                 errorCode : Number,
+                 isWifiEnabled : Boolean,
+                 isGpsEnabled : Boolean,
+                 isFromMock : Boolean,
+                 provider : wifi|lbs|gps,
+                 accuracy : Number,
+                 isMobileEnabled : Boolean
+                 }
+                 */
+                const lat = result.latitude;
+                const long = result.longitude;
+                //打开地图,并修正poi
+                dd.biz.map.search({
+                    latitude: lat, // 纬度
+                    longitude: long, // 经度
+                    scope: 100, // 限制搜索POI的范围；设备位置为中心，scope为搜索半径
+
+                    onSuccess: function (poi) {
+                        /* result 结构 */
+                        /*province: 'xxx', // POI所在省会
+                            provinceCode: 'xxx', // POI所在省会编码
+                        city: 'xxx', // POI所在城市
+                        cityCode: 'xxx', // POI所在城市
+                        adName: 'xxx', // POI所在区名称
+                        adCode: 'xxx', // POI所在区编码
+                        distance: 'xxx', // POI与设备位置的距离
+                        postCode: 'xxx', // POI的邮编
+                        snippet: 'xxx', // POI的街道地址
+                        title: 'xxx', // POI的名称
+                        latitude: 39.903578, // POI的纬度
+                        longitude: 116.473565, // POI的经度*/
+
+                        const address = poi.title + "("+poi.adName + poi.snippet+')'
+                        //fm rest api 时间格式format('MM-DD-YYYY HH:mm:ss')
+                        const signTime =  moment().format('MM-DD-YYYY HH:mm:ss')
+
+                        DB.Schedule.updateSignIn({
+                            eventID : eventID ,
+                            signTime:signTime ,
+                            jingdu : poi.latitude,
+                            weidu : poi.longitude ,
+                            address:address,
+                        })
+                            .then(response => {
+                                // alert(JSON.stringify(response))
+                                // dispatch(receivePosts(response));
+                                if(response.response.data === '上传成功'){
+                                    // alert('ad')
+                                    // this.getScheduleListforMonth(date,year,month)
+                                    OnScheduleList(date,year,month)
+
+                                }
+                            })
+                            .catch(error=>{
+                                    alert('error'+JSON.stringify(error))
+                                }
+                            )
+
+                        /*    //写入数据库日程方案
+                            var url = "http://liuzheng750417.imwork.net:8088/v0.5.3/index.php?m=remotesign&a=submit";
+                            $.ajax({
+                                type: "POST",
+                                url: url,
+                                data: "eventID=" + eventID + 'signTime='+"9-9-2018 10:00:00"   + "&jingdu=" + poi.latitude + "&weidu=" + poi.latitude + "&address=" + address,
+
+                                success: function (data) {
+                                    if (data.status == 1) {
+                                        //有更新,更新日历
+
+                                    }
+                                    else {
+                                        alert("发生错误:" + data.msg);
+                                    }
+                                },
+                                error: function (jqXHR) {
+                                    alert("发生错误" + jqXHR.status);
+                                }
+
+                            })*/
+
+
+                    },
+                    onFail: function (err) {
+                    }
+                });
+
+            },
+            onFail: function (err) {
+                alert(JSON.stringify(err));
+
+            }
+        });
+    }
+
+
 
     /**
      * 得到月份中的相关日,和该日有没有日程
@@ -306,9 +514,57 @@ class Calendar extends React.Component {
     typeof onOpenChange === 'function' && onOpenChange(!status)
     this.setState({open: !status})*!/
   }*/
-    componentWillMount(){
-        const { date, year, month } = this.props
 
+    handleClick = (e,dataItem) => {
+        // alert(JSON.stringify(dataItem))
+        //只有当天才能签到,而且已经签到的情况下,显示修改和查看地图
+        const {OnScheduleList} =  this.props
+
+        let options;
+        const today = moment();
+        if(dataItem.day === today.date() &&  dataItem.month === today.month() && dataItem.year === today.year()) {
+            if (dataItem['lat'] && dataItem['long']) {
+                options = ['修改', '查看地图']
+            } else {
+                options = ['签到']
+            }
+        }else{
+            if (dataItem['lat'] && dataItem['long']) {
+                options = ['已不能修改', '查看地图']
+            } else {
+                options = ['已不能签到']
+            }
+        }
+        ActionSheet.show({
+            options: options,
+            destructiveButtonIndex: 0,
+            message: dataItem['title'],
+            maskClosable: false,
+        }, (index) => {
+            if (index === 0  ) {
+                if(dataItem.day === today.date() &&  dataItem.month === today.month() && dataItem.year === today.year()){
+                    this.signIn(dataItem.eventID,OnScheduleList,dataItem.day,dataItem.year,dataItem.month)
+                }/*else{
+                    alert('不能签到')
+                }*/
+
+            }else if(index === 1 && dataItem['lat'] && dataItem['long'] ){
+                // alert("进入地图")
+                dd.biz.map.view({
+                    latitude: dataItem['lat'], // 纬度
+                    longitude: dataItem['long'], // 经度
+                    title: "查看地图", // 限制搜索POI的范围；设备位置为中心，scope为搜索半径
+
+                });
+            }
+
+        });
+
+
+    }
+
+    componentDidMount(){
+        const { date, year, month } = this.props
         this.getScheduleListforMonth(date,year,month)  ;
     }
 
@@ -324,7 +580,6 @@ class Calendar extends React.Component {
 
         }
         openFMLink(urlparam);
-
     }
     /*function Post(URL, PARAMTERS) {
         //创建form表单
@@ -355,15 +610,17 @@ class Calendar extends React.Component {
         // http://localhost:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=朱祥见%202018-9-6&user=刘正&pwd=030528
         param = param+"&user=刘正&pwd=030528"
 
-        dd.biz.util.openLink({
+      /*  dd.biz.util.openLink({
 
             url:url+param,
             onSuccess : function(result) {
                 // alert(url+param);
-//创建form表单
             },
             onFail : function(err) {}
-        })
+        })*/
+
+      //使用iframe方式打开webdriect
+            hashHistory.push('sign/' + encodeURIComponent(url+param));
     }
 
   render() {
@@ -387,6 +644,13 @@ class Calendar extends React.Component {
                   scheduleDay.push({
                       "title": item.fieldData.日程内容, "text": item.fieldData.签到地址 + item.fieldData['签到时间'],
                       imgUrl: 'https://img.alicdn.com/tps/TB1j2u5JFXXXXaEXVXXXXXXXXXX-564-1004.jpg',
+                      date : item.fieldData['签到时间'],
+                      lat:item.fieldData['经度'],
+                      long:item.fieldData['纬度'],
+                      day:date,
+                      month:month,
+                      year:year,
+                      eventID:item.fieldData['日程ID']
                   })
               }
           })
@@ -399,171 +663,184 @@ class Calendar extends React.Component {
     const {onPick, preYear, nextYear, preMonth, nextMonth} = this
     const today = moment();
     const { HBox, VBox, Box } = Boxs;
+      const screenHeight = window.screen.availHeight;
+      const screenWidth = window.screen.availWidth;
+    // alert(screenHeight+'wid:'+screenWidth)
 
-      const url = "http://localhost:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=";
+      const url = "http://192.168.0.102:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=";
     //向fm传递日期是2018-9-8格式
     const param = login._UserName+'%20'+year+'-'+(month+1)+'-'+date
       return (
-      <div style={{
+
+      /*// 弹性盒子测试
+      <VBox vAlign="center" style={{height:screenHeight}}>
+              <Box style={{height:'60px',backgroundColor:'red'}}>red</Box>
+              <Box style={{backgroundColor:'blue'}} flex={1}>blue</Box>
+              <Box style={{backgroundColor:'black'}} flex ={2}>black</Box>
+      </VBox>*/
+      <VBox  style={{
+          // height:'540px'
         // position: 'relative',
-      }} className={className}>
-          <div
+      }}
+             className={className}>
+
+          <Box flex ={5}
             className={calendarClass}
             style={{
-              overflow: 'hidden',
+              // overflow: 'hidden',
               // transition: 'all 0.2s',
               // transitionTimingFunction: 'ease-in',
               // marginTop: -28,
-              zIndex: 1,
-              width: "100%",
+              // zIndex: 1,
+              // width: "100%",
               boxShadow: '0 1px 6px rgba(0,0,0,.2)',
             }}>
 
-            <div style={{
-              overflow: 'hidden',
-            }}>
-              {/*//日期导航栏*/}
+              {/*!//日期导航栏*/}
               <div style={{
                 width: "100%",
                 borderBottom: '1px solid #eee',
                 padding: '8px 50px',
-                position: 'relative',
+                // position: 'relative',
                 boxSizing: 'border-box',
                 color: 'rgba(0,0,0,0.4)',
               }}>
                 {/*<div style={{position: 'absolute', left: 4, top: 6,textAlign: 'center',fontSize: 45}}><DoubleLeft onClick={preYear}/></div>*/}
-                <div style={{position: 'absolute', left: 26, top: 6,textAlign: 'center',fontSize: 45}}><FaAngleLeft onClick={preMonth}/></div>
+               {/* <div style={{position: 'absolute', left: 26, top: 6,textAlign: 'center',fontSize: 45}}><FaAngleLeft onClick={preMonth}/></div>
                 <div style={{textAlign: 'center', paddingTop: 4, fontSize: 20}}>
                   {year} 年 {month + 1}月
                 </div>
-                <div style={{position: 'absolute', right: 26, top: 6,textAlign: 'center',fontSize: 45}}><FaAngleRight onClick={nextMonth}/></div>
+                <div style={{position: 'absolute', right: 26, top: 6,textAlign: 'center',fontSize: 45}}><FaAngleRight onClick={nextMonth}/></div>*/}
+
+              <HBox style={{width:'100%',margin:'-10px'}}>
+                  <Box  style={{width:'5%',textAlign:'center',fontSize: 45}}><FaAngleLeft onClick={preMonth}/> </Box>
+                  <Box  style={{width:'90%' ,textAlign: 'center', lineHeight:'45px', fontSize: 20}}> {year} 年 {month + 1}月 </Box>
+                  <Box  style={{width:'5%',textAlign:'center',fontSize: 45}}><FaAngleRight onClick={nextMonth}/></Box>
+              </HBox>
                 {/*<div style={{position: 'absolute', right: 4, top: 6,textAlign: 'center',fontSize: 45}}><DoubleRight onClick={nextYear}/></div>*/}
               </div>
 
                 {/*日历名称栏*/}
-                <div style={{
+              {/*  <div style={{
                     width: "100%",
                     overflow: 'hidden',
                     padding: '0 8px'
-                }}>
+                }}>*/}
+                <Grid col={7} className="t-BCf" square={true} >
+
                     {dateName.map((name) => {
                         return (
-                            <div style={{
-                                float: 'left',
-                                boxSizing: 'border-box',
-                                padding: '4px',
-                                width: "13.2%",
-                            }}
-                            >
-                                <div
-                                     style={{
-                                         fontSize: 20,
-                                         textAlign: 'center',
-                                         borderRadius: 4,
-                                         padding: '4px 0',
-                                     }}>
+                            <div>
                                     {name}
-                                </div>
-                            </div>)
-                    })
-                    }
-                </div>
-              {/*//日历内容,将today标识出来*/}
-              <div style={{
+                            </div>
+                        )
+                    })}
+                </Grid>
+                {/*</div>*/}
+              {/*!//日历内容,将today标识出来*/}
+              {/*<div style={{
                 width: "100%",
                 overflow: 'hidden',
                 padding: '0 8px'
-              }}>
-                {days.map((item, index) => {
-                  let whichMonth = 0
-                  let active = false
-                  const  day = item.i;
-                  const  isLog = item.isLog;
-                  if (day > 15 && index < 15) whichMonth = -1
-                  if (day < 15 && index > 20) whichMonth = 1
-                  if (
-                    whichMonth === 0 &&
-                    date === day /*&&
-                    value.month() === month &&
-                    value.year() === year*/
-                  ) active = true
-                  return (
-                    <div style={{
-                      float: 'left',
-                      boxSizing: 'border-box',
-                      padding: '4px',
-                      width: "13.2%",
-                      color: whichMonth === 0 ? 'rgba(0,0,0,.65)' : 'rgba(0,0,0,.25)'
-                    }}
-                         onClick={() => {onPick(day, whichMonth)}}
-                         key={index}>
+              }}>*/}
+                  <Grid col={7} className="t-BCf"  touchable={true} >
 
-                      {/*将today用其它色标识,用条件表达式*/}
-                    {(day !== today.date() ||  month !== today.month() || year !== today.year() || whichMonth !==0) ?
-                      <div className={'calender-date'}
-                           style={{
-                             fontSize: 20,
-                             textAlign: 'center',
-                             cursor: 'pointer',
-                             borderRadius: 4,
-                             padding: '4px 0',
-                             color: active ? 'white' : 'inherit',
-                             backgroundColor: active ? '#108ee9' : '',
-                             textDecoration: isLog ? 'underline' : 'none'
-                           }}>
-                        {day}
-                      </div>
-                        :
-                        <div className={'calender-date'}
-                                   style={{
-                                       fontSize: 20,
-                                       textAlign: 'center',
-                                       cursor: 'pointer',
-                                       borderRadius: 4,
-                                       padding: '4px 0',
-                                       color: active ? 'white' : 'inherit',
-                                       backgroundColor: "orange",
-                                       textDecoration: isLog ? 'underline' : 'none'
+                          {days.map((item, index) => {
+                          let whichMonth = 0
+                          let active = false
+                          const  day = item.i;
+                          const  isLog = item.isLog;
+                          if (day > 15 && index < 15) whichMonth = -1
+                          if (day < 15 && index > 20) whichMonth = 1
+                          if (
+                            whichMonth === 0 &&
+                            date === day /*&&
+                            value.month() === month &&
+                            value.year() === year*/
+                          ) active = true
+                          return (
+                            <div
+                                style={{
+                              // float: 'left',
+                              // boxSizing: 'border-box',
+                              // padding: '4px',
+                              // width: "13.2%",
+                              //   height:'40px',
+                                margin:'10px 0',
+                                width:'100%',
+                              color: whichMonth === 0 ? 'rgba(0,0,0,.65)' : 'rgba(0,0,0,.25)'
+                            }}
+                                 onClick={() => {onPick(day, whichMonth)}}
+                                 key={index}>
 
+                              {/*将today用其它色标识,用条件表达式*/}
+                            {(day !== today.date() ||  month !== today.month() || year !== today.year() || whichMonth !==0) ?
+                              <div style={{
+                                     fontSize: 20,
 
+                                     textAlign: 'center',
+                                     // // cursor: 'pointer',
+                                     // borderRadius: 4,
+                                     //  padding: '4px 0',
+
+                                     color: active ? 'white' : 'inherit',
+                                     backgroundColor: active ? '#108ee9' : '',
+                                     textDecoration: isLog ? 'underline' : 'none'
                                    }}>
-                            {day}
-                        </div>
+                                {day}
+                              </div>
+                                :
+                                <div style={{
+                                               fontSize: 20,
+                                               textAlign: 'center',
+                                               // cursor: 'pointer',
+                                               // borderRadius: 4,
+                                               // padding: '4px 0',
 
-                    }
+                                               color: active ? 'white' : 'inherit',
+                                               backgroundColor: "orange",
+                                               textDecoration: isLog ? 'underline' : 'none'
 
-              </div>)
-                })}
-              </div>
-            </div>
-          </div>
+                                           }}>
+                                    {day}
+                                </div>
+
+                            }
+
+                      </div>)
+                        })}
+                </Grid>
+          </Box>
           {/*日程内容*/}
           {/*标题项*/}
+        <Box flex={1}>
+            <HBox  style={{width:"100%"}}>
+                  <Box style={{width:"70%",paddingLeft:"10px"}}>日程&nbsp;&nbsp;{month+1}-{date}</Box>
+                  <Box style={{width:"30%"}}><Button type="primary" display="banner" onClick={()=>this.openFM(url,param).bind(this)}>打开日程</Button></Box>
+            </HBox>
+        </Box>
 
-        <HBox vAlign="center" style={{width:"100%"}}>
-              <Box style={{width:"70%",paddingLeft:"10px"}}>日程&nbsp;&nbsp;{month+1}-{date}</Box>
-              <Box style={{width:"30%"}}><Button type="primary" display="banner" onClick={()=>this.openFM(url,param).bind(this)}>打开日程</Button></Box>
-        </HBox>
+          <Box flex={2}>
+              <VBox style={{height:'100px'}} >
+                  {/*<VBox style={{border:'1px solid'}} >*/}
+                  { Array.isArray(scheduleDay) && scheduleDay.length !== 0 ?
+                      <Scroller  mouseWheel >
+                          <List style={{width:"100%"}}
+                          layout="right"
+                          hasRightIcon={false}
+                          isDelete={false}
+                          data={scheduleDay}
+                          // error={error}
+                          onClick={this.handleClick.bind(this)}
+                          />
+                      </Scroller>
+                      :
+                      <h1 style={{textAlign:"center"}}>尚未设置日程</h1>
+                  }
 
-          <li><Link to="/ding/sign">sign</Link></li>
-
-      <VBox style={{height:"300px",border:"solid 1px"}} >
-
-          <Scroller  mouseWheel >
-          { Array.isArray(scheduleDay) && scheduleDay.length !== 0 ?
-              <List style={{width:"100%"}}
-              layout="right"
-              hasRightIcon={false}
-              isDelete={false}
-              data={scheduleDay}
-              // error={error}
-              onClick={t.handleClick.bind(t)}
-              /> : <p style={{textAlign:"center",marginTop:"200px"}}>尚未设置日程</p>
-          }
-          </Scroller>
+              </VBox>
+          </Box>
       </VBox>
-
-      </div>
 
     )
   }
