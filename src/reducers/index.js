@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import moment from 'moment'
 import {
     SELECT_DATE, SCHEDULELISTFORMONTH,
-    REQUEST_POSTS, RECEIVE_POSTS
+    REQUEST_POSTS, RECEIVE_POSTS, TABBARINDEX
 } from '../actions/index'
 const currentDate = moment();
 
@@ -36,9 +36,12 @@ const currentDate = moment();
     }
 }*/
 
-const selectDate = (state = {date:currentDate.date(), year:currentDate.year(), month:currentDate.month(),
+const selectDate = (state = {
+    date:currentDate.date(), year:currentDate.year(), month:currentDate.month(),
     monthSchedule : {   isFetching: false,
-                        items: []}} , action) => {
+                        items: []},
+    tabBarIndex:0,
+    } , action) => {
     switch (action.type) {
         case SELECT_DATE:
             return {
@@ -99,6 +102,12 @@ const selectDate = (state = {date:currentDate.date(), year:currentDate.year(), m
                     lastUpdated: action.receivedAt
                 }
             }
+
+    case TABBARINDEX:
+        return {
+            ...state,
+            tabBarIndex:action.tabBarIndex
+        }
         default:
             return state
     }

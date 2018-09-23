@@ -13,6 +13,9 @@ import logic from './logic';
 
 import './PageDing.less';
 
+import PropTypes from 'prop-types';
+
+
 
 
 /*
@@ -142,14 +145,13 @@ export default class Page extends Component {
                 var lat = result.latitude;
                 var long = result.longitude;
 
-                dd.biz.map.view({
+               /* dd.biz.map.locate({
                     latitude:lat, // 纬度
                     longitude: long, // 经度
-                    title:"测试",
                     onSuccess: function (result) {
-                        /* result 结构 */
+                        /!* result 结构 *!/
                         {
-                            /* province: 'xxx', // POI所在省会
+                            /!* province: 'xxx', // POI所在省会
                              provinceCode: 'xxx', // POI所在省会编码
                              city: 'xxx', // POI所在城市
                              cityCode: 'xxx', // POI所在城市
@@ -160,12 +162,43 @@ export default class Page extends Component {
                              snippet: 'xxx', // POI的街道地址
                              title: 'xxx', // POI的名称
                              latitude: 39.903578, // POI的纬度
-                             longitude: 116.473565, // POI的经度*/
+                             longitude: 116.473565, // POI的经度*!/
+                        }
+                    },
+                    onFail: function (err) {
+                    }
+                });*/
+                dd.biz.map.search({
+                    latitude: 39.903578, // 纬度
+                    longitude: 116.473565, // 经度
+                    scope: 500, // 限制搜索POI的范围；设备位置为中心，scope为搜索半径
+
+                    onSuccess: function (poi) {
+                        /* result 结构 */
+                        {
+                            /*province: 'xxx', // POI所在省会
+                                provinceCode: 'xxx', // POI所在省会编码
+                            city: 'xxx', // POI所在城市
+                            cityCode: 'xxx', // POI所在城市
+                            adName: 'xxx', // POI所在区名称
+                            adCode: 'xxx', // POI所在区编码
+                            distance: 'xxx', // POI与设备位置的距离
+                            postCode: 'xxx', // POI的邮编
+                            snippet: 'xxx', // POI的街道地址
+                            title: 'xxx', // POI的名称
+                            latitude: 39.903578, // POI的纬度
+                            longitude: 116.473565, // POI的经度*/
                         }
                     },
                     onFail: function (err) {
                     }
                 });
+
+              /*  dd.biz.map.view({
+                    latitude: lat, // 纬度
+                    longitude: long, // 经度
+                    title: "北京国家广告产业园" // 地址/POI名称
+                });*/
 
             },
             onFail : function(err) {
@@ -280,6 +313,8 @@ export default class Page extends Component {
         },
       });
     });*/
+      //通过context回调改变App下Tabbar组件的activeIndex
+      this.context.callbackIndex(3)
   }
     pushWorkflow() {
         //fm中通过插入url推送到钉钉企业普通信息
@@ -328,5 +363,11 @@ export default class Page extends Component {
 
           </div>
     );
+
   }
+}
+
+Page.contextTypes = {
+    data:PropTypes.string,
+    callbackIndex:PropTypes.func.isRequired
 }

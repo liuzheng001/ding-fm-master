@@ -9,6 +9,8 @@ import { Router, Route, IndexRoute, hashHistory ,Link,IndexLink} from 'react-rou
 import  login  from '../../app/variables';
 
 import ContainerCalender from '../../containers/ContainerCalender'
+import PropTypes from "prop-types";
+import Page from "../ding/PageDing";
 
 
 export default class PageHome extends Component {
@@ -56,6 +58,8 @@ export default class PageHome extends Component {
 
 
     componentDidMount() {
+
+        this.context.callbackIndex(0)
 
         //判断登录后,其它demo和ding页面才能打开哟
         if(this.state.loginState !=='登录') {
@@ -111,8 +115,10 @@ export default class PageHome extends Component {
     }
 
     openFMLink() {
-
+        //调试
         // const urlparam =  {"programme":"流程集合-2","script":"钉钉转到相关的记录和布局php","param":"2303"}
+
+
         const urlparam = JSON.parse("{" + this.props.params.fmFile + "}");
 
         const {programme,script,param } = urlparam;
@@ -120,32 +126,20 @@ export default class PageHome extends Component {
             return;
         }
         const user_ID = login._UserID;
-        // const host = "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001/closepage.html#";
-        const host = "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=about:blank#";
-        // const version = dd.version; //判断是否在钉钉内打开fm,但需要更安全的参数
+
+        const host = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html";
+
         let parames =  new  Array();
-        // alert(programme+param+script);
+        // alert(host+programme+param+script+user_ID);
 
 
-//        const url = host+Fmprogramme+"?script="+FmScriptName+"&param="+param;
-        /*        parames.push({ name: "url", value: "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20刘正" });*/
-        parames.push({ name: "host", value: host});
-        parames.push({ name: "programme", value: programme});
-        parames.push({ name: "script", value: script});
-        parames.push({ name: "param", value: param});
-        parames.push({ name: "userID", value: user_ID})
-//        console.log(parames)
+        alert(host+'?programme='+programme+'&script='+script+'&param='+param )
 
-       /* dd.biz.util.openLink({
-            url: "about:blank",//要打开链接的地址
-            onSuccess : function(result) {
-                /!**!/
-                console.log(result);
+        //使用iframe方式打开webdriect
+        hashHistory.push('workflow/' + encodeURIComponent(host+'?programme='+programme+'&script='+script+'&param='+param ));
 
-            },
-            onFail : function(err) {}
-        })*/
-        this.Post("http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=openFM", parames);
+
+        // this.Post("http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=openFM", parames);
 
     }
 
@@ -192,11 +186,17 @@ export default class PageHome extends Component {
       //重新render calender组件
     return (
       <div className="page-home">
-         {/* {login.isLogin === true ?
-          <ContainerCalender/> : null}*/}
-          <ContainerCalender/>
+          {login.isLogin === true ?
+          <ContainerCalender/> : null}
+
+          {/*调试*/}
+          {/*<ContainerCalender/>*/}
       </div>
     );
   }
 }
 
+PageHome.contextTypes = {
+    data:PropTypes.string,
+    callbackIndex:PropTypes.func.isRequired
+}

@@ -126,6 +126,22 @@ context.create('Schedule',{
               };
           },*/
     },
+    //上传签到信息到日程方案
+    updateSignIn:{
+        mock: false,
+        // mockUrl: 'query/getSchedule.json',
+        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getSchdule.php',
+        data:{
+            action:'updateSignIn',
+
+        },
+        willFetch() {
+            Toast.show({
+                type: 'loading',
+                content: '正在上传',
+            });
+        },
+    }
 })
 
 context.create('DeptList',{

@@ -19,12 +19,10 @@
      *创建时间：20160713
      *创建人：
      */
-    function showFMWeb(Fmprogramme,FmScriptName,param,user) {
+    function showFMWeb(Fmprogramme,FmScriptName,param,user='钉钉',pwd='admin0422') {
 
         const host = "http://r1w8478651.imwork.net:591/fmi/webd/";
-        // const version = dd.version; //判断是否在钉钉内打开fm,但需要更安全的参数
         let parames =  new  Array();
-        // alert(Fmprogramme+param+FmScriptName+user+pwd)
 
 
 //        const url = host+Fmprogramme+"?script="+FmScriptName+"&param="+param;
@@ -36,39 +34,18 @@
         parames.push({ name: "user", value: user});
         parames.push({ name: "pwd", value: pwd});
 
-        // parames.push({ name: "version", value: version})
-//        console.log(parames)
 
-        // Post("http://r1w8478651.imwork.net:591/fmi/webd/日程方案?homeurl=about:blank&script=转到日历详情php&param=朱祥见%202018-9-6", parames);
         Post(host+Fmprogramme+'?homeurl=about:blank&script='+FmScriptName+'&param='+param, parames);
         // return false;
     }
 
-    /*
+    /**
      *功能： 模拟form表单的提交
      *参数： URL 跳转地址 PARAMTERS 参数
      *返回值：
      *创建时间：20160713
      *创建人：
      */
-   /* <form
-        id="myForm"
-        action="http://r1w8478651.imwork.net:591/fmi/webd/日程方案?homeurl=about:blank&script=转到日历详情php&param=刘正%202018-9-6"
-        method="post">
-
-        Account name:<br>
-        <input name="user" value="accountname" />
-        <br>
-            Password:<br>
-            <input type="password" name="pwd" value="password" />
-            <br><br>
-                <input type="submit" value="Login">
-                </input>
-            </br>
-            </br>
-        </br>*/
-
-
     function Post(URL, PARAMTERS) {
         //创建form表单
         var temp_form = document.createElement("form");

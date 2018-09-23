@@ -344,8 +344,8 @@ export default class PageHome extends Component {
 
     openFMLink() {
 
-        // const urlparam =  {"programme":"流程集合-2","script":"钉钉转到相关的记录和布局php","param":"2303"}
-        const urlparam = JSON.parse("{" + this.props.params.fmFile + "}");
+        const urlparam =  {"programme":"流程集合-2","script":"钉钉转到相关的记录和布局php","param":"2303"}
+        // const urlparam = JSON.parse("{" + this.props.params.fmFile + "}");
 
         const {programme,script,param } = urlparam;
         if( !programme ) {

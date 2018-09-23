@@ -6,6 +6,8 @@ export const REQUEST_POSTS = 'REQUEST_POSTS'
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT'
 
+export const TABBARINDEX = 'TABBARINDEX'
+
 
 
 export const selectDate = (date, year, month) => ({
@@ -67,4 +69,11 @@ export const scheduleListforMonth = (date,year,month) => (dispatch, getState) =>
         return dispatch(fetchPosts(date,year,month))
     }
 }
+
+export const selectTabBar = (TabBarIndex) => ({
+    type: TABBARINDEX,
+    TabBarIndex
+})
+
+
 

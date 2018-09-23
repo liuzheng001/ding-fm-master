@@ -105,6 +105,9 @@ import {receivePosts, selectDate} from "../actions";
     function authCode(corpId){
         return new Promise(function(resolve, reject){
             dd.ready(function(){
+
+
+
                /* // 退到后台的事件监听(webview)
                 document.addEventListener('pause', function(e) {
                     e.preventDefault();
@@ -146,7 +149,7 @@ import {receivePosts, selectDate} from "../actions";
                 }, false);*/
 
                 if(dd.ios){
-                    dd.biz.navigation.setLeft({
+                   /* dd.biz.navigation.setLeft({
                         control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
                         // show:false,
                         text: '退出',//控制显示文本，空字符串表示显示默认文本
@@ -155,9 +158,9 @@ import {receivePosts, selectDate} from "../actions";
 
                             dd.biz.navigation.close({
                                 onSuccess : function(result) {
-                                    /*result结构
+                                    /!*result结构
                                      {}
-                                     */
+                                     *!/
                                 },
                                 onFail : function(err) {}
                             })
@@ -165,7 +168,7 @@ import {receivePosts, selectDate} from "../actions";
                         onFail : function(err) {
                             alert(JSON.stringify(err));
                         }
-                    });
+                    });*/
                     dd.biz.navigation.setRight({
                         show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
                         control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
@@ -287,10 +290,13 @@ const getDingtalkConfig = async () => {
         'device.geolocation.get',
         'biz.map.locate',
         'biz.util.open',
+        'biz.map.view',
+        'biz.map.search',
+
     ];
 
     await   $.ajax({
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://localhost:3001/'),
+        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'),
         type: 'GET',
         dataType: 'json',
         success: function (response) {
@@ -411,10 +417,11 @@ const loginCheck = (userId,username) => {
             //设置全局变量isLogin为true
             login.isLogin  = true;
 
-            Dialog.alert({
+            /*Dialog.alert({
                 title:"",
                 content: username+":登录成功"
-            });
+            });*/
+
         })
         .catch(err=>{
             Dialog.alert({
@@ -434,6 +441,7 @@ export const DDReady = new Promise((resolve, reject) => {
 
 
   getDingtalkConfig().then(data => {
+     // console.log(data);
     dd.config(data);
     getUserId(data.corpId);
     dd.error(function(err) {

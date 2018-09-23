@@ -610,17 +610,8 @@ class Calendar extends React.Component {
         // http://localhost:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=朱祥见%202018-9-6&user=刘正&pwd=030528
         param = param+"&user=刘正&pwd=030528"
 
-      /*  dd.biz.util.openLink({
-
-            url:url+param,
-            onSuccess : function(result) {
-                // alert(url+param);
-            },
-            onFail : function(err) {}
-        })*/
-
       //使用iframe方式打开webdriect
-            hashHistory.push('sign/' + encodeURIComponent(url+param));
+        hashHistory.push('sign/' + encodeURIComponent(url+param));
     }
 
   render() {
@@ -663,175 +654,210 @@ class Calendar extends React.Component {
     const {onPick, preYear, nextYear, preMonth, nextMonth} = this
     const today = moment();
     const { HBox, VBox, Box } = Boxs;
-      const screenHeight = window.screen.availHeight;
-      const screenWidth = window.screen.availWidth;
+      const screenHeight = window.screen.height;
+      const screenWidth = window.screen.width;
     // alert(screenHeight+'wid:'+screenWidth)
 
       const url = "http://192.168.0.102:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=";
     //向fm传递日期是2018-9-8格式
     const param = login._UserName+'%20'+year+'-'+(month+1)+'-'+date
+
+      const u = navigator.userAgent, app = navigator.appVersion;
+      const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+      const isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+
+      let contentHeight;
+    if(screenHeight === 812 && screenWidth == 375 && isIOS ){
+        contentHeight = (screenHeight-44-44-49-34);
+    }else if(isIOS) {
+        contentHeight = (screenHeight-20-44-49) ;
+    }else if(isAndroid){
+        contentHeight = (screenHeight-20-44-49-44) ;
+
+    }
+
+    const cellHeight = contentHeight*3/40
       return (
 
       /*// 弹性盒子测试
-      <VBox vAlign="center" style={{height:screenHeight}}>
-              <Box style={{height:'60px',backgroundColor:'red'}}>red</Box>
-              <Box style={{backgroundColor:'blue'}} flex={1}>blue</Box>
+     {/!* <VBox vAlign="center" style={{height:contentHeight}}>
+              <VBox vAlign='center' style={{height:'300px',backgroundColor:'red'}}>
+                  <Box style={{height:100/6+'%',backgroundColor:'orange'}}>
+                      里层
+                  </Box>
+                  <Box style={{height:100/6+'%',backgroundColor:'yellow'}}>
+                      里层
+                  </Box> <Box style={{height:100/6+'%',backgroundColor:'orange'}}>
+                  里层
+              </Box>
+                  <Box style={{height:100/6+'%',backgroundColor:'yellow'}}>
+                      里层
+                  </Box> <Box style={{height:100/6+'%',backgroundColor:'orange'}}>
+                  里层
+              </Box>
+                  <Box style={{height:100/6+'%',backgroundColor:'yellow'}}>
+                      里层
+                  </Box>
+              </VBox>
+              <VBox vAlign='center' style={{backgroundColor:'blue'}} flex={2}>
+                  <HBox hAlign='center' >
+                      <Box style={{width:'20%',color:'red',backgroundColor:'black'}} >sadf</Box>
+                      <Box style={{width:'50%',color:'yellow',backgroundColor:'black'}} >adfa</Box>
+                  </HBox>
+              </VBox>
               <Box style={{backgroundColor:'black'}} flex ={2}>black</Box>
-      </VBox>*/
-      <VBox  style={{
-          // height:'540px'
-        // position: 'relative',
-      }}
-             className={className}>
+      </VBox>*!/}*/
 
-          <Box flex ={5}
-            className={calendarClass}
-            style={{
-              // overflow: 'hidden',
-              // transition: 'all 0.2s',
-              // transitionTimingFunction: 'ease-in',
-              // marginTop: -28,
-              // zIndex: 1,
-              // width: "100%",
-              boxShadow: '0 1px 6px rgba(0,0,0,.2)',
-            }}>
+      <VBox  style={{
+          height:contentHeight,
+          // position: 'relative',
+      }} >
+
+          <Box flex = {6}
+              style={{
+                  // overflow: 'hidden',
+                  // transition: 'all 0.2s',
+                  // transitionTimingFunction: 'ease-in',
+                  // marginTop: -28,
+                  // zIndex: 1,
+                  // width: "100%",
+                  // height:'316px',
+                  boxShadow: '0 1px 6px rgba(0,0,0,.2)',
+              }}>
 
               {/*!//日期导航栏*/}
               <div style={{
-                width: "100%",
-                borderBottom: '1px solid #eee',
-                padding: '8px 50px',
-                // position: 'relative',
-                boxSizing: 'border-box',
-                color: 'rgba(0,0,0,0.4)',
+                  width: "100%",
+                  borderBottom: '1px solid #eee',
+                  padding: '8px 50px',
+                  // position: 'relative',
+                  boxSizing: 'border-box',
+                  color: 'rgba(0,0,0,0.4)',
               }}>
-                {/*<div style={{position: 'absolute', left: 4, top: 6,textAlign: 'center',fontSize: 45}}><DoubleLeft onClick={preYear}/></div>*/}
-               {/* <div style={{position: 'absolute', left: 26, top: 6,textAlign: 'center',fontSize: 45}}><FaAngleLeft onClick={preMonth}/></div>
+                  {/*<div style={{position: 'absolute', left: 4, top: 6,textAlign: 'center',fontSize: 45}}><DoubleLeft onClick={preYear}/></div>*/}
+                  {/* <div style={{position: 'absolute', left: 26, top: 6,textAlign: 'center',fontSize: 45}}><FaAngleLeft onClick={preMonth}/></div>
                 <div style={{textAlign: 'center', paddingTop: 4, fontSize: 20}}>
                   {year} 年 {month + 1}月
                 </div>
                 <div style={{position: 'absolute', right: 26, top: 6,textAlign: 'center',fontSize: 45}}><FaAngleRight onClick={nextMonth}/></div>*/}
 
-              <HBox style={{width:'100%',margin:'-10px'}}>
-                  <Box  style={{width:'5%',textAlign:'center',fontSize: 45}}><FaAngleLeft onClick={preMonth}/> </Box>
-                  <Box  style={{width:'90%' ,textAlign: 'center', lineHeight:'45px', fontSize: 20}}> {year} 年 {month + 1}月 </Box>
-                  <Box  style={{width:'5%',textAlign:'center',fontSize: 45}}><FaAngleRight onClick={nextMonth}/></Box>
-              </HBox>
-                {/*<div style={{position: 'absolute', right: 4, top: 6,textAlign: 'center',fontSize: 45}}><DoubleRight onClick={nextYear}/></div>*/}
+                  <HBox style={{width:'100%',margin:'-10px'}}>
+                      <Box  style={{width:'5%',textAlign:'center',fontSize: 45}}><FaAngleLeft onClick={preMonth}/> </Box>
+                      <Box  style={{width:'90%' ,textAlign: 'center', lineHeight:'45px', fontSize: 20}}> {year} 年 {month + 1}月 </Box>
+                      <Box  style={{width:'5%',textAlign:'center',fontSize: 45}}><FaAngleRight onClick={nextMonth}/></Box>
+                  </HBox>
+                  {/*<div style={{position: 'absolute', right: 4, top: 6,textAlign: 'center',fontSize: 45}}><DoubleRight onClick={nextYear}/></div>*/}
               </div>
 
-                {/*日历名称栏*/}
+              {/*日历名称栏*/}
               {/*  <div style={{
                     width: "100%",
                     overflow: 'hidden',
                     padding: '0 8px'
                 }}>*/}
-                <Grid col={7} className="t-BCf" square={true} >
+              <Grid col={7} className="t-BCf"  >
 
-                    {dateName.map((name) => {
-                        return (
-                            <div>
-                                    {name}
-                            </div>
-                        )
-                    })}
-                </Grid>
-                {/*</div>*/}
+                  {dateName.map((name) => {
+                      return (
+                          <div >
+                              {name}
+                          </div>
+                      )
+                  })}
+              </Grid>
+              {/*</div>*/}
               {/*!//日历内容,将today标识出来*/}
               {/*<div style={{
                 width: "100%",
                 overflow: 'hidden',
                 padding: '0 8px'
               }}>*/}
-                  <Grid col={7} className="t-BCf"  touchable={true} >
 
-                          {days.map((item, index) => {
-                          let whichMonth = 0
-                          let active = false
-                          const  day = item.i;
-                          const  isLog = item.isLog;
-                          if (day > 15 && index < 15) whichMonth = -1
-                          if (day < 15 && index > 20) whichMonth = 1
-                          if (
-                            whichMonth === 0 &&
-                            date === day /*&&
+              <Grid col={7} className="t-BCf"  touchable={true} >
+
+                  {days.map((item, index) => {
+                      let whichMonth = 0
+                      let active = false
+                      const  day = item.i;
+                      const  isLog = item.isLog;
+                      if (day > 15 && index < 15) whichMonth = -1
+                      if (day < 15 && index > 20) whichMonth = 1
+                      if (
+                          whichMonth === 0 &&
+                          date === day /*&&
                             value.month() === month &&
                             value.year() === year*/
-                          ) active = true
-                          return (
-                            <div
-                                style={{
-                              // float: 'left',
-                              // boxSizing: 'border-box',
-                              // padding: '4px',
-                              // width: "13.2%",
-                              //   height:'40px',
-                                margin:'10px 0',
-                                width:'100%',
-                              color: whichMonth === 0 ? 'rgba(0,0,0,.65)' : 'rgba(0,0,0,.25)'
-                            }}
-                                 onClick={() => {onPick(day, whichMonth)}}
-                                 key={index}>
+                      ) active = true
+                      return (
+                          <div
+                              style={{
+                                  // float: 'left',
+                                  // boxSizing: 'border-box',
+                                  // padding: '4px',
+                                  // width: "13.2%",
+                                  //   height:'40px',
+                                  // margin:'10px 0',
+                                  width:'100%',
+                                  color: whichMonth === 0 ? 'rgba(0,0,0,.65)' : 'rgba(0,0,0,.25)'
+                              }}
+                              onClick={() => {onPick(day, whichMonth)}}
+                              key={index}>
 
                               {/*将today用其它色标识,用条件表达式*/}
-                            {(day !== today.date() ||  month !== today.month() || year !== today.year() || whichMonth !==0) ?
-                              <div style={{
-                                     fontSize: 20,
+                              {(day !== today.date() ||  month !== today.month() || year !== today.year() || whichMonth !==0) ?
+                                  <HBox vAlign = 'center' hAlign = 'center' style={{
+                                      fontSize: 20,
+                                      // textAlign: 'center',
+                                      height:cellHeight,
 
-                                     textAlign: 'center',
-                                     // // cursor: 'pointer',
-                                     // borderRadius: 4,
-                                     //  padding: '4px 0',
+                                       padding: '0',
+                                      color: active ? 'white' : 'inherit',
+                                      backgroundColor: active ? '#108ee9' : '',
+                                      textDecoration: isLog ? 'underline' : 'none'
+                                  }}>
+                                      {day}
+                                  </HBox>
+                                  :
+                                  <HBox vAlign = 'center' hAlign = 'center' style={{
+                                      fontSize: 20,
+                                      height:cellHeight,
 
-                                     color: active ? 'white' : 'inherit',
-                                     backgroundColor: active ? '#108ee9' : '',
-                                     textDecoration: isLog ? 'underline' : 'none'
-                                   }}>
-                                {day}
-                              </div>
-                                :
-                                <div style={{
-                                               fontSize: 20,
-                                               textAlign: 'center',
-                                               // cursor: 'pointer',
-                                               // borderRadius: 4,
-                                               // padding: '4px 0',
 
-                                               color: active ? 'white' : 'inherit',
-                                               backgroundColor: "orange",
-                                               textDecoration: isLog ? 'underline' : 'none'
+                                      color: active ? 'white' : 'inherit',
+                                      backgroundColor: "orange",
+                                      textDecoration: isLog ? 'underline' : 'none'
+                                  }}>
+                                      {day}
+                                  </HBox>
 
-                                           }}>
-                                    {day}
-                                </div>
+                              }
 
-                            }
-
-                      </div>)
-                        })}
-                </Grid>
+                          </div>)
+                  })}
+              </Grid>
           </Box>
           {/*日程内容*/}
           {/*标题项*/}
-        <Box flex={1}>
-            <HBox  style={{width:"100%"}}>
-                  <Box style={{width:"70%",paddingLeft:"10px"}}>日程&nbsp;&nbsp;{month+1}-{date}</Box>
-                  <Box style={{width:"30%"}}><Button type="primary" display="banner" onClick={()=>this.openFM(url,param).bind(this)}>打开日程</Button></Box>
-            </HBox>
-        </Box>
+          <Box   >
+              <HBox  style={{width:"100%"}}>
+                  <HBox vAlign = 'center' style={{width:"70%",paddingLeft:"10px",lineHeight:'100%'}}>日程&nbsp;&nbsp;{month+1}-{date}</HBox>
+                  <Box style={{width:"30%"}}><Button type="primary" display="banner" onClick={()=>this.openFM(url,param)}>打开日程</Button></Box>
+              </HBox>
+          </Box>
 
-          <Box flex={2}>
-              <VBox style={{height:'100px'}} >
-                  {/*<VBox style={{border:'1px solid'}} >*/}
+          <Box flex={3} style={{overflow:'hidden'}}>
+              <VBox style={{height:'100%'}} >
+                  {/*<VBox style={{border:' red 1px solid'}} >*/}
                   { Array.isArray(scheduleDay) && scheduleDay.length !== 0 ?
                       <Scroller  mouseWheel >
                           <List style={{width:"100%"}}
-                          layout="right"
-                          hasRightIcon={false}
-                          isDelete={false}
-                          data={scheduleDay}
-                          // error={error}
-                          onClick={this.handleClick.bind(this)}
+                                layout="right"
+                                hasRightIcon={false}
+                                isDelete={false}
+                                data={scheduleDay}
+                              // error={error}
+                                onClick={this.handleClick.bind(this)}
                           />
                       </Scroller>
                       :
@@ -841,7 +867,6 @@ class Calendar extends React.Component {
               </VBox>
           </Box>
       </VBox>
-
     )
   }
 }

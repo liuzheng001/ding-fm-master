@@ -1,62 +1,47 @@
 import React,{ Component }  from 'react'
-import  classnames from 'classnames'
-import {Link} from 'react-router'
-import {Button} from 'saltui'
+import {Link,hashHistory} from 'react-router'
+import {Button,Boxs} from 'saltui'
 
 import './Sign.css'
-import login from "../../app/variables";
+import PropTypes from "prop-types";
+import Page from "../../pages/ding/PageDing";
 
+export default class Sign extends Component {
 
-
-class Sign extends Component {
-  constructor(props) {
-    super(props)
+    constructor(props) {
+        super(props);
+        // this.iScroller="";
+        console.log(this.props)
+        this.state={loadStatus : false}
 
     }
 
+    load() {
+        // const url = obj.contentWindow.location.href;
+        // alert(url)
 
-  componentWillReceiveProps(nextProps) {
-  }
+        this.state.loadStaus =  ! this.state.loadStaus
+        if(!this.state.loadStaus){
+            hashHistory.push('/');
+        }
 
+    }
 
-  componentWillMount(){
+    render() {
+        const {url} = this.props.params
+        const { VBox, Box } = Boxs;
 
-  }
-
-  render() {
-     return (
-         <div>
-              <div >
-                  <li><Link to="/"><Button>back</Button></Link></li>
-              </div>
-              <div >签到</div>
-              <div >
-                  <a href="#" ><i ></i></a>
-              </div>
-
-        <div page="page">
-          <div id="signcontent" className="page-content">
-          <div className="content-block" style={{"textalign":"center"}}>
-          <p id="content" >
-          </p>
-        </div>
-
-        <p className="center" id="Time"></p>
-
-        <div id="allmap" className="map" style={{margin:"auto",height: "300px",width: "100%",border: "solid 1px #808080"}}>  </div>
-
-        <p className="center" id="signMessage" ></p>
-        <a href="#" id="submitButton" className="button button-big button-round button-submit">签到 </a>
-
-        <div id="updateflag" style={{display: "none"}}>false</div>
-
-
-        </div>
-        </div>
-        </div>
-     )}
+        return (
+            <VBox vAlign="center" style={{height:"800px",border:"solid 1px"}}>
+                {/*<Box style={{heigh:'30px'}} >this is fm iframe</Box>*/}
+                <Box flex={1}><iframe  src={url} style={{ width:'100%', height:"770px",border:'none', margin:0, padding:0, overflow:'hidden', zIndex:'999999'}} onLoad={this.load.bind(this)}/></Box>
+            </VBox>
+        );
+    }
 }
 
+Page.contextTypes = {
+    data:PropTypes.string,
+    callbackIndex:PropTypes.func.isRequired
+}
 
-
-export default Sign

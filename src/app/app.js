@@ -21,16 +21,18 @@ import { isDev} from 'variables';
 import  login  from 'variables';
 
 import PageHome from 'pages/home';
-import PageDemo from 'pages/demo';
+import PageWorkflow from 'pages/workflow';
 import PageDing from 'pages/ding';
 import PageTree from 'pages/tree';
+
+import PropTypes from 'prop-types';
 
 import DB from 'db';
 import './app.less';
 import Sign from "../components/sign/Sign";
 // import Button from "saltui/src/Button/Button";
 
-const customHistory = browserHistory;
+const customHistory = hashHistory;
 // let isLogin = false;
 
 if (isDev && window.chrome && window.chrome.webstore) { // This is a Chrome only hack
@@ -65,8 +67,24 @@ LogicRender.defaultProps.Loading = Loading;
 var path = '/demo/'+data;*/
 
 class App extends Component {
+
+    //父组件要定义 childContextTypes 和 getChildContext()
+
+
+
+    getChildContext(){
+        return {
+            data:'I am data.',
+            callbackIndex:this.setIndex,
+        }
+    }
+
     constructor(props){
         super(props);
+
+        this.setIndex = this.setIndex.bind(this);
+
+
         this.state={
             loginState:login.isLogin,
             activeIndex: 0,
@@ -75,14 +93,10 @@ class App extends Component {
             {
                 title: '首页',
                 icon: <Time />,
-                path: '/',
             },
             {
-                title: 'Demo',
+                title: '流程',
                 icon: <Time />,
-                badge: 'new',
-                badgeStyle: { right: -5 },
-                path: '/a/star',
             },
             {
                 title: '隐藏',
@@ -108,6 +122,12 @@ class App extends Component {
         ];
     }
 
+    setIndex(Index){
+         this.setState({
+             activeIndex:Index,
+         })
+    }
+
   render() {
         // alert(isLogin);
       const onChange = (activeIndex) => {
@@ -119,7 +139,7 @@ class App extends Component {
                   path = '/'
                   break;
               case 1:
-                   path = '/demo'
+                   path = '/workflow/'+encodeURIComponent('http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html?programme=流程集合-2&user=刘正&pwd=030528')
                   break;
               case 3:
                   path = '/ding'
@@ -156,14 +176,20 @@ class App extends Component {
               <li><Link to="/ding/sign">home 下面的  sign</Link></li>
 
               <Link to="/home/{""programme"":""流程集合-2"",""script"":""钉钉转到相关的记录和布局php"",""param"":""2303""}">打开filemaker页面</Link>
-
-
           </ul>*/}
-      </div>
+
+        </div>
     );
   }
 
 }
+
+App.childContextTypes = {
+    data: PropTypes.string,
+    callbackIndex:PropTypes.func.isRequired
+}
+
+//路由钩子
 const authRequired = (nextState, replace) => {
     // Now you can access the store object here.
     if (!login.isLogin) {
@@ -171,14 +197,10 @@ const authRequired = (nextState, replace) => {
         replace('/' );
     }
 
+
+
 };
 
-function loadData(nextState, replace) {
-    if (!login.isLogin) {
-        alert("尚未登录")
-        replace({ pathname: '/' })
-    }
-}
 
 const middleware = [ thunk ]
 /*if (process.env.NODE_ENV !== 'production') {
@@ -192,25 +214,23 @@ const store = createStore(
     applyMiddleware(...middleware)
 )
 
+
+
 render(
     <Provider store={store}>
-
-    <Router history={customHistory}>
-              <Route name="app" path="/" component={App} >
-                  <IndexRoute component={PageHome}  />
-                  <Route path="/home/:fmFile" component={PageHome}/>
-                  <Route path="/ding/sign"  component={Sign} />
-
-                  <Route path="/demo" component={PageDemo} onEnter = {authRequired}/>
-                  {/*<Route path="demo" component={PageDemo}/>*/}
-                  {/*<Route path="ding" component={PageDing} onEnter = {authRequired}/>*/}
-                  <Route  path="/ding" component={PageDing} >
-                     <Route  path="router1"  component={()=>(<h1>this is test router</h1>)} />
-                  </Route>
-                  <Route path="/tree" component={PageTree}   />
-                  <Route path="/ding/router"  component={()=>(<h1>this is test router</h1>)} />
-
-              </Route>
+        <Router history={customHistory}>
+                  <Route name="app" path="/" component={App} >
+                      <IndexRoute component={PageHome}  />
+                      <Route path="/home/:fmFile" component={PageHome}/>
+                      <Route path="/workflow/:url" component={PageWorkflow } onEnter = {authRequired} />
+                      {/*<Route path="demo" component={PageDemo}/>*/}
+                      {/*<Route path="ding" component={PageDing} onEnter = {authRequired}/>*/}
+                      <Route  path="/ding" component={PageDing} onEnter = {authRequired} >
+                         <Route  path="router1"  component={()=>(<h1>this is test router</h1>)} />
+                      </Route>
+                      <Route path="/tree" component={PageTree}  onEnter = {authRequired} />
+                 </Route>
+                 <Route path="/sign/:url"  component={Sign} />
         </Router>
     </Provider>,
   document.getElementById('App'),

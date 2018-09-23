@@ -287,6 +287,10 @@ export default class Page extends Component {
     }
 
 
+    componentDidMount(){
+        //通过context回调改变App下Tabbar组件的activeIndex
+        this.context.callbackIndex(4)
+    }
 
 
     render() {
@@ -311,9 +315,7 @@ export default class Page extends Component {
             </div>
         ))*/
 
-
         return (
-
             <div className="page-demo">
                 <Tag   list={list}
                 />
@@ -321,5 +323,10 @@ export default class Page extends Component {
 
         );
     }
+}
+
+Page.contextTypes = {
+    data:PropTypes.string,
+    callbackIndex:PropTypes.func.isRequired
 }
 
