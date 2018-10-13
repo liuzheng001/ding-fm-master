@@ -658,7 +658,7 @@ class Calendar extends React.Component {
       const screenWidth = window.screen.width;
     // alert(screenHeight+'wid:'+screenWidth)
 
-      const url = "http://192.168.0.102:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=";
+      const url = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html?programme=日程方案&script=转到日历详情php&param=";
     //向fm传递日期是2018-9-8格式
     const param = login._UserName+'%20'+year+'-'+(month+1)+'-'+date
 
@@ -839,10 +839,10 @@ class Calendar extends React.Component {
           </Box>
           {/*日程内容*/}
           {/*标题项*/}
-          <Box   >
+          <Box>
               <HBox  style={{width:"100%"}}>
-                  <HBox vAlign = 'center' style={{width:"70%",paddingLeft:"10px",lineHeight:'100%'}}>日程&nbsp;&nbsp;{month+1}-{date}</HBox>
-                  <Box style={{width:"30%"}}><Button type="primary" display="banner" onClick={()=>this.openFM(url,param)}>打开日程</Button></Box>
+                  <HBox vAlign = 'center' style={{width:"60%",paddingLeft:"10px",lineHeight:'100%'}}>日程&nbsp;&nbsp;{month+1}-{date}</HBox>
+                  <Box style={{width:"20%"}}><Button type="secondary" display="banner" onClick={()=>this.openFM(url,param)}>{this.state.}</Button></Box><Box style={{width:"20%"}}><Button type="primary"  display="banner" onClick={()=>this.openFM(url,param)}>日程</Button></Box>
               </HBox>
           </Box>
 

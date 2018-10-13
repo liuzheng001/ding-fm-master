@@ -59,9 +59,19 @@ export default class PageHome extends Component {
 
     componentDidMount() {
 
+
+
         this.context.callbackIndex(0)
 
-        //判断登录后,其它demo和ding页面才能打开哟
+        if (login.isLogin !== true) {
+            if(this.props.params.fmFile !== null){
+                login._FmLink = this.props.params.fmFile;
+            }
+        }
+
+      /*
+      //改为ding.js在免登后使用router方式,避免计时器二次render
+      //判断登录后,其它demo和ding页面才能打开哟
         if(this.state.loginState !=='登录') {
             this.timer = setInterval(function () {
 
@@ -77,6 +87,7 @@ export default class PageHome extends Component {
                 }
             }.bind(this), 500);
         }
+*/
 
     }
 
@@ -130,13 +141,13 @@ export default class PageHome extends Component {
         const host = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html";
 
         let parames =  new  Array();
-        // alert(host+programme+param+script+user_ID);
 
 
-        alert(host+'?programme='+programme+'&script='+script+'&param='+param )
+        // alert('调试:'+host+'?programme='+programme+'&script='+script+'&param='+param)
+
 
         //使用iframe方式打开webdriect
-        hashHistory.push('workflow/' + encodeURIComponent(host+'?programme='+programme+'&script='+script+'&param='+param ));
+        hashHistory.push('/fmdetails/' + encodeURIComponent(host+'?programme='+programme+'&script='+script+'&param='+param ));
 
 
         // this.Post("http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=openFM", parames);
@@ -186,6 +197,8 @@ export default class PageHome extends Component {
       //重新render calender组件
     return (
       <div className="page-home">
+
+
           {login.isLogin === true ?
           <ContainerCalender/> : null}
 

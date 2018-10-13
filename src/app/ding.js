@@ -3,7 +3,11 @@
 import { Dialog} from 'saltui';
 import DB from 'db';
 import  login  from './variables';
+import {  hashHistory ,browserHistory} from 'react-router';
+
 import {receivePosts, selectDate} from "../actions";
+import PageHome from "../pages/home/PageHome";
+import PropTypes from "prop-types";
 
 // let _UserID = '';
 // let _UserName = '';
@@ -407,6 +411,34 @@ const getDingtalkConfig = async () => {
 
 
 }*/
+function  openFMLink() {
+    //调试
+    const urlparam =  {"programme":"流程集合-2","script":"钉钉转到相关的记录和布局php","param":"2303"}
+
+
+    // const urlparam = JSON.parse("{" + this.props.params.fmFile + "}");
+
+    const {programme,script,param } = urlparam;
+    if( !programme ) {
+        return;
+    }
+    // const user_ID = login._UserID;
+
+    const host = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html";
+
+    let parames =  new  Array();
+
+
+    // alert('调试:'+host+'?programme='+programme+'&script='+script+'&param='+param)
+
+
+    //使用iframe方式打开webdriect
+    hashHistory.push('workflow/' + host+'?programme='+programme+'&script='+script+'&param='+param+'&user=&pwd=' );
+
+
+
+}
+
 const loginCheck = (userId,username) => {
     DB.Contacts.getContacts({
             // 动态参数
@@ -422,10 +454,28 @@ const loginCheck = (userId,username) => {
                 content: username+":登录成功"
             });*/
 
+            //登录home组件,通过rounter方式
+            if(login._FmLink){
+                const urlparam = JSON.parse("{" + login._FmLink + "}");
+
+                let {programme,script,param } = urlparam;
+                if( !programme ) {
+                    return;
+                }
+                const host = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html";
+
+                // alert('调试:'+host+'?programme='+programme+'&script='+script+'&param='+param)
+
+                //使用iframe方式打开webdriect
+                hashHistory.push('fmdetails/'+ encodeURIComponent(host+'?programme='+programme+'&script='+script+'&param='+param+'%20'+login._UserName+'&user=&pwd=') );
+            }
+            else{
+                hashHistory.push('/');}
+
         })
         .catch(err=>{
             Dialog.alert({
-                title:"",
+                title:err,
                 content: username+":验证用户失败"
             });
             dd.biz.navigation.close({
@@ -438,8 +488,6 @@ const loginCheck = (userId,username) => {
 
 
 export const DDReady = new Promise((resolve, reject) => {
-
-
   getDingtalkConfig().then(data => {
      // console.log(data);
     dd.config(data);
@@ -466,3 +514,4 @@ export const DDReady = new Promise((resolve, reject) => {
       });
   });
 });
+

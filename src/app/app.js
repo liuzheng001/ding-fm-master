@@ -22,15 +22,20 @@ import  login  from 'variables';
 
 import PageHome from 'pages/home';
 import PageWorkflow from 'pages/workflow';
-import PageDing from 'pages/ding';
+import PageWorkflowDetails from 'pages/workflowdetails';
+import PageFmProgramme from 'pages/fmprogramme';
 import PageTree from 'pages/tree';
+import PageDetails from 'pages/fmdetails'
 
 import PropTypes from 'prop-types';
 
 import DB from 'db';
 import './app.less';
 import Sign from "../components/sign/Sign";
+import OpenFmProgamme from '../components/openfmprogamme'
 // import Button from "saltui/src/Button/Button";
+
+
 
 const customHistory = hashHistory;
 // let isLogin = false;
@@ -68,16 +73,7 @@ var path = '/demo/'+data;*/
 
 class App extends Component {
 
-    //父组件要定义 childContextTypes 和 getChildContext()
 
-
-
-    getChildContext(){
-        return {
-            data:'I am data.',
-            callbackIndex:this.setIndex,
-        }
-    }
 
     constructor(props){
         super(props);
@@ -88,6 +84,7 @@ class App extends Component {
         this.state={
             loginState:login.isLogin,
             activeIndex: 0,
+
         }
         this.tabBarItems = [
             {
@@ -117,46 +114,58 @@ class App extends Component {
                 }],
                 path: '/center',
             },
-            { title: 'Ding', icon: <Time />, badge: 8, path: '/b/star' },
+            { title: 'FM方案', icon: <Time />, badge: 8, path: '/b/star' },
             { title: '我的', icon: <Time />, badge: 8, path: '/c/star' },
         ];
     }
 
+    // 使用context
+    //父组件要定义 childContextTypes 和 getChildContext()
+
+    getChildContext(){
+        return {
+            data:'',
+            callbackIndex:this.setIndex,
+        }
+    }
+
     setIndex(Index){
-         this.setState({
-             activeIndex:Index,
-         })
+            this.setState({
+                activeIndex: Index,
+            })
+
     }
 
   render() {
         // alert(isLogin);
       const onChange = (activeIndex) => {
           // 这里是触发每个item之后的回调，会返回当前点击的item的index 值
-          // console.log(activeIndex);
+          // alert('切换Tab')
           let path;
           switch (activeIndex){
               case 0:
                   path = '/'
                   break;
               case 1:
-                   path = '/workflow/'+encodeURIComponent('http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html?programme=流程集合-2&user=刘正&pwd=030528')
+                    path = '/workflow'
                   break;
               case 3:
-                  path = '/ding'
+                  path = '/fmprogramme'
                   break;
               case 4:
                   path = '/tree'
                   break;
           }
           customHistory.push(path);
+
       };
 
       const tabBarStyle = {};
 
       return (
         <div>
-
             <TabBar
+              style={{position:'fixed'}} //无用
                 tabBarStyle={tabBarStyle}
                 activeIndex={this.state.activeIndex}
                 onChange={onChange}
@@ -174,8 +183,8 @@ class App extends Component {
               <li><Link to="/tree">树型组件</Link></li>
               <li><Link to="/ding/router">son router</Link></li>
               <li><Link to="/ding/sign">home 下面的  sign</Link></li>
-
-              <Link to="/home/{""programme"":""流程集合-2"",""script"":""钉钉转到相关的记录和布局php"",""param"":""2303""}">打开filemaker页面</Link>
+              <li><Link to="workflowdetails">workflowdetails</Link></li>
+              <li><Link to="/fmdetails/流程集合-2">fmdetails</Link></li>
           </ul>*/}
 
         </div>
@@ -219,18 +228,24 @@ const store = createStore(
 render(
     <Provider store={store}>
         <Router history={customHistory}>
-                  <Route name="app" path="/" component={App} >
-                      <IndexRoute component={PageHome}  />
-                      <Route path="/home/:fmFile" component={PageHome}/>
-                      <Route path="/workflow/:url" component={PageWorkflow } onEnter = {authRequired} />
-                      {/*<Route path="demo" component={PageDemo}/>*/}
-                      {/*<Route path="ding" component={PageDing} onEnter = {authRequired}/>*/}
-                      <Route  path="/ding" component={PageDing} onEnter = {authRequired} >
-                         <Route  path="router1"  component={()=>(<h1>this is test router</h1>)} />
-                      </Route>
-                      <Route path="/tree" component={PageTree}  onEnter = {authRequired} />
-                 </Route>
-                 <Route path="/sign/:url"  component={Sign} />
+              <Route name="app" path="/" component={App} >
+                  <IndexRoute component={PageHome}  />
+                  <Route path="/home/:fmFile" component={PageHome}/>
+                  <Route path="/workflow" component={PageWorkflow } />
+                  <Route path="/workflowdetails/:templateId" component={PageWorkflowDetails} />
+                  {/*<Route path="/workflow/:url" component={PageWorkflow } onEnter = {authRequired} />*/}
+                  {/*<Route path="demo" component={PageDemo}/>*/}
+                  {/*<Route path="ding" component={PageDing} onEnter = {authRequired}/>*/}
+                  <Route  path="/fmprogramme" component={PageFmProgramme} onEnter = {authRequired} >
+                     <Route  path="router1"  component={()=>(<h1>this is test router</h1>)} />
+                  </Route>
+                  <Route path="/tree" component={PageTree}  onEnter = {authRequired} />
+             </Route>
+             <Route path="/sign/:url"  component={Sign} />
+            <Route path="/workflow/:url" component={PageWorkflow } onEnter = {authRequired} />
+            <Route path="/openfmprogramme/:url" component={OpenFmProgamme} />
+            <Route path="/fmdetails/:url" component={PageDetails} />
+
         </Router>
     </Provider>,
   document.getElementById('App'),

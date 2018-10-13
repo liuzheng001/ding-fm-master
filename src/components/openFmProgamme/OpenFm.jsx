@@ -2,10 +2,7 @@ import React,{ Component }  from 'react'
 import {Link,hashHistory} from 'react-router'
 import {Button,Boxs} from 'saltui'
 
-import './Sign.css'
-import PropTypes from "prop-types";
-import Page from "../../pages/ding/PageDing";
-import login from "../../app/variables";
+import './OpenFm.css'
 
 export default class Sign extends Component {
 
@@ -23,7 +20,7 @@ export default class Sign extends Component {
 
         this.state.loadStaus =  ! this.state.loadStaus
         if(!this.state.loadStaus){
-            hashHistory.push('/');
+            hashHistory.push('/fmprogramme');
         }
 
     }
@@ -47,15 +44,10 @@ export default class Sign extends Component {
         }
         return (
             <VBox vAlign="center" style={{height:contentHeight}}>
-                {/*<Box style={{heigh:'30px'}} >this is fm iframe</Box>*/}
                 <Box flex={1}><iframe  src={url} style={{ width:'100%', height:contentHeight,border:'none', margin:0, padding:0, overflow:'hidden', zIndex:'999999'}} onLoad={this.load.bind(this)}/></Box>
             </VBox>
         );
     }
 }
 
-Page.contextTypes = {
-    data:PropTypes.string,
-    callbackIndex:PropTypes.func.isRequired
-}
 

@@ -1,42 +1,49 @@
-import React,{ Component }  from 'react'
-import {Link,hashHistory} from 'react-router'
-import {Button,Boxs} from 'saltui'
+import { Component } from 'refast';
+import { Dialog} from 'saltui';
+import { Lifecycle ,hashHistory} from 'react-router'
 
-import './Sign.css'
-import PropTypes from "prop-types";
-import Page from "../../pages/ding/PageDing";
-import login from "../../app/variables";
+import './FmDetails.less';
 
-export default class Sign extends Component {
+import PropTypes from 'prop-types';
+
+
+export default class Page extends Component {
+
 
     constructor(props) {
         super(props);
-        // this.iScroller="";
-        console.log(this.props)
         this.state={loadStatus : false}
+    }
 
+    componentDidMount() {
+
+        //通过context回调改变App下Tabbar组件的activeIndex
+        this.context.callbackIndex(1)
     }
 
     load() {
-        // const url = obj.contentWindow.location.href;
-        // alert(url)
-
         this.state.loadStaus =  ! this.state.loadStaus
         if(!this.state.loadStaus){
             hashHistory.push('/');
+            // this.context.callbackIndex(0);
         }
 
     }
 
     render() {
-        const {url} = this.props.params
-        const { VBox, Box } = Boxs;
-
+        let {url} = this.props.params
+        /*if (url==='流程集合-2') {
+            url = 'http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html?programme=流程集合-2&user=&pwd=';
+        }
+*/
         const screenHeight = window.screen.height;
         const screenWidth = window.screen.width;
-        const u = navigator.userAgent, app = navigator.appVersion;
+
+        const u = navigator.userAgent;
         const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
         const isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+        //顶部状态栏20,导航栏44,下部返回和home栏44,tabbar高度49
         let contentHeight;
         if(screenHeight === 812 && screenWidth == 375 && isIOS ){
             contentHeight = (screenHeight-44-44);
@@ -45,11 +52,12 @@ export default class Sign extends Component {
         }else if(isAndroid){
             contentHeight = (screenHeight-20-44-44) ; //顶部状态栏20,导航栏44,下部返回和home栏44
         }
+
+
         return (
-            <VBox vAlign="center" style={{height:contentHeight}}>
-                {/*<Box style={{heigh:'30px'}} >this is fm iframe</Box>*/}
-                <Box flex={1}><iframe  src={url} style={{ width:'100%', height:contentHeight,border:'none', margin:0, padding:0, overflow:'hidden', zIndex:'999999'}} onLoad={this.load.bind(this)}/></Box>
-            </VBox>
+            <div >
+                <iframe  src={url} style={{ width:'100%', height:contentHeight, border:'none', margin:0, padding:0, overflow:'hidden'}} onLoad={this.load.bind(this)}/>
+            </div>
         );
     }
 }
@@ -58,4 +66,3 @@ Page.contextTypes = {
     data:PropTypes.string,
     callbackIndex:PropTypes.func.isRequired
 }
-

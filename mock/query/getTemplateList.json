@@ -1,0 +1,16 @@
+{
+  "success": true,
+  "content": {
+    "templateList": [
+      {
+        "title": "请假",
+        "templateId":"11"
+      },
+      {
+        "title": "维护品领用",
+        "templateId":"12"
+      }
+    ]
+  }
+}
+

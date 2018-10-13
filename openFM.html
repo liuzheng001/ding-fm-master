@@ -19,18 +19,23 @@
      *创建时间：20160713
      *创建人：
      */
-    function showFMWeb(Fmprogramme,FmScriptName,param,user='钉钉',pwd='admin0422') {
-
+    function showFMWeb(Fmprogramme,FmScriptName,param,user,pwd) {
+        if (user===''||pwd==='') {
+            user = '钉钉';pwd='admin0422'
+        }
         const host = "http://r1w8478651.imwork.net:591/fmi/webd/";
         let parames =  new  Array();
 
 
-//        const url = host+Fmprogramme+"?script="+FmScriptName+"&param="+param;
-/*        parames.push({ name: "url", value: "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20刘正" });*/
-     /*   parames.push({ name: "host", value: host});
-        parames.push({ name: "Fmprogramme", value: Fmprogramme});
-        parames.push({ name: "FmScriptName", value: FmScriptName});
-        parames.push({ name: "param", value: param});*/
+        /*        parames.push({ name: "url", value: "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20刘正" });*/
+        /*   parames.push({ name: "host", value: host});
+           parames.push({ name: "Fmprogramme", value: Fmprogramme});*/
+        /*if(typeof FmScriptName === "string") {
+                parames.push({name: "FmScriptName", value: FmScriptName});
+        }
+        if(typeof param=== "string") {
+            parames.push({name: "param", value: param});
+        }*/
         parames.push({ name: "user", value: user});
         parames.push({ name: "pwd", value: pwd});
 
@@ -73,22 +78,22 @@
         var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
         if(r!=null)
-            //中文搜索栏转码
+        //中文搜索栏转码
             return   decodeURI(r[2]);
 //            return unescape(r[2]);
         return null;
     }
 
     //indexFM的调用格式,openFM.html?programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2303%20刘正
-//    alert( decodeURI(window.location.search))
+    //    alert( decodeURI(window.location.search))
     const Fmprogramme = getUrlParms('programme')
-    var FmScriptName = getUrlParms("script");
-    var param = getUrlParms("param");
-    var user = getUrlParms("user");
-    var pwd = getUrlParms("pwd");
+    const FmScriptName = getUrlParms("script");
+    const param = getUrlParms("param");
+    const  user = getUrlParms("user");
+    const pwd = getUrlParms("pwd");
 
 
-//    var url = "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"
+    //    var url = "http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"
     showFMWeb(Fmprogramme,FmScriptName,param,user,pwd);
 </script>
 </html>

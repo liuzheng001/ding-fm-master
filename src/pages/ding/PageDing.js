@@ -278,7 +278,7 @@ export default class Page extends Component {
       /*  window.location.href = " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=http://localhost:3001#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528";*/
         dd.biz.util.openLink({
            /* url: " http://liuzheng750417.imwork.net:591/fmi/webd?homeurl=about:blank#流程集合-2?script=钉钉转到相关的记录和布局php&param=2303%20"+login._UserName+"%20钉钉%20030528",//要打开链接的地址*/
-            url:"http://localhost:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=朱祥见%202018-9-6&user=刘正&pwd=030528",
+            url:"http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html?programme=日程方案&script=转到日历详情php&param=朱祥见%202018-9-6&user=刘正&pwd=030528",
             onSuccess : function(result) {
                 /**/
                 console.log(result);
@@ -314,7 +314,7 @@ export default class Page extends Component {
       });
     });*/
       //通过context回调改变App下Tabbar组件的activeIndex
-      this.context.callbackIndex(3)
+      // this.context.callbackIndex(3)
   }
     pushWorkflow() {
         //fm中通过插入url推送到钉钉企业普通信息

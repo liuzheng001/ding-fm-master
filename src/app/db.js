@@ -98,7 +98,6 @@ context.create('Contacts',{
 
 context.create('Schedule',{
 
-    // http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=get_department_list
 
     getScheduleList: {
 
@@ -141,7 +140,43 @@ context.create('Schedule',{
                 content: '正在上传',
             });
         },
-    }
+    },
+
+})
+
+
+context.create('Workflow', {
+
+//得到流程模版templateList
+    getTemplateList: {
+        mock: false,
+        mockUrl: 'query/getTemplateList.json',
+        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getWorkflow.php',
+        data: {
+             action: 'get_template_list',
+        },
+        willFetch() {
+            Toast.show({
+                type: 'loading',
+                content: '得到模版',
+            });
+        },
+    },
+    //得到实例列表
+    getInstanceList: {
+        mock: false,
+        mockUrl: 'query/getScrollList.json',
+        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getWorkflow.php',
+        data: {
+            action: 'get_instance_list',
+        },
+        willFetch() {
+            Toast.show({
+                type: 'loading',
+                content: '得到实例列表',
+            });
+        },
+    },
 })
 
 context.create('DeptList',{
@@ -175,5 +210,7 @@ context.create('DeptList',{
         },
     },
 })
+
+
 
 export default context.api;

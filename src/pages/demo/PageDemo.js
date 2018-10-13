@@ -23,13 +23,9 @@ export default class Page extends Component {
   }
 
   componentDidMount() {
-      // window.location.href="http://www.163.com"
-      // Linking.openURL("http://www.163.com")
-      // this.handleClick('1234');
-     /* const {dispatch} = this.props
-      this.dispatch(selectTabBar(2));*/
 
-     console.log('content='+this.context.data)
+
+     // console.log('content='+this.context.data)
       //通过context回调改变App下Tabbar组件的activeIndex
       this.context.callbackIndex(1)
 

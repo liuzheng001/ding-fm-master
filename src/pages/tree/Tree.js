@@ -282,13 +282,9 @@ export default class Page extends Component {
         this.dispatch('fetch',{workNo});
     }
 
-    componentDidMount() {
-        this.handleClick(1);
-    }
-
-
     componentDidMount(){
         //通过context回调改变App下Tabbar组件的activeIndex
+        this.handleClick(1);
         this.context.callbackIndex(4)
     }
 

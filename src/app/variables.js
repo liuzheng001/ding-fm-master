@@ -4,6 +4,7 @@ const isDev = __LOCAL__;
 const urlPrefix = isDev ? '/mock/' : '/';
 const isLogin = false ;
 const loginDOM ="";
+const _FmLink = false;
 
 //钉钉用户名和id
 const _UserID =""
@@ -11,7 +12,7 @@ const _UserName= "";
 
 //fm用户和密码
 const _FmUser= "钉钉";
-const _FmPwd = "030528";
+const _FmPwd = "admin0422";
 export default {
   urlPrefix,
   isDev,
@@ -23,4 +24,5 @@ export default {
     _FmPwd,
     _UserName,
     _UserID,
+    _FmLink,
 };
