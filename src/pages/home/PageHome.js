@@ -199,11 +199,11 @@ export default class PageHome extends Component {
       <div className="page-home">
 
 
-          {login.isLogin === true ?
-          <ContainerCalender/> : null}
+        {/*  {login.isLogin === true ?
+          <ContainerCalender/> : null}*/}
 
           {/*调试*/}
-          {/*<ContainerCalender/>*/}
+          <ContainerCalender/>
       </div>
     );
   }

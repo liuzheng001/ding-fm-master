@@ -103,11 +103,11 @@ const selectDate = (state = {
                 }
             }
 
-    case TABBARINDEX:
+   /* case TABBARINDEX:
         return {
             ...state,
             tabBarIndex:action.tabBarIndex
-        }
+        }*/
         default:
             return state
     }

@@ -33,7 +33,6 @@ const fetchPosts = (date,year,month) => dispatch => {
         year:year,
         month:month+1,
         username:login._UserName
-
         //调试
         // username:"朱祥见"
 

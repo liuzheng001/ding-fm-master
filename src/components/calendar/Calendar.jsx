@@ -9,7 +9,7 @@ import DoubleLeft from 'react-icons/fa/angle-double-left'*/
 
 import {FaAngleLeft} from 'react-icons/fa'
 import {FaAngleRight} from 'react-icons/fa'
-import {Icon, Group, Boxs, List,Button,Scroller,ActionSheet,Grid} from 'saltui';
+import {Icon, Group, Boxs, List,Button,Scroller,ActionSheet,Grid,Dialog} from 'saltui';
 // import Cancel from 'react-icons/md/cancel'
 import  classnames from 'classnames'
 import './Calender.css'
@@ -202,7 +202,10 @@ class Calendar extends React.Component {
       value = moment()
       console.warn('Value and default value must be instance of Moment')
     }
-
+       this.state = {
+        attendance:'出勤',
+           attendanceButtonStatus:true
+         }
     // const open = (props.disabled ? false : props.open) || false
    /* const format = props.format || 'YYYY-MM-DD'
     const inputValue = value.format(format)*/
@@ -384,12 +387,26 @@ class Calendar extends React.Component {
 
         while (day--) thisMonth.unshift({i:pre--,isLog:false});
 
+        let isLog/*,attendanceStatus*/;
+
+        //标注出勤状态和签到状态
         for (let i = 1; i <= number; i++){
+           /* if (monthSchedule.find((item) => (item.fieldData['日历表::出勤时间戳'] === '' ))) {
+                attendanceStatus = '出勤';
+            } else if(monthSchedule.find((item) => (item.fieldData['日历表::收工时间戳'] === '' ))){
+                attendanceStatus = '收工';
+            }else {
+                attendanceStatus = '已收工';
+            }*/
+
             if (monthSchedule.find((item) => (item.fieldData['日历表::day'] === i))) {
-                thisMonth.push({i: i, isLog: true});
+                isLog = true;
             } else {
-                thisMonth.push({i: i, isLog: false});
+                isLog = false;
             }
+
+            thisMonth.push({i: i, isLog: isLog});
+
         }
         for (let i = 1; i <= next; i++)
         {
@@ -614,10 +631,89 @@ class Calendar extends React.Component {
         hashHistory.push('sign/' + encodeURIComponent(url+param));
     }
 
+    attendance(){
+        const t =this;
+        if(this.state.attendance === '出勤') {
+            ActionSheet.show({
+                options: ['自驾', '搭车', '公交'],
+                destructiveButtonIndex: 0,
+                message: '外出方式',
+                maskClosable: false,
+            }, (index) => {
+                //未选择取消
+                if (index !== -1) {
+                    Dialog.confirm({
+                        title: '提示',
+                        // locale: 'en_US',
+                        content: '确定出勤?',
+                        onConfirm() {
+                            //记录出勤位置
+
+
+                            //设置为收工
+                            // alert('dfa')
+                            t.setState({
+                                attendance:'收工'
+                            })
+                        },
+                        /*onCancel() {
+                        },*/
+                    });
+                }
+            });
+        }else if(this.state.attendance === '收工') {
+            Dialog.confirm({
+                title: '提示',
+                // locale: 'en_US',
+                content: '确定收工?',
+                onConfirm() {
+                    //记录收工位置
+                    //设置为已收工
+                    t.setState({
+                        attendance:'已收工',
+                        attendanceButtonStatus:false
+                    })
+                },
+                /*onCancel() {
+                },*/
+            });
+        }
+    }
+
   render() {
 
       const { date, year, month,monthSchedule, onChangeDate } = this.props
 
+      //判断选择日期的签到情况
+      let attendanceStatus;
+      /*if (monthSchedule.find((item) => (item.fieldData['日历表::day'] === date  && item.fieldData['日历表::month'] === month+1 && item.fieldData['日历表::year'] === year  ))) {
+          if (fieldData['日历表::出勤时间戳'] === '') {
+              attendanceStatus = '出勤';
+          }
+          else if (fieldData['日历表::收工时间戳'] === '') {
+              attendanceStatus = '收工';
+          } else {
+              attendanceStatus = '已收工';
+          }
+      }else{
+          attendanceStatus = '出勤';
+
+      }*/
+     const result = monthSchedule.find((item) => (item.fieldData['日历表::day'] === date  && item.fieldData['日历表::month'] === month+1 && item.fieldData['日历表::year'] === year  ))
+
+      if(result !== undefined)
+      {
+          if (result.fieldData['日历表::出勤时间戳'] === '') {
+              attendanceStatus = '出勤';
+          }
+          else if (result.fieldData['日历表::收工时间戳'] === '') {
+              attendanceStatus = '收工';
+          } else {
+              attendanceStatus = '已收工';
+          }
+      }else{
+          attendanceStatus = '出勤';
+      }
 
       const days = this.daysInMonthandisLog();
     const dateName = ["日","一","二","三","四","五","六"];
@@ -641,7 +737,7 @@ class Calendar extends React.Component {
                       day:date,
                       month:month,
                       year:year,
-                      eventID:item.fieldData['日程ID']
+                      eventID:item.fieldData['日程ID'],
                   })
               }
           })
@@ -823,7 +919,6 @@ class Calendar extends React.Component {
                                       fontSize: 20,
                                       height:cellHeight,
 
-
                                       color: active ? 'white' : 'inherit',
                                       backgroundColor: "orange",
                                       textDecoration: isLog ? 'underline' : 'none'
@@ -842,7 +937,8 @@ class Calendar extends React.Component {
           <Box>
               <HBox  style={{width:"100%"}}>
                   <HBox vAlign = 'center' style={{width:"60%",paddingLeft:"10px",lineHeight:'100%'}}>日程&nbsp;&nbsp;{month+1}-{date}</HBox>
-                  <Box style={{width:"20%"}}><Button type="secondary" display="banner" onClick={()=>this.openFM(url,param)}>{this.state.}</Button></Box><Box style={{width:"20%"}}><Button type="primary"  display="banner" onClick={()=>this.openFM(url,param)}>日程</Button></Box>
+                  <Box style={{width:"20%"}}><Button type="secondary" display="banner" disabled={!this.state.attendanceButtonStatus} onClick={this.attendance.bind(this)}>{attendanceStatus}</Button>
+                  </Box><Box style={{width:"20%"}}><Button type="primary"  display="banner" onClick={()=>this.openFM(url,param)}>日程</Button></Box>
               </HBox>
           </Box>
 
