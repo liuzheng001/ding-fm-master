@@ -97,10 +97,7 @@ context.create('Contacts',{
 });
 
 context.create('Schedule',{
-
-
     getScheduleList: {
-
         mock: false,
         mockUrl: 'query/getSchedule.json',
         url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getSchdule.php',
@@ -143,7 +140,7 @@ context.create('Schedule',{
     },
     //上传attendance信息到日程方案
     attendanceUpdate:{
-        mock: true,
+        mock: false,
         mockUrl: 'query/getAttendance.json',
         url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getSchdule.php',
         data:{
