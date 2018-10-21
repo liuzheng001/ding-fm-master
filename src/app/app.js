@@ -165,10 +165,10 @@ class App extends Component {
               case 1:
                     path = '/workflow'
                   break;
-              case 3:
+              case 2:
                   path = '/fmprogramme'
                   break;
-              case 4:
+              case 3:
                   path = '/tree'
                   break;
           }

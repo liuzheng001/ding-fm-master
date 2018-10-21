@@ -285,7 +285,7 @@ export default class Page extends Component {
     componentDidMount(){
         //通过context回调改变App下Tabbar组件的activeIndex
         this.handleClick(1);
-        this.context.callbackIndex(4)
+        this.context.callbackIndex(3)
     }
 
 

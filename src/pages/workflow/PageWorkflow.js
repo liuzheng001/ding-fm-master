@@ -96,15 +96,13 @@ export default class Page extends Component {
                           return (
                           <div className="demo3-t-list-wrap"   onClick={this.openInstanceList.bind(this,item.title,item.templateId)}>
                               <HBox vAlign='center'>
-                                <Box flex={3}>
+                                <Box flex={1}>
                                     <img src="https://img.alicdn.com/tps/TB1HInCJFXXXXXcXpXXXXXXXXXX-60-60.png" className="demo3-t-list-img"/>
-
                                  </Box>
                                 <Box className="demo3-t-list-text-content" flex={3}>
                                     <Badge text={item.auditingNum} corner="rt" />
                                     {/*<Badge count={item.auditingNum}>*/}
                                         <p className="demo3-t-list-title t-omit">{item.title}<span className="demo3-t-list-cricle"/></p>
-
                                     {/*</Badge>*/}
                                     {/*<p className="demo3-t-list-text t-omit">{item.auditingNum}</p>*/}
                                  </Box>

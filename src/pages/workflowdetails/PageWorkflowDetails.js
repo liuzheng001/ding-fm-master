@@ -42,7 +42,7 @@ class Item extends Component {
         startTime = new Date(this.props.startDate);
         startTime = startTime.toLocaleDateString();
         return (
-            <div className="newlist-demo-item" onClick={this.openDetails.bind(this,this.props.instanceID)}>
+            <div className="newlist-details-item" onClick={this.openDetails.bind(this,this.props.instanceID)}>
                 <Group.List lineIndent={15} >
                     <div>
                         <div className="demo-t-list-wrap-single">
@@ -53,7 +53,7 @@ class Item extends Component {
                                         <p className="demo-t-list-title-single omit">发起:{`${this.props.start}`}</p>
                                     </Box>
                                 </HBox>
-                                <HBox flex={1} >
+                                <HBox flex={2} >
                                     <Box className="demo-t-list-text-content-single" flex={1}>
                                         <p className="demo-t-list-title-single omit">开始日期:{startTime}</p>
                                         <p className="demo-t-list-title-single omit"><span style={{fontStyle:"italic"}}>时长:</span></p>
@@ -255,7 +255,7 @@ export default class Page extends Component {
 
         return (<div >
             <div className="container">
-                <Group.Head className="t-demo-title" >流程名称</Group.Head>
+                <Group.Head className="t-details-title" >流程名称</Group.Head>
                 <ScrollList
                     className="scroll-list-demo"
                     dataGetted={this.state.dataGetted}

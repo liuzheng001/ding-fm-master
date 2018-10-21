@@ -21,7 +21,7 @@ export default class Page extends Component {
   componentDidMount() {
 
       //通过context回调改变App下Tabbar组件的activeIndex
-      this.context.callbackIndex(3)
+      this.context.callbackIndex(2)
   }
 
     openFM(filename,param=null) {

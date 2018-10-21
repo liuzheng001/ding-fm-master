@@ -3,20 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="97c3c9ee-544a-4a80-ac1f-8a64b39d3490" name="Default" comment="component style">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/closepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/closepage.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mock/query/getTemplateList.json" beforeDir="false" afterPath="$PROJECT_DIR$/mock/query/getTemplateList.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/popwin.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/popwin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/npm-debug.log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/ding.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ding.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calendar/Calendar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendar/Calendar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/calendar/Calender.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/calendar/Calender.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/demo/PageDemo.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/demo/PageDemo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/ding/PageDing.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/ding/PageDing.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/fmdetails/FmDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/fmdetails/FmDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/PageHome.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/PageHome.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/FmProgramme/FmProgramme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/FmProgramme/FmProgramme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/tree/Tree.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/tree/Tree.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/workflow/PageWorkflow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/workflow/PageWorkflow.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/workflow/PageWorkflow.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/workflow/PageWorkflow.less" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/workflow/logic.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/workflow/logic.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/workflowdetails/PageWorkflowDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/workflowdetails/PageWorkflowDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/workflowdetails/PageWorkflowDetails.less" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/workflowdetails/PageWorkflowDetails.less" afterDir="false" />
     </list>
@@ -46,11 +41,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="PageWorkflow.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PageWorkflow.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/workflow/PageWorkflow.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="133" column="17" lean-forward="true" selection-start-line="133" selection-start-column="17" selection-end-line="133" selection-end-column="17" />
+            <state relative-caret-position="-10">
+              <caret line="79" column="23" selection-start-line="79" selection-start-column="23" selection-end-line="79" selection-end-column="23" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
                 <element signature="e#124#176#0" expanded="true" />
@@ -62,8 +57,8 @@
       <file leaf-file-name="PageWorkflowDetails.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/workflowdetails/PageWorkflowDetails.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-165">
-              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+            <state relative-caret-position="414">
+              <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
               <folding>
                 <element signature="e#79#108#0" expanded="true" />
               </folding>
@@ -75,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/src/pages/workflowdetails/logic.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="126">
-              <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+              <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -83,20 +78,8 @@
       <file leaf-file-name="PageWorkflowDetails.less" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/workflowdetails/PageWorkflowDetails.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PageDemo.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/demo/PageDemo.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="77" column="78" selection-start-line="77" selection-start-column="72" selection-end-line="77" selection-end-column="78" />
-              <folding>
-                <element signature="e#0#35#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="233">
+              <caret line="79" column="16" selection-start-line="79" selection-start-column="1" selection-end-line="79" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -105,16 +88,25 @@
         <entry file="file://$PROJECT_DIR$/src/pages/workflow/PageWorkflow.less">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="384">
-              <caret line="95" column="1" lean-forward="true" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
+              <caret line="95" column="1" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="getTemplateList.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mock/query/getTemplateList.json">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dist/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+            <state relative-caret-position="360">
+              <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dist/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret column="556457" selection-start-column="556457" selection-end-column="556457" />
             </state>
           </provider>
         </entry>
@@ -123,16 +115,7 @@
         <entry file="file://$PROJECT_DIR$/src/app/db.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="149">
-              <caret line="193" lean-forward="true" selection-start-line="193" selection-end-line="193" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logic.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/workflow/logic.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+              <caret line="193" selection-start-line="193" selection-end-line="193" />
             </state>
           </provider>
         </entry>
@@ -140,12 +123,24 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2050">
-              <caret line="263" column="40" lean-forward="true" selection-start-line="263" selection-start-column="40" selection-end-line="263" selection-end-column="40" />
+            <state relative-caret-position="402">
+              <caret line="162" column="27" selection-start-line="162" selection-start-column="27" selection-end-line="162" selection-end-column="27" />
               <folding>
                 <element signature="e#0#100#0" expanded="true" />
                 <element signature="e#619#652#0" expanded="true" />
                 <element signature="e#725#758#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PageHome.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/home/PageHome.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="507">
+              <caret line="80" column="35" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,10 +158,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>openfm.html</find>
-      <find>this.props.param</find>
-      <find>_FmLink</find>
-      <find>http://r1w8478651.imwork.net:9998/corp_demo_php-master/</find>
       <find>r1w8478651.imwork.net:9998</find>
       <find>corp_demo_php-master</find>
       <find>打开日程</find>
@@ -193,6 +184,10 @@
       <find>DB.Workflow</find>
       <find>Icon</find>
       <find>map</find>
+      <find>.newlist-demo-item</find>
+      <find>.t-demo-title</find>
+      <find>t-demo-t</find>
+      <find>this.context.callbackIndex</find>
     </findStrings>
     <replaceStrings>
       <replace>Public</replace>
@@ -267,8 +262,6 @@
         <option value="$PROJECT_DIR$/src/actions/index.js" />
         <option value="$PROJECT_DIR$/src/reducers/index.js" />
         <option value="$PROJECT_DIR$/src/pages/home/PageHome.js" />
-        <option value="$PROJECT_DIR$/dist/index.html" />
-        <option value="$PROJECT_DIR$/dist/app.js" />
         <option value="$PROJECT_DIR$/src/components/calendar/Calender.css" />
         <option value="$PROJECT_DIR$/closepage.html" />
         <option value="$PROJECT_DIR$/src/pages/fmdetails/FmDetails.js" />
@@ -280,11 +273,13 @@
         <option value="$PROJECT_DIR$/src/pages/workflow/logic.js" />
         <option value="$PROJECT_DIR$/src/pages/demo/PageDemo.js" />
         <option value="$PROJECT_DIR$/src/pages/workflow/PageWorkflow.less" />
-        <option value="$PROJECT_DIR$/src/app/app.js" />
         <option value="$PROJECT_DIR$/src/app/db.js" />
+        <option value="$PROJECT_DIR$/src/pages/workflow/PageWorkflow.js" />
         <option value="$PROJECT_DIR$/src/pages/workflowdetails/PageWorkflowDetails.less" />
         <option value="$PROJECT_DIR$/src/pages/workflowdetails/PageWorkflowDetails.js" />
-        <option value="$PROJECT_DIR$/src/pages/workflow/PageWorkflow.js" />
+        <option value="$PROJECT_DIR$/src/app/app.js" />
+        <option value="$PROJECT_DIR$/dist/index.html" />
+        <option value="$PROJECT_DIR$/dist/app.js" />
       </list>
     </option>
   </component>
@@ -607,7 +602,7 @@
       <workItem from="1539407230277" duration="12921000" />
       <workItem from="1539482757136" duration="16606000" />
       <workItem from="1539672072473" duration="833000" />
-      <workItem from="1539674000621" duration="36374000" />
+      <workItem from="1539674000621" duration="38370000" />
     </task>
     <task id="LOCAL-00001" summary="test filemaker">
       <created>1533310472146</created>
@@ -655,7 +650,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="889399000" />
+    <option name="totallyTimeSpent" value="891395000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -757,10 +752,6 @@
           <url>file://$PROJECT_DIR$/src/app/app.js</url>
           <line>247</line>
           <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/dist/app.js</url>
-          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="34" />
@@ -910,13 +901,6 @@
     <entry file="file://$PROJECT_DIR$/mock/query/getMyRecord.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="19" column="91" selection-start-line="19" selection-start-column="91" selection-end-line="19" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/calendar/Calender.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -928,13 +912,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="513">
           <caret line="31" column="35" lean-forward="true" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="54348" column="6" lean-forward="true" selection-start-line="54348" selection-start-column="6" selection-end-line="54348" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -1009,16 +986,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/home/PageHome.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2916">
-          <caret line="203" lean-forward="true" selection-start-line="8" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/workflow/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1032,7 +999,7 @@
     <entry file="file://$PROJECT_DIR$/src/pages/workflow/logic.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
@@ -1049,14 +1016,56 @@
     <entry file="file://$PROJECT_DIR$/src/pages/workflow/PageWorkflow.less">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="384">
-          <caret line="95" column="1" lean-forward="true" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
+          <caret line="95" column="1" selection-start-line="95" selection-start-column="1" selection-end-line="95" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="149">
+          <caret line="193" selection-start-line="193" selection-end-line="193" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/workflowdetails/logic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/workflow/PageWorkflow.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10">
+          <caret line="79" column="23" selection-start-line="79" selection-start-column="23" selection-end-line="79" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#124#176#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/workflowdetails/PageWorkflowDetails.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="79" column="16" selection-start-line="79" selection-start-column="1" selection-end-line="79" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/workflowdetails/PageWorkflowDetails.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="23" column="19" selection-start-line="23" selection-start-column="19" selection-end-line="23" selection-end-column="19" />
+          <folding>
+            <element signature="e#79#108#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2050">
-          <caret line="263" column="40" lean-forward="true" selection-start-line="263" selection-start-column="40" selection-end-line="263" selection-end-column="40" />
+        <state relative-caret-position="402">
+          <caret line="162" column="27" selection-start-line="162" selection-start-column="27" selection-end-line="162" selection-end-column="27" />
           <folding>
             <element signature="e#0#100#0" expanded="true" />
             <element signature="e#619#652#0" expanded="true" />
@@ -1065,45 +1074,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/db.js">
+    <entry file="file://$PROJECT_DIR$/src/pages/home/PageHome.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="193" lean-forward="true" selection-start-line="193" selection-end-line="193" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/workflowdetails/PageWorkflowDetails.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="8" lean-forward="true" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/workflowdetails/logic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/workflowdetails/PageWorkflowDetails.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-165">
-          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        <state relative-caret-position="507">
+          <caret line="80" column="35" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
           <folding>
-            <element signature="e#79#108#0" expanded="true" />
+            <element signature="e#0#41#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/workflow/PageWorkflow.js">
+    <entry file="file://$PROJECT_DIR$/dist/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="133" column="17" lean-forward="true" selection-start-line="133" selection-start-column="17" selection-end-line="133" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#124#176#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="360">
+          <caret line="19" column="6" selection-start-line="19" selection-start-column="6" selection-end-line="19" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret column="556457" selection-start-column="556457" selection-end-column="556457" />
         </state>
       </provider>
     </entry>
