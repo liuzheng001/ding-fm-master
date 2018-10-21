@@ -20,6 +20,9 @@ import { DDReady } from './ding';
 import { isDev} from 'variables';
 import  login  from 'variables';
 
+//测试页面
+import PageDemo from 'pages/demo'
+
 import PageHome from 'pages/home';
 import PageWorkflow from 'pages/workflow';
 import PageWorkflowDetails from 'pages/workflowdetails';
@@ -79,13 +82,7 @@ class App extends Component {
         super(props);
 
         this.setIndex = this.setIndex.bind(this);
-
-
-        this.state={
-            loginState:login.isLogin,
-            activeIndex: 0,
-
-        }
+        this.auditingTotal = 0;
         this.tabBarItems = [
             {
                 title: '首页',
@@ -95,7 +92,7 @@ class App extends Component {
                 title: '流程',
                 icon: <Time />,
             },
-            {
+            /*{
                 title: '隐藏',
                 icon: <Plus />,
                 iconHeight: 40,
@@ -113,10 +110,17 @@ class App extends Component {
                     path: '/b/time',
                 }],
                 path: '/center',
-            },
-            { title: 'FM方案', icon: <Time />, badge: 8, path: '/b/star' },
+            },*/
+            { title: 'FM方案', icon: <Time />,path: '/b/star' },
             { title: '我的', icon: <Time />, badge: 8, path: '/c/star' },
         ];
+
+        this.state={
+            loginState:login.isLogin,
+            activeIndex: 0,
+            tabBarItems:this.tabBarItems,
+        }
+
     }
 
     // 使用context
@@ -129,15 +133,27 @@ class App extends Component {
         }
     }
 
-    setIndex(Index){
+    setIndex(Index,auditingTotal=0){
+            this.auditingTotal = auditingTotal;
             this.setState({
                 activeIndex: Index,
             })
 
     }
 
+    componentDidMount() {
+        this.tabBarItems[1].badge = this.auditingTotal
+        this.setState({
+            tabBarItems:this.tabBarItems
+            }
+        )
+    }
+
+
   render() {
         // alert(isLogin);
+
+
       const onChange = (activeIndex) => {
           // 这里是触发每个item之后的回调，会返回当前点击的item的index 值
           // alert('切换Tab')
@@ -232,19 +248,24 @@ render(
                   <IndexRoute component={PageHome}  />
                   <Route path="/home/:fmFile" component={PageHome}/>
                   <Route path="/workflow" component={PageWorkflow } />
-                  <Route path="/workflowdetails/:templateId" component={PageWorkflowDetails} />
                   {/*<Route path="/workflow/:url" component={PageWorkflow } onEnter = {authRequired} />*/}
                   {/*<Route path="demo" component={PageDemo}/>*/}
                   {/*<Route path="ding" component={PageDing} onEnter = {authRequired}/>*/}
                   <Route  path="/fmprogramme" component={PageFmProgramme} onEnter = {authRequired} >
-                     <Route  path="router1"  component={()=>(<h1>this is test router</h1>)} />
+                      <Route  path="router1"  component={()=>(<h1>this is test router</h1>)} />
                   </Route>
                   <Route path="/tree" component={PageTree}  onEnter = {authRequired} />
              </Route>
-             <Route path="/sign/:url"  component={Sign} />
+            {/*<Route path="/workflowdetails/:templateId" component={PageWorkflowDetails} />*/}
+            <Route path="/workflowdetails" component={PageWorkflowDetails} />
+            <Route path="/sign/:url"  component={Sign} />
             <Route path="/workflow/:url" component={PageWorkflow } onEnter = {authRequired} />
             <Route path="/openfmprogramme/:url" component={OpenFmProgamme} />
             <Route path="/fmdetails/:url" component={PageDetails} />
+
+            {/*//测试*/}
+            {/*<Route path="/demo" component={PageDemo } />*/}
+
 
         </Router>
     </Provider>,

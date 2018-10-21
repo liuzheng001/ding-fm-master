@@ -1,4 +1,6 @@
-import { ScrollList, Icon } from 'saltui';
+import { ScrollList, Group, Boxs,NavBar } from 'saltui';
+const { HBox, Box } = Boxs;
+import Icon from 'salt-icon';
 
 import {Component} from "refast";
 import './PageWorkflowDetails.less';
@@ -23,6 +25,7 @@ const Item = (props) => {
 }*/
 
 class Item extends Component {
+
     openDetails = (instanceID) => {
         const host = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html";
         alert(login._UserName)
@@ -30,13 +33,51 @@ class Item extends Component {
         hashHistory.push('fmdetails/'+ encodeURIComponent(host+'?programme='+'流程集合-2'+'&script='+'钉钉转到相关的记录和布局php'+'&param='+instanceID+'%20'+login._UserName+'&user=&pwd=') );
         // hashHistory.push('fmdetails/' + host+'?programme='+'流程集合-2'+'&script='+'钉钉转到相关的记录和布局php'+'&param='+instanceID+'%20刘正'+'&user=&pwd=' );
     }
+
+
+
+
     render(){
-        return (<div  className="newlist-demo-item" onClick={this.openDetails.bind(this,this.props.instanceID)} >
-            {`${this.props.instanceID} ${this.props.start} ${this.props.startDate}`}
-        </div>);
+        let startTime ;
+        startTime = new Date(this.props.startDate);
+        startTime = startTime.toLocaleDateString();
+        return (
+            <div className="newlist-demo-item" onClick={this.openDetails.bind(this,this.props.instanceID)}>
+                <Group.List lineIndent={15} >
+                    <div>
+                        <div className="demo-t-list-wrap-single">
+                            <HBox vAlign="center">
+                                <HBox flex={1}  >
+                                    <Box className="demo-t-list-text-content-single" flex={1} >
+                                        <p className="demo-t-list-title-single omit"><span style={{fontStyle:"italic"}}>编号:{`${this.props.instanceID}`}</span></p>
+                                        <p className="demo-t-list-title-single omit">发起:{`${this.props.start}`}</p>
+                                    </Box>
+                                </HBox>
+                                <HBox flex={1} >
+                                    <Box className="demo-t-list-text-content-single" flex={1}>
+                                        <p className="demo-t-list-title-single omit">开始日期:{startTime}</p>
+                                        <p className="demo-t-list-title-single omit"><span style={{fontStyle:"italic"}}>时长:</span></p>
+                                    </Box>
+                                </HBox>
+
+                                {/*审核或查看状态,通过图片来标识*/}
+                                <HBox flex={1} vAlign="center" hAlign="end">
+                                    {/*<img src="https://img.alicdn.com/tps/TB1S02rJFXXXXcuXpXXXXXXXXXX-58-58.png" className="demo-t-list-img" />*/}
+                                    {/*<Icon name="eye" width={50} fill="#ccc" className="demo-t-list-arrow" />*/}
+                                    <Icon name="pen" width={50} fill="#fabd0e" className="demo-t-list-arrow" />
+
+                                </HBox>
+                                {/*<Box>*/}
+
+                                {/*<Icon name="angle-right" width={20} fill="#ccc" className="demo-t-list-arrow" />*/}
+                                {/*</Box>*/}
+                            </HBox>
+                        </div>
+                    </div>
+                </Group.List>
+            </div>);
 
     }
-
 }
 
 
@@ -93,19 +134,16 @@ Item.propTypes = {
     }
 }*/
 
-/*function Other1() {
-    return <div className="newlist-demo-item other1">{'Other1'}</div>;
-}
-
-function Other2() {
-    return <div className="newlist-demo-item other2">{'Other2'}</div>;
-}*/
-
-
+/**
+ * 自定义数据源
+ */
 export default class Page extends Component {
 
     constructor(props) {
         super(props);
+        var data = this.props.location.state;
+        var {templateId,templateName} = data;
+
         this.state = {
             dataGetted: false,
             data:  [],
@@ -114,7 +152,10 @@ export default class Page extends Component {
             pageNum: 1,
             loading: false,
             refreshing: false,
-            templateId:this.props.params.templateId
+            templateId:templateId,
+
+            title: templateName,
+            rightText: '新增',
         };
         this.fetchTimes = 1;
         this.templateId = null;
@@ -193,10 +234,28 @@ export default class Page extends Component {
 
     }
 
+
+    navLeftClick(){
+        hashHistory.push('/workflow');
+    }
+
+
+    addInstance(){
+
+        let programme='流程集合-2',script='',param=''
+        if( !programme ) {
+            return;
+        }
+        const host = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html";
+
+        //使用iframe方式打开webdriect
+        hashHistory.push('fmdetails/'+ encodeURIComponent(host+'?programme='+programme+'&script='+script+'&param='+param+'%20'+login._UserName+'&user=&pwd=') );
+    }
     render() {
 
         return (<div >
             <div className="container">
+                <Group.Head className="t-demo-title" >流程名称</Group.Head>
                 <ScrollList
                     className="scroll-list-demo"
                     dataGetted={this.state.dataGetted}
@@ -209,8 +268,13 @@ export default class Page extends Component {
                     onLoad={this.onLoad}
                 >
                     {/*<Welcome/>*/}
-                <Item/>
+                    <Item/>
                 </ScrollList>
+                <NavBar className={this.state.className} title={this.state.title} isShow={false} rightText={this.state.rightText}
+                       onLeftClick={this.navLeftClick.bind(this)}
+                       onRightClick={this.addInstance.bind(this)}
+                />
+
             </div>
         </div>);
     }

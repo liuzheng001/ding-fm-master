@@ -11,3 +11,12 @@
   background-color: #ecf6fd;
   transition: all 0.2s;
 }
+
+.t-group-head {
+  height: 0px;
+}
+
+.t-demo-title{
+  height: 0px;
+
+}

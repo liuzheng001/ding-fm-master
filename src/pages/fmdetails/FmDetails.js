@@ -24,7 +24,7 @@ export default class Page extends Component {
     load() {
         this.state.loadStaus =  ! this.state.loadStaus
         if(!this.state.loadStaus){
-            hashHistory.push('/');
+            hashHistory.push('/workflow');
             // this.context.callbackIndex(0);
         }
 

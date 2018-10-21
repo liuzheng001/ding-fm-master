@@ -4,13 +4,17 @@
     "templateList": [
       {
         "title": "请假",
-        "templateId":"11"
+        "templateId":"11",
+        "auditingNum":0
+
       },
       {
         "title": "维护品领用",
-        "templateId":"12"
+        "templateId":"12",
+        "auditingNum":1
       }
-    ]
+    ],
+    "auditingTotal":"1"
   }
 }
 

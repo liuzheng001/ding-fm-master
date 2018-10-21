@@ -10,6 +10,7 @@ import DoubleLeft from 'react-icons/fa/angle-double-left'*/
 import {FaAngleLeft} from 'react-icons/fa'
 import {FaAngleRight} from 'react-icons/fa'
 import {Icon, Group, Boxs, List,Button,Scroller,ActionSheet,Grid,Dialog} from 'saltui';
+
 // import Cancel from 'react-icons/md/cancel'
 import  classnames from 'classnames'
 import './Calender.css'
@@ -202,10 +203,11 @@ class Calendar extends React.Component {
       value = moment()
       console.warn('Value and default value must be instance of Moment')
     }
-       this.state = {
+       /*this.state = {
         attendance:'出勤',
            attendanceButtonStatus:true
-         }
+         }*/
+
     // const open = (props.disabled ? false : props.open) || false
    /* const format = props.format || 'YYYY-MM-DD'
     const inputValue = value.format(format)*/
@@ -310,7 +312,7 @@ class Calendar extends React.Component {
                             weidu : poi.longitude ,
                             address:address,
                         })
-                            .then(response => {
+                    .then(response => {
                                 // alert(JSON.stringify(response))
                                 // dispatch(receivePosts(response));
                                 if(response.response.data === '上传成功'){
@@ -361,6 +363,43 @@ class Calendar extends React.Component {
         });
     }
 
+    attendanceUpdate(t,calendarID,type,date,year,month) {
+
+        // const {getScheduleListforMonth} = this
+        dd.device.geolocation.get({
+            targetAccuracy: 200,
+            coordinate: 1,//高德坐标
+            withReGeocode: true,
+            useCache: true, //默认是true，如果需要频繁获取地理位置，请设置false
+            onSuccess: function (result) {
+                const lat = result.latitude;
+                const long = result.longitude;
+                // alert(lat+'long'+long);
+                DB.Schedule.attendanceUpdate({
+                    calendarID : calendarID ,
+                    chuqiType: type,
+                    jingdu :lat,
+                    weidu : long ,
+                })
+                    .then(response => {
+                    // alert(JSON.stringify(response))
+                    // dispatch(receivePosts(response));
+                    if(response.response.data === '上传成功'){
+                        alert('出勤状态更改成功')
+                        t.getScheduleListforMonth(date,year,month)
+
+                    }
+                })
+                    .catch(error=>{
+                            alert('error'+JSON.stringify(error))
+                        }
+                    )
+            },
+            onFail: function (err) {
+                alert(JSON.stringify(err));
+            }
+        });
+    }
 
 
     /**
@@ -631,9 +670,14 @@ class Calendar extends React.Component {
         hashHistory.push('sign/' + encodeURIComponent(url+param));
     }
 
-    attendance(){
+    attendance(calendarID,attendanceStatus,date,year,month,hasEvent){
+        //默认为自有当天才能出勤,且改变出勤状态后重新render
         const t =this;
-        if(this.state.attendance === '出勤') {
+        if (hasEvent === false) {
+            alert('尚未设置日程,请先建立日程,再出勤!');
+            return
+        }
+        if(attendanceStatus === '出勤') {
             ActionSheet.show({
                 options: ['自驾', '搭车', '公交'],
                 destructiveButtonIndex: 0,
@@ -648,31 +692,21 @@ class Calendar extends React.Component {
                         content: '确定出勤?',
                         onConfirm() {
                             //记录出勤位置
-
-
-                            //设置为收工
-                            // alert('dfa')
-                            t.setState({
-                                attendance:'收工'
-                            })
+                            t.attendanceUpdate(t,calendarID,'出勤',date,year,month)
                         },
                         /*onCancel() {
                         },*/
                     });
                 }
             });
-        }else if(this.state.attendance === '收工') {
+        }else if(attendanceStatus === '收工') {
             Dialog.confirm({
                 title: '提示',
                 // locale: 'en_US',
                 content: '确定收工?',
                 onConfirm() {
                     //记录收工位置
-                    //设置为已收工
-                    t.setState({
-                        attendance:'已收工',
-                        attendanceButtonStatus:false
-                    })
+                    t.attendanceUpdate(t,calendarID,'收工',date,year,month)
                 },
                 /*onCancel() {
                 },*/
@@ -683,22 +717,11 @@ class Calendar extends React.Component {
   render() {
 
       const { date, year, month,monthSchedule, onChangeDate } = this.props
+      const today = moment();
 
-      //判断选择日期的签到情况
-      let attendanceStatus;
-      /*if (monthSchedule.find((item) => (item.fieldData['日历表::day'] === date  && item.fieldData['日历表::month'] === month+1 && item.fieldData['日历表::year'] === year  ))) {
-          if (fieldData['日历表::出勤时间戳'] === '') {
-              attendanceStatus = '出勤';
-          }
-          else if (fieldData['日历表::收工时间戳'] === '') {
-              attendanceStatus = '收工';
-          } else {
-              attendanceStatus = '已收工';
-          }
-      }else{
-          attendanceStatus = '出勤';
+      //判断选择日期的签到情况,hasEvent代表有无日程
+      let attendanceStatus,attendanceButtonStatus = false,calendarID,hasEvent;
 
-      }*/
      const result = monthSchedule.find((item) => (item.fieldData['日历表::day'] === date  && item.fieldData['日历表::month'] === month+1 && item.fieldData['日历表::year'] === year  ))
 
       if(result !== undefined)
@@ -711,10 +734,17 @@ class Calendar extends React.Component {
           } else {
               attendanceStatus = '已收工';
           }
-      }else{
+          calendarID = result.fieldData['日历外键ID']
+      } else {
           attendanceStatus = '出勤';
       }
 
+
+
+      //除了今天以外,其它时间或已收工状态,attendanceButtonStatus均为false
+     if (date === today.date() &&  month === today.month() && year === today.year() && attendanceStatus !== '已收工'){
+         attendanceButtonStatus = true;
+     }
       const days = this.daysInMonthandisLog();
     const dateName = ["日","一","二","三","四","五","六"];
     const scheduleDay=[];//当天的日程,显示在list中
@@ -729,8 +759,9 @@ class Calendar extends React.Component {
               // alert(item.fieldData['日历表::日历日期']);
               if (item.fieldData['日历表::day'] === date && item.fieldData['日历表::month'] === month+1 && item.fieldData['日历表::year'] ===year) {
                   scheduleDay.push({
-                      "title": item.fieldData.日程内容, "text": item.fieldData.签到地址 + item.fieldData['签到时间'],
-                      imgUrl: 'https://img.alicdn.com/tps/TB1j2u5JFXXXXaEXVXXXXXXXXXX-564-1004.jpg',
+                      "title": item.fieldData.日程内容,
+                      "text": item.fieldData.签到地址,
+                      imgUrl:  item.fieldData['经度'] && item.fieldData['纬度']?'https://img.alicdn.com/tps/TB1j2u5JFXXXXaEXVXXXXXXXXXX-564-1004.jpg':null,
                       date : item.fieldData['签到时间'],
                       lat:item.fieldData['经度'],
                       long:item.fieldData['纬度'],
@@ -743,12 +774,16 @@ class Calendar extends React.Component {
           })
       }
 
-    const className = ''
+      //当天日程为0
+      if (scheduleDay.length === 0) {
+          hasEvent = false;
+      }
+
+    const className = '';
 
 
     const calendarClass = classnames({calendar: true, opened: open})
     const {onPick, preYear, nextYear, preMonth, nextMonth} = this
-    const today = moment();
     const { HBox, VBox, Box } = Boxs;
       const screenHeight = window.screen.height;
       const screenWidth = window.screen.width;
@@ -937,15 +972,13 @@ class Calendar extends React.Component {
           <Box>
               <HBox  style={{width:"100%"}}>
                   <HBox vAlign = 'center' style={{width:"60%",paddingLeft:"10px",lineHeight:'100%'}}>日程&nbsp;&nbsp;{month+1}-{date}</HBox>
-                  <Box style={{width:"20%"}}><Button type="secondary" display="banner" disabled={!this.state.attendanceButtonStatus} onClick={this.attendance.bind(this)}>{attendanceStatus}</Button>
+                  <Box style={{width:"20%"}}><Button type="secondary" display="banner" disabled={!attendanceButtonStatus} onClick={this.attendance.bind(this,calendarID,attendanceStatus,date,year,month,hasEvent)}>{attendanceStatus}</Button>
                   </Box><Box style={{width:"20%"}}><Button type="primary"  display="banner" onClick={()=>this.openFM(url,param)}>日程</Button></Box>
               </HBox>
           </Box>
 
           <Box flex={3} style={{overflow:'hidden'}}>
-              <VBox style={{height:'100%'}} >
-                  {/*<VBox style={{border:' red 1px solid'}} >*/}
-                  { Array.isArray(scheduleDay) && scheduleDay.length !== 0 ?
+              { Array.isArray(scheduleDay) && scheduleDay.length !== 0 ?
                       <Scroller  mouseWheel >
                           <List style={{width:"100%"}}
                                 layout="right"
@@ -957,10 +990,12 @@ class Calendar extends React.Component {
                           />
                       </Scroller>
                       :
-                      <h1 style={{textAlign:"center"}}>尚未设置日程</h1>
-                  }
+                  <VBox style={{height:'100%'}}  vAlign='center' >
+                    <h1 style={{textAlign:"center",}} >尚未设置日程</h1>
+                  </VBox>
 
-              </VBox>
+              }
+
           </Box>
       </VBox>
     )

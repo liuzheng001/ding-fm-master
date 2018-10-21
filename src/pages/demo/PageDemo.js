@@ -10,6 +10,10 @@ import {selectTabBar}    from '../../actions/index'
 import rootReducer from  '../../reducers/index'
 import PropTypes from 'prop-types';
 
+import { Boxs } from 'saltui';
+
+const { HBox, VBox, Box } = Boxs;
+
 
 export default class Page extends Component {
 
@@ -60,9 +64,20 @@ export default class Page extends Component {
   render() {
 
     return (
-        <div style={{height:"100%",width:'100%'}}>
-        this is fm iframe
-            <iframe   src="http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html?programme=日程方案&script=转到日历详情php&param=朱祥见%202018-9-6&user=刘正&pwd=030528" style={{ width:'100%', height:'100%', border:'none', margin:0, padding:0, overflow:'hidden', zIndex:'999999'}} onLoad={this.load.bind(this)}/>
+        <div >
+        {/*this is fm iframe*/}
+            {/*<iframe   src="http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html?programme=日程方案&script=转到日历详情php&param=朱祥见%202018-9-6&user=刘正&pwd=030528" style={{ width:'100%', height:'100%', border:'none', margin:0, padding:0, overflow:'hidden', zIndex:'999999'}} onLoad={this.load.bind(this)}/>*/}
+            <HBox vAlign="center">
+                <Box >60 * 60</Box>
+                <Box flex={1}>auto * auto</Box>
+                <Box >flex:1</Box>
+            </HBox>
+
+            <VBox  style={{height:"100px"}}>
+                <Box style={{border:"1px solid red"}} vAlign="center"  flex={3}>60 * 60</Box>
+                <VBox vAlign="center" style={{border:"1px solid blue"}} hAlign = "center" flex={3}>auto * auto</VBox>
+                <Box style={{border:"1px solid red"}}  flex={3} hAlign = "center">flex:1</Box>
+            </VBox>
 
         </div>
     );

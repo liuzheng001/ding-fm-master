@@ -319,7 +319,7 @@ export default class Page extends Component {
     pushWorkflow() {
         //fm中通过插入url推送到钉钉企业普通信息
         //参数方案名,用户名,其它param,比如workflowID等
-        //不适应多个userID,因为第个链接登录的人不一样
+        //不适应多个userID,因为多个链接登录的人不一样
         const touser =
         $.ajax({
                 url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=pushFM&touser=' + "1960580858678987" + "&programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2340|刘正",
