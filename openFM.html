@@ -23,7 +23,10 @@
         if (user===''||pwd==='') {
             user = '钉钉';pwd='admin0422'
         }
-        const host = "http://r1w8478651.imwork.net:591/fmi/webd/";
+        // const host = "http://r1w8478651.imwork.net:591/fmi/webd/";
+
+        const host = "http://liuzheng750417.imwork.net:591/fmi/webd/";
+
         let parames =  new  Array();
 
 
@@ -39,6 +42,7 @@
         parames.push({ name: "user", value: user});
         parames.push({ name: "pwd", value: pwd});
 
+        // alert(host+Fmprogramme+'?homeurl=about:blank&script='+FmScriptName+'&param='+param+ parames)
 
         Post(host+Fmprogramme+'?homeurl=about:blank&script='+FmScriptName+'&param='+param, parames);
         // return false;

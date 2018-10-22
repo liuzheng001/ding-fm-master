@@ -20,7 +20,6 @@ export default class Sign extends Component {
     load() {
         // const url = obj.contentWindow.location.href;
         // alert(url)
-
         this.state.loadStaus =  ! this.state.loadStaus
         if(!this.state.loadStaus){
             hashHistory.push('/');
@@ -30,6 +29,7 @@ export default class Sign extends Component {
 
     render() {
         const {url} = this.props.params
+        // alert("url="+url)
         const { VBox, Box } = Boxs;
 
         const screenHeight = window.screen.height;

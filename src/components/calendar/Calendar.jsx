@@ -1,7 +1,6 @@
 import React  from 'react'
 import moment from 'moment'
 import {Link,hashHistory} from 'react-router'
-
 import DB from '../../app/db';
 
 /*import DoubleRight from 'react-icons/fa/angle-double-right'
@@ -665,7 +664,7 @@ class Calendar extends React.Component {
     openFM(url,param) {
         // http://localhost:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=朱祥见%202018-9-6&user=刘正&pwd=030528
         param = param+"&user=刘正&pwd=030528"
-
+        // alert(url+param)
       //使用iframe方式打开webdriect
         hashHistory.push('sign/' + encodeURIComponent(url+param));
     }
@@ -789,7 +788,12 @@ class Calendar extends React.Component {
       const screenWidth = window.screen.width;
     // alert(screenHeight+'wid:'+screenWidth)
 
-      const url = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html?programme=日程方案&script=转到日历详情php&param=";
+      //fm服务器为r1w8478651
+      // const url = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html?programme=日程方案&script=转到日历详情php&param=";
+
+      //fm服务器为liuzheng
+      const url = "../../openfm.html?programme=日程方案&script=转到日历详情php&param=";
+
     //向fm传递日期是2018-9-8格式
     const param = login._UserName+'%20'+year+'-'+(month+1)+'-'+date
 
