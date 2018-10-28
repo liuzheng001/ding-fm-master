@@ -127,7 +127,7 @@ function daysInMonth(year) {
 }*/
 
 /**
- * 打开fm文件,   调用参数格式?programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2303|user_id
+ * 打开fm文件,   调用参数格式?programme=流程集合-2&script=钉钉转到相关的记录和布局&param=2303|user_id
  * 调用参数从home,page的路由获取this.props.params.fmfile
  * 转化为格式,并由服务器通过user_id,判断是否合法,合法的情况下打开,服务器调用:http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=openFM
  *
@@ -605,7 +605,9 @@ class Calendar extends React.Component {
 
             }else if(index === 1 && dataItem['lat'] && dataItem['long'] ){
                 // alert("进入地图")
+                alert(dataItem['lat']);
                 dd.biz.map.view({
+
                     latitude: dataItem['lat'], // 纬度
                     longitude: dataItem['long'], // 经度
                     title: "查看地图", // 限制搜索POI的范围；设备位置为中心，scope为搜索半径
@@ -849,7 +851,7 @@ class Calendar extends React.Component {
           // position: 'relative',
       }} >
 
-          <Box flex = {6}
+          <Box
               style={{
                   // overflow: 'hidden',
                   // transition: 'all 0.2s',
@@ -981,15 +983,15 @@ class Calendar extends React.Component {
               </HBox>
           </Box>
 
-          <Box flex={3} style={{overflow:'hidden'}}>
+
               { Array.isArray(scheduleDay) && scheduleDay.length !== 0 ?
                       <Scroller  mouseWheel >
                           <List style={{width:"100%"}}
+                                className="no-head"
                                 layout="right"
                                 hasRightIcon={false}
                                 isDelete={false}
                                 data={scheduleDay}
-                              // error={error}
                                 onClick={this.handleClick.bind(this)}
                           />
                       </Scroller>
@@ -1000,7 +1002,40 @@ class Calendar extends React.Component {
 
               }
 
-          </Box>
+         {/* <Scroller  mouseWheel >
+              <Group.Head className="t-FS12 t-LH2 t-PT16">列表标题1</Group.Head>
+              <Group.List >
+
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+              </Group.List>
+              <Group.Head className="tFS12 t-LH2 tPT16">列表标题2</Group.Head>
+              <Group.List>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+                  <div className="t-LH44 t-PL10">aa</div>
+              </Group.List>
+          </Scroller>*/}
+
       </VBox>
     )
   }

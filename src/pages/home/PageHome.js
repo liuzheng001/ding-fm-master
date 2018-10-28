@@ -92,7 +92,7 @@ export default class PageHome extends Component {
     }
 
     /**
-     * 打开fm文件,   调用参数格式?programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2303|user_id
+     * 打开fm文件,   调用参数格式?programme=流程集合-2&script=钉钉转到相关的记录和布局&param=2303|user_id
      * 调用参数从home,page的路由获取this.props.params.fmfile
      * 转化为格式,并由服务器通过user_id,判断是否合法,合法的情况下打开,服务器调用:http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=openFM
      *
@@ -138,7 +138,7 @@ export default class PageHome extends Component {
         }
         const user_ID = login._UserID;
 
-        const host = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html";
+        const host = "../../openfm.html";
 
         let parames =  new  Array();
 

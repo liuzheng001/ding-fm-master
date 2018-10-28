@@ -1,4 +1,4 @@
-export default {
+/*export default {
   defaults() {
     return {
       loaded: false,
@@ -14,4 +14,4 @@ export default {
       setState({ loaded: true, templateList });
     // console.log(JSON.stringify(templateList))
   },
-};
+};*/

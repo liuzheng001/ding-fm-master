@@ -27,10 +27,9 @@ const Item = (props) => {
 class Item extends Component {
 
     openDetails = (instanceID) => {
-        const host = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html";
-        alert(login._UserName)
-
-        hashHistory.push('fmdetails/'+ encodeURIComponent(host+'?programme='+'流程集合-2'+'&script='+'钉钉转到相关的记录和布局php'+'&param='+instanceID+'%20'+login._UserName+'&user=&pwd=') );
+        const host = "../../openfm.html";
+        // alert(login._UserName)
+        hashHistory.push('fmdetails/'+ encodeURIComponent(host+'?programme='+'流程集合-2'+'&script='+'钉钉转到相关的记录和布局'+'&param='+instanceID+'%20'+login._UserName+'&user=&pwd=') );
         // hashHistory.push('fmdetails/' + host+'?programme='+'流程集合-2'+'&script='+'钉钉转到相关的记录和布局php'+'&param='+instanceID+'%20刘正'+'&user=&pwd=' );
     }
 
@@ -39,6 +38,17 @@ class Item extends Component {
 
     render(){
         let startTime ;
+        let authorizeFlag = null ,flagColor = null ;
+        if(this.props.aduitingList.indexOf(login._UserName) != -1){
+            authorizeFlag = 'pen'; flagColor='#fabd0e'
+        }else if(this.props.checkList.indexOf(login._UserName)!=-1) {
+            authorizeFlag = 'eye';flagColor='green'
+        }else{
+            authorizeFlag = 'lock';flagColor='#ccc'
+
+        }
+
+
         startTime = new Date(this.props.startDate);
         startTime = startTime.toLocaleDateString();
         return (
@@ -64,8 +74,10 @@ class Item extends Component {
                                 <HBox flex={1} vAlign="center" hAlign="end">
                                     {/*<img src="https://img.alicdn.com/tps/TB1S02rJFXXXXcuXpXXXXXXXXXX-58-58.png" className="demo-t-list-img" />*/}
                                     {/*<Icon name="eye" width={50} fill="#ccc" className="demo-t-list-arrow" />*/}
-                                    <Icon name="pen" width={50} fill="#fabd0e" className="demo-t-list-arrow" />
-
+                                {authorizeFlag?
+                                    <Icon name={authorizeFlag} width={50} fill={flagColor} className="demo-t-list-arrow" />
+                                        :
+                                    null}
                                 </HBox>
                                 {/*<Box>*/}
 
@@ -141,6 +153,7 @@ export default class Page extends Component {
 
     constructor(props) {
         super(props);
+        //路由传进来的参数
         var data = this.props.location.state;
         var {templateId,templateName} = data;
 
@@ -242,12 +255,12 @@ export default class Page extends Component {
 
     addInstance(){
 
-        let programme='流程集合-2',script='',param=''
+        let programme='流程集合-2',script='钉钉新建流程实例',param=this.state.templateId
         if( !programme ) {
             return;
         }
-        const host = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html";
-
+        const host = "../../openfm.html";
+        alert(param);
         //使用iframe方式打开webdriect
         hashHistory.push('fmdetails/'+ encodeURIComponent(host+'?programme='+programme+'&script='+script+'&param='+param+'%20'+login._UserName+'&user=&pwd=') );
     }

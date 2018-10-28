@@ -250,7 +250,6 @@ export default class PageHome extends Component {
         super(props);
         let loginState = login.isLogin?"登录":"未登"
 
-
         this.state = {
             showAlert: true,
             showConfirm: false,
@@ -309,7 +308,7 @@ export default class PageHome extends Component {
     }
 
     /**
-     * 打开fm文件,   调用参数格式?programme=流程集合-2&script=钉钉转到相关的记录和布局php&param=2303|user_id
+     * 打开fm文件,   调用参数格式?programme=流程集合-2&script=钉钉转到相关的记录和布局&param=2303|user_id
      * 调用参数从home,page的路由获取this.props.params.fmfile
      * 转化为格式,并由服务器通过user_id,判断是否合法,合法的情况下打开,服务器调用:http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=openFM
      *
@@ -344,7 +343,7 @@ export default class PageHome extends Component {
 
     openFMLink() {
 
-        const urlparam =  {"programme":"流程集合-2","script":"钉钉转到相关的记录和布局php","param":"2303"}
+        const urlparam =  {"programme":"流程集合-2","script":"钉钉转到相关的记录和布局","param":"2303"}
         // const urlparam = JSON.parse("{" + this.props.params.fmFile + "}");
 
         const {programme,script,param } = urlparam;

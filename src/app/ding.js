@@ -14,7 +14,7 @@ import PropTypes from "prop-types";
 
 
     // var OPENAPIHOST = 'http://'+location.host;
-    let OPENAPIHOST = 'http://r1w8478651.imwork.net:9998/corp_demo_php-master';
+    let OPENAPIHOST = login._host+login._corp;
 
     // var isDingtalk = /DingTalk/.test(navigator.userAgent);
     var proper = {};
@@ -302,7 +302,7 @@ const getDingtalkConfig = async () => {
     //http://192.168.0.102:3001/  必须是鉴权发出的网址，localhost和127.0。0.1都不可以
     await   $.ajax({
         // url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'),
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.4.101:3001/'),
+        url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.1.65:3001/'),
         type: 'GET',
         dataType: 'json',
         success: function (response) {
@@ -415,7 +415,7 @@ const getDingtalkConfig = async () => {
 }*/
 function  openFMLink() {
     //调试
-    const urlparam =  {"programme":"流程集合-2","script":"钉钉转到相关的记录和布局php","param":"2303"}
+    const urlparam =  {"programme":"流程集合-2","script":"钉钉转到相关的记录和布局","param":"2303"}
 
 
     // const urlparam = JSON.parse("{" + this.props.params.fmFile + "}");
@@ -426,7 +426,7 @@ function  openFMLink() {
     }
     // const user_ID = login._UserID;
 
-    const host = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html";
+    const host = "../../openfm.html";
 
     let parames =  new  Array();
 
@@ -464,7 +464,7 @@ const loginCheck = (userId,username) => {
                 if( !programme ) {
                     return;
                 }
-                const host = "http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html";
+                const host = "../../openfm.html";
 
                 // alert('调试:'+host+'?programme='+programme+'&script='+script+'&param='+param)
 
@@ -477,14 +477,14 @@ const loginCheck = (userId,username) => {
         })
         .catch(err=>{
             Dialog.alert({
-                title:err,
+                title:err.message,
                 content: username+":验证用户失败"
             });
-            dd.biz.navigation.close({
+           /* dd.biz.navigation.close({
                 onSuccess : function(result) {
                 },
                 onFail : function(err) {}
-            })
+            })*/
         })
 };
 

@@ -26,7 +26,7 @@ export default class Page extends Component {
 
     openFM(filename,param=null) {
         // http://localhost:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=朱祥见%202018-9-6&user=刘正&pwd=030528
-        const url = 'http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html?programme='+filename+'&script=&param='
+        const url = '../../openfm.html?programme='+filename+'&script=&param='
         param = param+"&user=钉钉&pwd=admin0422"
 
         //使用iframe方式打开webdriect

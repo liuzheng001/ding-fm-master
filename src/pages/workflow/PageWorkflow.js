@@ -63,7 +63,7 @@ export default class Page extends Component {
       let {url} = this.props.params
       // alert(typeof url+"url:"+url)
       if (url===undefined) {
-          url = 'http://r1w8478651.imwork.net:9998/ding-fm-master/openfm.html?programme=流程集合-2&script=&param=&user=&pwd=';
+          url = '../../openfm.html?programme=流程集合-2&script=&param=&user=&pwd=';
       }
 
       const screenHeight = window.screen.height;
@@ -87,7 +87,6 @@ export default class Page extends Component {
 
       return (
           <div>
-
               <Group className="demo-t-list">
                   <Group.Head className="t-demo-title">流程列表</Group.Head>
                   <Group.List lineIndent={80}>
@@ -100,7 +99,7 @@ export default class Page extends Component {
                                     <img src="https://img.alicdn.com/tps/TB1HInCJFXXXXXcXpXXXXXXXXXX-60-60.png" className="demo3-t-list-img"/>
                                  </Box>
                                 <Box className="demo3-t-list-text-content" flex={3}>
-                                    <Badge text={item.auditingNum} corner="rt" />
+                                    <Badge  style={{zIndex:1}} text={item.auditingNum} corner="rt" />
                                     {/*<Badge count={item.auditingNum}>*/}
                                         <p className="demo3-t-list-title t-omit">{item.title}<span className="demo3-t-list-cricle"/></p>
                                     {/*</Badge>*/}
@@ -113,7 +112,6 @@ export default class Page extends Component {
                           </div>)
                       })
                       }
-
                   </Group.List>
               </Group>
 
@@ -130,7 +128,6 @@ export default class Page extends Component {
                 data={this.state.templateList}
                 onClick={this.openInstanceList.bind(this)}
             />*/}
-
           </div>
       );
   }

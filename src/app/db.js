@@ -2,6 +2,7 @@ import nattyFetch from 'natty-fetch';
 import { Toast } from 'saltui';
 
 import { urlPrefix, isDev } from './variables';
+import login from './variables';
 
 // See https://github.com/Jias/natty-fetch for more details.
 const context = nattyFetch.context({
@@ -72,7 +73,7 @@ context.create('Contacts',{
         mock: false,
         mockUrl: 'query/getContacts.json',
         // url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=identityDingID',
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getcontract.php?action=identityDingID',
+        url: login._host+login._corp+'getcontract.php?action=identityDingID',
         data:{
         },
 
@@ -100,7 +101,7 @@ context.create('Schedule',{
     getScheduleList: {
         mock: false,
         mockUrl: 'query/getSchedule.json',
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getSchdule.php',
+        url: login._host+login._corp+'getSchdule.php',
         data:{
             action:'get_schedule_list_month'
         },
@@ -126,7 +127,7 @@ context.create('Schedule',{
     updateSignIn:{
         mock: false,
         // mockUrl: 'query/getSchedule.json',
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getSchdule.php',
+        url: login._host+login._corp+'getSchdule.php',
         data:{
             action:'updateSignIn',
 
@@ -142,7 +143,7 @@ context.create('Schedule',{
     attendanceUpdate:{
         mock: false,
         mockUrl: 'query/getAttendance.json',
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getSchdule.php',
+        url: login._host+login._corp+'getSchdule.php',
         data:{
             action:'attendanceUpdate',
 
@@ -164,7 +165,7 @@ context.create('Workflow', {
     getTemplateList: {
         mock: false,
         mockUrl: 'query/getTemplateList.json',
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getWorkflow.php',
+        url: login._host+login._corp+'getWorkflow.php',
         data: {
              action: 'get_template_list',
         },
@@ -179,7 +180,7 @@ context.create('Workflow', {
     getInstanceList: {
         mock: false,
         mockUrl: 'query/getScrollList.json',
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getWorkflow.php',
+        url: login._host+login._corp+'getWorkflow.php',
         data: {
             action: 'get_instance_list',
         },
@@ -200,7 +201,7 @@ context.create('DeptList',{
 
         mock: false,
         mockUrl: 'query/getDeptList.json',
-        url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php',
+        url: login._host+login._corp+'getOapiByName.php',
         data:{
             event:'get_department_list'
         },

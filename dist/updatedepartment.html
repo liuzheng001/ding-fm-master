@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>firstSalt</title>
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="cleartype" content="on">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="">
+<meta name="format-detection" content="telephone=no">
+<meta name="format-detection" content="email=no">
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="App"></div>
+<button id="update">更新钉钉的部门列表到fm的authtest中</button>
+<script type="text/javascript">
+$(function () {
+        $('#update').click(function () {
+            $.ajax({
+                url: 'http://liuzheng750417.imwork.net:8088/corp_php-master/getOapiByName.php?event=get_department_list',
+                type: 'POST',
+                dataType: 'json',
+                success: function (response) {
+                    if (response.errcode === 0) {
+                        //将列表数据存入filemaker
+                        $.ajax({
+                            url: 'http://liuzheng750417.imwork.net:8088/corp_php-master/getContract.php?action=update_department_list',
+                            type: 'get',
+                            dataType: 'json',
+                            data:{data:response.department},
+                            success: function (response) {
+                                if (response.success == true) {
+                                    alert("update department success!")
+                                }else{
+                                    alert("update department failure!")
+
+                                }
+                            },
+                            error: function (error) {
+                                alert(JSON.stringify(error));
+                            }
+                            })
+                    }
+                },
+                error: function (error) {
+                    alert(JSON.stringify(error));
+                }
+            });
+        })
+    })
+</script>
+</body>
+</html>
