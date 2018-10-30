@@ -1,6 +1,8 @@
 import { ScrollList, Group, Boxs,NavBar } from 'saltui';
 const { HBox, Box } = Boxs;
 import Icon from 'salt-icon';
+import ToastSuccess from 'salt-icon/lib/ToastSuccess';
+
 
 import {Component} from "refast";
 import './PageWorkflowDetails.less';
@@ -38,7 +40,7 @@ class Item extends Component {
 
     render(){
         let startTime ;
-        let authorizeFlag = null ,flagColor = null ;
+        let authorizeFlag = null ,flagColor = null ,isFinish = "";
         if(this.props.aduitingList.indexOf(login._UserName) != -1){
             authorizeFlag = 'pen'; flagColor='#fabd0e'
         }else if(this.props.checkList.indexOf(login._UserName)!=-1) {
@@ -48,6 +50,12 @@ class Item extends Component {
 
         }
 
+        if (this.props.duration === "") {
+            isFinish = false;
+        } else {
+            isFinish = true;
+        }
+
 
         startTime = new Date(this.props.startDate);
         startTime = startTime.toLocaleDateString();
@@ -55,35 +63,69 @@ class Item extends Component {
             <div className="newlist-details-item" onClick={this.openDetails.bind(this,this.props.instanceID)}>
                 <Group.List lineIndent={15} >
                     <div>
-                        <div className="demo-t-list-wrap-single">
-                            <HBox vAlign="center">
-                                <HBox flex={1}  >
-                                    <Box className="demo-t-list-text-content-single" flex={1} >
-                                        <p className="demo-t-list-title-single omit"><span style={{fontStyle:"italic"}}>编号:{`${this.props.instanceID}`}</span></p>
-                                        <p className="demo-t-list-title-single omit">发起:{`${this.props.start}`}</p>
-                                    </Box>
-                                </HBox>
-                                <HBox flex={2} >
-                                    <Box className="demo-t-list-text-content-single" flex={1}>
-                                        <p className="demo-t-list-title-single omit">开始日期:{startTime}</p>
-                                        <p className="demo-t-list-title-single omit"><span style={{fontStyle:"italic"}}>时长:</span></p>
-                                    </Box>
-                                </HBox>
+                        <div className="demo-t-list-wrap-single" >
+                                {  isFinish === true ?
+                                    <HBox vAlign="center">
 
-                                {/*审核或查看状态,通过图片来标识*/}
-                                <HBox flex={1} vAlign="center" hAlign="end">
-                                    {/*<img src="https://img.alicdn.com/tps/TB1S02rJFXXXXcuXpXXXXXXXXXX-58-58.png" className="demo-t-list-img" />*/}
-                                    {/*<Icon name="eye" width={50} fill="#ccc" className="demo-t-list-arrow" />*/}
-                                {authorizeFlag?
-                                    <Icon name={authorizeFlag} width={50} fill={flagColor} className="demo-t-list-arrow" />
-                                        :
-                                    null}
-                                </HBox>
-                                {/*<Box>*/}
+                                        <HBox flex={1}  >
+                                            <Box className="demo-t-list-text-content-single" flex={1} >
+                                                <p className="demo-t-list-title-single omit"><span style={{fontStyle:"italic", color:"#fabd0e"}}>编号:{`${this.props.instanceID}`}</span></p>
+                                                <p className="demo-t-list-title-single omit" style={{color:"#fabd0e"}}>发起:{`${this.props.start}`}</p>
+                                            </Box>
+                                        </HBox>
+                                        <HBox flex={2} >
+                                            <Box className="demo-t-list-text-content-single" flex={1}>
+                                                <p className="demo-t-list-title-single omit" style={{color:"#fabd0e"}}>开始日期:{startTime}</p>
+                                                <p className="demo-t-list-title-single omit"><span style={{fontStyle:"italic",color:"#fabd0e"}}>时长:{this.props.duration}天</span></p>
+                                            </Box>
+                                        </HBox>
 
-                                {/*<Icon name="angle-right" width={20} fill="#ccc" className="demo-t-list-arrow" />*/}
-                                {/*</Box>*/}
-                            </HBox>
+                                        {/*审核或查看状态,通过图片来标识*/}
+                                        <HBox flex={1} vAlign="center" hAlign="end">
+                                            {/*<img src="https://img.alicdn.com/tps/TB1S02rJFXXXXcuXpXXXXXXXXXX-58-58.png" className="demo-t-list-img" />*/}
+                                            {/*<Icon name="eye" width={50} fill="#ccc" className="demo-t-list-arrow" />*/}
+                                            {authorizeFlag?
+                                                <Icon name={authorizeFlag} width={50} fill={flagColor} className="demo-t-list-arrow" />
+                                                :
+                                                null}
+                                        </HBox>
+                                        {/*<Box>*/}
+
+                                        {/*<Icon name="angle-right" width={20} fill="#ccc" className="demo-t-list-arrow" />*/}
+                                        {/*</Box>*/}
+                                    </HBox>
+                                    :
+                                    <HBox vAlign="center">
+
+                                        <HBox flex={1}  >
+                                            <Box className="demo-t-list-text-content-single" flex={1} >
+                                                <p className="demo-t-list-title-single omit"><span style={{fontStyle:"italic"}}>编号:{`${this.props.instanceID}`}</span></p>
+                                                <p className="demo-t-list-title-single omit">发起:{`${this.props.start}`}</p>
+                                            </Box>
+                                        </HBox>
+                                        <HBox flex={2} >
+                                            <Box className="demo-t-list-text-content-single" flex={1}>
+                                                <p className="demo-t-list-title-single omit">开始日期:{startTime}</p>
+                                                {/*<p className="demo-t-list-title-single omit"><span style={{fontStyle:"italic"}}>时长:{this.props.duration}天</span></p>*/}
+                                            </Box>
+                                        </HBox>
+
+                                        {/*审核或查看状态,通过图片来标识*/}
+                                        <HBox flex={1} vAlign="center" hAlign="end">
+                                            {/*<img src="https://img.alicdn.com/tps/TB1S02rJFXXXXcuXpXXXXXXXXXX-58-58.png" className="demo-t-list-img" />*/}
+                                            {/*<Icon name="eye" width={50} fill="#ccc" className="demo-t-list-arrow" />*/}
+                                            {authorizeFlag?
+                                                <Icon name={authorizeFlag} width={50} fill={flagColor} className="demo-t-list-arrow" />
+                                                :
+                                                null}
+                                        </HBox>
+                                        {/*<Box>*/}
+
+                                        {/*<Icon name="angle-right" width={20} fill="#ccc" className="demo-t-list-arrow" />*/}
+                                        {/*</Box>*/}
+                                    </HBox>
+                                }
+
                         </div>
                     </div>
                 </Group.List>

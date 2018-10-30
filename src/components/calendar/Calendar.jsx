@@ -16,6 +16,48 @@ import './Calender.css'
 import login from "../../app/variables";
 import {receivePosts, selectDate} from "../../actions";
 
+//百度坐标转高德（传入经度、纬度）
+function bd_decrypt(bd_lng, bd_lat) {
+
+    var X_PI = Math.PI * 3000.0 / 180.0;
+
+    var x = bd_lng - 0.0065;
+
+    var y = bd_lat - 0.006;
+
+    var z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * X_PI);
+
+    var theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * X_PI);
+
+    var gg_lng = z * Math.cos(theta);
+
+    var gg_lat = z * Math.sin(theta);
+    return {lng: gg_lng, lat: gg_lat}
+}
+
+//高德坐标转百度（传入经度、纬度）
+function bd_encrypt(gg_lng, gg_lat) {
+    var X_PI = Math.PI * 3000.0 / 180.0;
+
+    var x = gg_lng, y = gg_lat;
+
+    var z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * X_PI);
+
+    var theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * X_PI);
+
+    var bd_lng = z * Math.cos(theta) + 0.0065;
+
+    var bd_lat = z * Math.sin(theta) + 0.006;
+
+    return {
+
+        bd_lat: bd_lat,
+
+        bd_lng: bd_lng
+
+    };
+}
+
 function daysInMonth(year) {
     // if (cache[year]) return cache[year]
     const days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -304,11 +346,14 @@ class Calendar extends React.Component {
                         //fm rest api 时间格式format('MM-DD-YYYY HH:mm:ss')
                         const signTime =  moment().format('MM-DD-YYYY HH:mm:ss')
 
+                        //将高德坐标转为百度
+                        const bd_lat_lng  = bd_encrypt(poi.longitude,poi.latitude)
+
                         DB.Schedule.updateSignIn({
                             eventID : eventID ,
                             signTime:signTime ,
-                            jingdu : poi.latitude,
-                            weidu : poi.longitude ,
+                            jingdu : bd_lat_lng.bd_lng ,
+                            weidu : bd_lat_lng.bd_lat,
                             address:address,
                         })
                     .then(response => {
@@ -374,11 +419,16 @@ class Calendar extends React.Component {
                 const lat = result.latitude;
                 const long = result.longitude;
                 // alert(lat+'long'+long);
+
+
+                //将高德坐标转为百度
+                const bd_lat_lng  = bd_encrypt(long,lat)
+
                 DB.Schedule.attendanceUpdate({
                     calendarID : calendarID ,
                     chuqiType: type,
-                    jingdu :lat,
-                    weidu : long ,
+                    jingdu : bd_lat_lng.bd_lng ,
+                    weidu : bd_lat_lng.bd_lat,
                 })
                     .then(response => {
                     // alert(JSON.stringify(response))
@@ -605,11 +655,15 @@ class Calendar extends React.Component {
 
             }else if(index === 1 && dataItem['lat'] && dataItem['long'] ){
                 // alert("进入地图")
-                alert(dataItem['lat']);
+                // alert(dataItem['lat']);
+
+                //将百度坐标转换为高德
+                const gd_lat_lng  = bd_decrypt(dataItem['long'],dataItem['lat'])
+
                 dd.biz.map.view({
 
-                    latitude: dataItem['lat'], // 纬度
-                    longitude: dataItem['long'], // 经度
+                    latitude: gd_lat_lng.lat, // 纬度
+                    longitude: gd_lat_lng.lng, // 经度
                     title: "查看地图", // 限制搜索POI的范围；设备位置为中心，scope为搜索半径
 
                 });
@@ -762,10 +816,10 @@ class Calendar extends React.Component {
                   scheduleDay.push({
                       "title": item.fieldData.日程内容,
                       "text": item.fieldData.签到地址,
-                      imgUrl:  item.fieldData['经度'] && item.fieldData['纬度']?'https://img.alicdn.com/tps/TB1j2u5JFXXXXaEXVXXXXXXXXXX-564-1004.jpg':null,
+                      imgUrl:  item.fieldData['经度'] && item.fieldData['纬度']?'../../navigation_96px_1201170_easyicon.net.png':null,
                       date : item.fieldData['签到时间'],
-                      lat:item.fieldData['经度'],
-                      long:item.fieldData['纬度'],
+                      long:item.fieldData['经度'],
+                      lat:item.fieldData['纬度'],
                       day:date,
                       month:month,
                       year:year,

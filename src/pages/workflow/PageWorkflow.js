@@ -93,10 +93,9 @@ export default class Page extends Component {
 
                       {this.state.templateList.map((item) =>{
                           return (
-                          <div className="demo3-t-list-wrap"   onClick={this.openInstanceList.bind(this,item.title,item.templateId)}>
-                              <HBox vAlign='center'>
+                          <HBox className="demo3-t-list-wrap"   vAlign='center' onClick={this.openInstanceList.bind(this,item.title,item.templateId)}>
                                 <Box flex={1}>
-                                    <img src="https://img.alicdn.com/tps/TB1HInCJFXXXXXcXpXXXXXXXXXX-60-60.png" className="demo3-t-list-img"/>
+                                    <img src="../../link_48px_27564_easyicon_net.jpg" className="demo3-t-list-img"/>
                                  </Box>
                                 <Box className="demo3-t-list-text-content" flex={3}>
                                     <Badge  style={{zIndex:1}} text={item.auditingNum} corner="rt" />
@@ -108,8 +107,7 @@ export default class Page extends Component {
                                  <HBox flex={1} hAlign="end" style={{paddingRight:"20px"}}>
                                       <Icon name="angle-right" className="logo" />
                                   </HBox>
-                              </HBox>
-                          </div>)
+                          </HBox>)
                       })
                       }
                   </Group.List>
