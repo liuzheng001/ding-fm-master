@@ -4,7 +4,7 @@ import {Button,Boxs} from 'saltui'
 
 import './Sign.css'
 import PropTypes from "prop-types";
-import Page from "../../pages/ding/PageDing";
+// import Page from "../../pages/ding/PageDing";
 import login from "../../app/variables";
 
 export default class Sign extends Component {
@@ -54,8 +54,8 @@ export default class Sign extends Component {
     }
 }
 
-Page.contextTypes = {
+/*Page.contextTypes = {
     data:PropTypes.string,
     callbackIndex:PropTypes.func.isRequired
-}
+}*/
 
