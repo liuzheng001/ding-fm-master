@@ -106,6 +106,7 @@ class Item extends Component {
                                         <HBox flex={2} >
                                             <Box className="demo-t-list-text-content-single" flex={1}>
                                                 <p className="demo-t-list-title-single omit">开始日期:{startTime}</p>
+                                                <p className="demo-t-list-title-single omit"><span style={{fontStyle:"italic"}}>当前阶段:{this.props.currentStep}</span></p>
                                                 {/*<p className="demo-t-list-title-single omit"><span style={{fontStyle:"italic"}}>时长:{this.props.duration}天</span></p>*/}
                                             </Box>
                                         </HBox>

@@ -88,7 +88,7 @@ export default class Page extends Component {
       return (
           <div>
               <Group className="demo-t-list">
-                  <Group.Head className="t-demo-title">流程列表</Group.Head>
+                  {/*<Group.Head className="t-demo-title">流程列表</Group.Head>*/}
                   <Group.List lineIndent={80}>
 
                       {this.state.templateList.map((item) =>{

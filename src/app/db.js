@@ -83,6 +83,7 @@ context.create('Contacts',{
                 content: '验证用户',
             });
         },
+
         /*fit(response) {
             return {
                 success: response.messages[0].code === "0" ,
@@ -94,6 +95,20 @@ context.create('Contacts',{
                 },
             };
         },*/
+    },
+    getUserMessage: {
+        mock: false,
+        // mockUrl: 'query/getContacts.json',
+        url: login._host+login._corp+'getcontract.php?action=userDingIdMessage',
+        data:{
+        },
+
+        willFetch() {
+            Toast.show({
+                type: 'loading',
+                content: '验证用户',
+            });
+        },
     },
 });
 

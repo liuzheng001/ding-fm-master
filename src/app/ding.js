@@ -110,7 +110,15 @@ import PropTypes from "prop-types";
         return new Promise(function(resolve, reject){
             dd.ready(function(){
 
-
+                //返回按钮点击的事件监听(android)
+                document.addEventListener('backbutton', function(e) {
+                    e.preventDefault();
+                    dd.device.notification.alert({
+                        message: "回钉钉,点击右侧登录按钮.",
+                        title: "提示",//可传空
+                        buttonName: "关闭",
+                    });
+                }, false);
 
                /* // 退到后台的事件监听(webview)
                 document.addEventListener('pause', function(e) {
@@ -128,15 +136,6 @@ import PropTypes from "prop-types";
                 }, false);
 
 
-                //返回按钮点击的事件监听(android)
-                document.addEventListener('backbutton', function(e) {
-                    e.preventDefault();
-                    dd.device.notification.alert({
-                        message: '哎呀，你不小心点到返回键啦!',
-                        title: '...警告...'
-                    });
-                }, false);
-
                 // 网络连接成功的事件监听
                 document.addEventListener('online', function(e) {
                     e.preventDefault();
@@ -152,27 +151,27 @@ import PropTypes from "prop-types";
 
                 }, false);*/
 
-                if(dd.ios){
-                   /* dd.biz.navigation.setLeft({
+                    dd.biz.navigation.setLeft({
                         control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
                         // show:false,
-                        text: '退出',//控制显示文本，空字符串表示显示默认文本
+                        text: '返回',//控制显示文本，空字符串表示显示默认文本
                         onSuccess : function(result) {
                             // window.location.href = document.referrer;
-
-                            dd.biz.navigation.close({
-                                onSuccess : function(result) {
-                                    /!*result结构
-                                     {}
-                                     *!/
+                            dd.device.notification.alert({
+                                message: "回钉钉,点击右侧登录按钮.",
+                                title: "提示",//可传空
+                                buttonName: "关闭",
+                                onSuccess : function() {
+                                    //onSuccess将在点击button之后回调
+                                    /*回调*/
                                 },
                                 onFail : function(err) {}
-                            })
+                            });
                         },
                         onFail : function(err) {
                             alert(JSON.stringify(err));
                         }
-                    });*/
+                    });
                     dd.biz.navigation.setRight({
                         show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
                         control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
@@ -182,7 +181,7 @@ import PropTypes from "prop-types";
                         },
                         onFail : function(err) {}
                     });
-                }
+
                 dd.runtime.permission.requestAuthCode({
                     corpId: corpId,
                     onSuccess: function(result) {
@@ -296,13 +295,14 @@ const getDingtalkConfig = async () => {
         'biz.util.open',
         'biz.map.view',
         'biz.map.search',
+        'device.launcher.launchApp',
 
     ];
 
     //http://192.168.0.102:3001/  必须是鉴权发出的网址，localhost和127.0。0.1都不可以
     await   $.ajax({
         // url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'),
-        url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'),
+        url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.4.104:3001/'),
         type: 'GET',
         dataType: 'json',
         success: function (response) {

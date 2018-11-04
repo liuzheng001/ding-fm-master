@@ -27,15 +27,16 @@ import PageHome from 'pages/home';
 import PageWorkflow from 'pages/workflow';
 import PageWorkflowDetails from 'pages/workflowdetails';
 import PageFmProgramme from 'pages/fmprogramme';
-import PageTree from 'pages/tree';
+// import PageTree from 'pages/tree';
+import PageMine from 'pages/mine';
 import PageDetails from 'pages/fmdetails'
 
 import PropTypes from 'prop-types';
 
 import DB from 'db';
 import './app.less';
-import Sign from "../components/sign/Sign";
-import OpenFmProgamme from '../components/openfmprogamme'
+import Sign from "components/sign";
+import OpenFmProgamme from 'components/openfmprogamme'
 // import Button from "saltui/src/Button/Button";
 
 
@@ -112,7 +113,7 @@ class App extends Component {
                 path: '/center',
             },*/
             { title: 'FM方案', icon: <Time />,path: '/b/star' },
-            { title: '我的', icon: <Time />, badge: 8, path: '/c/star' },
+            { title: '我的', icon: <Time />,  path: '/c/star' },
         ];
 
         this.state={
@@ -169,7 +170,7 @@ class App extends Component {
                   path = '/fmprogramme'
                   break;
               case 3:
-                  path = '/tree'
+                  path = '/mine'
                   break;
           }
           customHistory.push(path);
@@ -254,7 +255,7 @@ render(
                   <Route  path="/fmprogramme" component={PageFmProgramme} onEnter = {authRequired} >
                       <Route  path="router1"  component={()=>(<h1>this is test router</h1>)} />
                   </Route>
-                  <Route path="/tree" component={PageTree}  onEnter = {authRequired} />
+                  <Route path="/mine" component={PageMine}  onEnter = {authRequired} />
              </Route>
             {/*<Route path="/workflowdetails/:templateId" component={PageWorkflowDetails} />*/}
             <Route path="/workflowdetails" component={PageWorkflowDetails} />

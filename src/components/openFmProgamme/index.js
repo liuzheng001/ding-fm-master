@@ -1,1 +1,1 @@
-export default from './OpenFm';
+export default from './OpenFmProgamme';

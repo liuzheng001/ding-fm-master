@@ -2,9 +2,9 @@ import React,{ Component }  from 'react'
 import {Link,hashHistory} from 'react-router'
 import {Button,Boxs} from 'saltui'
 
-import './OpenFm.css'
+import './OpenFmProgamme.css'
 
-export default class Sign extends Component {
+export default class OpenFmProgamme extends Component {
 
     constructor(props) {
         super(props);
@@ -23,11 +23,13 @@ export default class Sign extends Component {
             hashHistory.push('/fmprogramme');
         }
 
+
     }
 
     render() {
         const {url} = this.props.params
         const { VBox, Box } = Boxs;
+        // alert(url);
 
         const screenHeight = window.screen.height;
         const screenWidth = window.screen.width;
@@ -43,8 +45,9 @@ export default class Sign extends Component {
             contentHeight = (screenHeight-20-44-44) ; //顶部状态栏20,导航栏44,下部返回和home栏44
         }
         return (
+
             <VBox vAlign="center" style={{height:contentHeight}}>
-                <Box flex={1}><iframe  src={url} style={{ width:'100%', height:contentHeight,border:'none', margin:0, padding:0, overflow:'hidden', zIndex:'999999'}} onLoad={this.load.bind(this)}/></Box>
+                <Box flex={1}><iframe  src={url} style={{ width:'100%', height:contentHeight,border:'none', margin:0, padding:0, overflow:'hidden', zIndex:'999999'}} onLoad={this.load.bind(this)} /></Box>
             </VBox>
         );
     }
