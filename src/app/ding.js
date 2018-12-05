@@ -300,9 +300,9 @@ const getDingtalkConfig = async () => {
     ];
 
     //http://192.168.0.102:3001/  必须是鉴权发出的网址，localhost和127.0。0.1都不可以
-    await   $.ajax({
+     await   $.ajax({
         // url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'),
-        url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.4.104:3001/'),
+        url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.4.101:3001/'),
         type: 'GET',
         dataType: 'json',
         success: function (response) {
@@ -460,7 +460,9 @@ const loginCheck = (userId,username) => {
             if(login._FmLink){
                 const urlparam = JSON.parse("{" + login._FmLink + "}");
 
-                let {programme,script,param } = urlparam;
+                // alert(JSON.stringify(urlparam))
+
+                let {programme,script,instanceID } = urlparam;
                 if( !programme ) {
                     return;
                 }
@@ -469,7 +471,7 @@ const loginCheck = (userId,username) => {
                 // alert('调试:'+host+'?programme='+programme+'&script='+script+'&param='+param)
 
                 //使用iframe方式打开webdriect
-                hashHistory.push('fmdetails/'+ encodeURIComponent(host+'?programme='+programme+'&script='+script+'&param='+param+'%20'+login._UserName+'&user=&pwd=') );
+                hashHistory.push('fmdetails/'+ encodeURIComponent(host+'?programme='+programme+'&script='+script+'&param='+instanceID+'%20'+login._UserName+'&user=&pwd=') );
             }
             else{
                 hashHistory.push('/');}

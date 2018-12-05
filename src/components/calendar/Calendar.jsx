@@ -407,7 +407,7 @@ class Calendar extends React.Component {
         });
     }
 
-    attendanceUpdate(t,calendarID,type,date,year,month) {
+    attendanceUpdate(t,calendarID,type,AttendanceMode,date,year,month) {
 
         // const {getScheduleListforMonth} = this
         dd.device.geolocation.get({
@@ -426,6 +426,7 @@ class Calendar extends React.Component {
 
                 DB.Schedule.attendanceUpdate({
                     calendarID : calendarID ,
+                    AttendanceMode:AttendanceMode,
                     chuqiType: type,
                     jingdu : bd_lat_lng.bd_lng ,
                     weidu : bd_lat_lng.bd_lat,
@@ -436,7 +437,6 @@ class Calendar extends React.Component {
                     if(response.response.data === '上传成功'){
                         alert('出勤状态更改成功')
                         t.getScheduleListforMonth(date,year,month)
-
                     }
                 })
                     .catch(error=>{
@@ -741,13 +741,14 @@ class Calendar extends React.Component {
             }, (index) => {
                 //未选择取消
                 if (index !== -1) {
+                    let options = ['自驾', '搭车', '公交'];
                     Dialog.confirm({
                         title: '提示',
                         // locale: 'en_US',
                         content: '确定出勤?',
                         onConfirm() {
                             //记录出勤位置
-                            t.attendanceUpdate(t,calendarID,'出勤',date,year,month)
+                            t.attendanceUpdate(t,calendarID,'出勤',options[index],date,year,month)
                         },
                         /*onCancel() {
                         },*/
@@ -761,7 +762,7 @@ class Calendar extends React.Component {
                 content: '确定收工?',
                 onConfirm() {
                     //记录收工位置
-                    t.attendanceUpdate(t,calendarID,'收工',date,year,month)
+                    t.attendanceUpdate(t,calendarID,'收工',null,date,year,month)
                 },
                 /*onCancel() {
                 },*/
