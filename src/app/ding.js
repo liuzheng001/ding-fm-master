@@ -197,6 +197,7 @@ import PropTypes from "prop-types";
 
 
 const dd = window.dd;
+
 if (!dd) {
     console.error(`window.dd为${dd}，请确认钉钉 API 是否加载/加载顺序正确`)
 }
@@ -302,7 +303,7 @@ const getDingtalkConfig = async () => {
     //http://192.168.0.102:3001/  必须是鉴权发出的网址，localhost和127.0。0.1都不可以
      await   $.ajax({
         // url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'),
-        url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.4.101:3001/'),
+        url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/?dd_orientation=auto'  ),
         type: 'GET',
         dataType: 'json',
         success: function (response) {
