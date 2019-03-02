@@ -38,10 +38,20 @@ export default class Page extends Component {
 
     //使用webdire方式，需要账户，密码
     openFM(filename,param=null) {
-        // http://localhost:3001/openfm.html?programme=日程方案&script=转到日历详情php&param=朱祥见%202018-9-6&user=刘正&pwd=030528
 
-        const url = 'http://liuzheng750417.imwork.net:591/fmi/webd/'+filename+'?homeurl=about:black'
+        // const url = 'http://liuzheng750417.imwork.net:591/fmi/webd/'+filename+'?homeurl=about:black'
+        const url = 'https://filemaker.ckkj.net.cn:442/fmi/webd/'+filename+'?homeurl=about:black'
+
         hashHistory.push('openfmprogramme/' + encodeURIComponent(url));
+
+        //没有旋转效果
+        /*dd.device.screen.rotateView({
+            showStatusBar : true, // 否显示statusbar
+            clockwise : true, // 是否顺时针方向
+            onSuccess : function(result) {
+            },
+            onFail : function(err) {}
+        });*/
 
 
         //打开第三方应用,但如果是中文方案名,打不开,英文可以,原因不明;而且android据说不能带参数

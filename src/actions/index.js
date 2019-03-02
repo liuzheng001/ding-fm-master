@@ -45,7 +45,7 @@ const fetchPosts = (date,year,month) => dispatch => {
             dispatch(selectDate(date, year, month))
             )
         .catch(error=>{
-                alert('error'+JSON.stringify(error))
+                alert('get schedule error'+JSON.stringify(error))
             }
         )
 

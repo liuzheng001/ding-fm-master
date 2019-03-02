@@ -47,6 +47,7 @@ export default class OpenFmProgamme extends Component {
         return (
 
             <VBox vAlign="center" style={{height:contentHeight}}>
+
                 <Box flex={1}><iframe  src={url} style={{ width:'100%', height:contentHeight,border:'none', margin:0, padding:0, overflow:'hidden', zIndex:'999999'}} onLoad={this.load.bind(this)} /></Box>
             </VBox>
         );

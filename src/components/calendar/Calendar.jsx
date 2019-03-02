@@ -286,17 +286,35 @@ class Calendar extends React.Component {
         OnScheduleList(date,year,month)
     }
 
+    /**
+     *
+     * @param eventID
+     * @param OnScheduleList
+     * tripMode 自驾,公交,搭车
+     * @param date
+     * @param year
+     * @param month
+     */
 
-    signIn(eventID,OnScheduleList,date,year,month) {
+    signIn(eventID,OnScheduleList,tripMode,date,year,month) {
 
+        //打开地图,并修正poi
+       /* dd.biz.map.search({
+            // 29.8369399124,106.6972446442
+            latitude: 29.8369399124, // 纬度
+            longitude: 106.6972446442, // 经度
+
+            scope: 100, // 限制搜索POI的范围；设备位置为中心，scope为搜索半径
+
+        })*/
         // const {getScheduleListforMonth} = this
-
         dd.device.geolocation.get({
             targetAccuracy: 200,
             coordinate: 1,//高德坐标
             withReGeocode: true,
             useCache: true, //默认是true，如果需要频繁获取地理位置，请设置false
             onSuccess: function (result) {
+
                 /* 高德坐标 result 结构
                  {
                  longitude : Number,
@@ -323,8 +341,15 @@ class Calendar extends React.Component {
                 const long = result.longitude;
                 //打开地图,并修正poi
                 dd.biz.map.search({
+
                     latitude: lat, // 纬度
                     longitude: long, // 经度
+
+
+                    /*无poi地址测试
+                    latitude: 29.8369399124, // 纬度
+                    longitude: 106.6972446442, // 经度*/
+
                     scope: 100, // 限制搜索POI的范围；设备位置为中心，scope为搜索半径
 
                     onSuccess: function (poi) {
@@ -355,8 +380,8 @@ class Calendar extends React.Component {
                             jingdu : bd_lat_lng.bd_lng ,
                             weidu : bd_lat_lng.bd_lat,
                             address:address,
-                        })
-                    .then(response => {
+                            tripMode:tripMode
+                        }).then(response => {
                                 // alert(JSON.stringify(response))
                                 // dispatch(receivePosts(response));
                                 if(response.response.data === '上传成功'){
@@ -367,7 +392,7 @@ class Calendar extends React.Component {
                                 }
                             })
                             .catch(error=>{
-                                    alert('error'+JSON.stringify(error))
+                                    alert('后台错误'+JSON.stringify(error))
                                 }
                             )
 
@@ -396,16 +421,57 @@ class Calendar extends React.Component {
 
                     },
                     onFail: function (err) {
+                        /*alert("微调错误:"+JSON.stringify(err));*/
+                        //未找到poi信息,则直接添加定位信息
+                        if (err.errorCode === "3") {
+                            const signTime =  moment().format('MM-DD-YYYY HH:mm:ss')
+                            //将高德坐标转为百度
+                            const bd_lat_lng  = bd_encrypt( long,lat)
+
+
+                            DB.Schedule.updateSignIn({
+                                eventID : eventID ,
+                                signTime:signTime ,
+                                jingdu : bd_lat_lng.bd_lng ,
+                                weidu : bd_lat_lng.bd_lat,
+                                address:"无poi",
+                                tripMode:tripMode
+                            }).then(response => {
+                                // alert(JSON.stringify(response))
+                                // dispatch(receivePosts(response));
+                                if(response.response.data === '上传成功'){
+                                    // alert('ad')
+                                    // this.getScheduleListforMonth(date,year,month)
+                                    OnScheduleList(date,year,month)
+
+                                }
+                            })
+                                .catch(error=>{
+                                        alert('后台错误'+JSON.stringify(error))
+                                    }
+                                )
+                        }
                     }
                 });
 
             },
             onFail: function (err) {
-                alert(JSON.stringify(err));
+                alert("定位错误:"+JSON.stringify(err));
 
             }
         });
     }
+
+    /**
+     *
+     * @param t
+     * @param calendarID
+     * @param type 出勤 ,收工
+     * @param AttendanceMode  搭车,自驾,公交
+     * @param date
+     * @param year
+     * @param month
+     */
 
     attendanceUpdate(t,calendarID,type,AttendanceMode,date,year,month) {
 
@@ -419,8 +485,6 @@ class Calendar extends React.Component {
                 const lat = result.latitude;
                 const long = result.longitude;
                 // alert(lat+'long'+long);
-
-
                 //将高德坐标转为百度
                 const bd_lat_lng  = bd_encrypt(long,lat)
 
@@ -629,9 +693,9 @@ class Calendar extends React.Component {
         const today = moment();
         if(dataItem.day === today.date() &&  dataItem.month === today.month() && dataItem.year === today.year()) {
             if (dataItem['lat'] && dataItem['long']) {
-                options = ['修改', '查看地图']
+                options = ['修改-自驾', '修改-搭车','修改-公交','查看地图']
             } else {
-                options = ['签到']
+                options = ['签到-自驾', '签到-搭车','签到-公交']
             }
         }else{
             if (dataItem['lat'] && dataItem['long']) {
@@ -646,14 +710,14 @@ class Calendar extends React.Component {
             message: dataItem['title'],
             maskClosable: false,
         }, (index) => {
-            if (index === 0  ) {
+            if ( options[index] === '修改-自驾' || options[index] === '修改-搭车' || options[index] === '修改-公交'   ||
+                options[index] === '签到-自驾' || options[index] === '签到-搭车' || options[index] === '签到-公交' ) {
                 if(dataItem.day === today.date() &&  dataItem.month === today.month() && dataItem.year === today.year()){
-                    this.signIn(dataItem.eventID,OnScheduleList,dataItem.day,dataItem.year,dataItem.month)
-                }/*else{
-                    alert('不能签到')
-                }*/
+                    var tripMode = options[index].substring(3);
+                    this.signIn(dataItem.eventID,OnScheduleList,tripMode,dataItem.day,dataItem.year,dataItem.month)
+                }
 
-            }else if(index === 1 && dataItem['lat'] && dataItem['long'] ){
+            }else if(options[index] === '查看地图'  && dataItem['lat'] && dataItem['long'] ){
                 // alert("进入地图")
                 // alert(dataItem['lat']);
 
@@ -733,7 +797,7 @@ class Calendar extends React.Component {
             return
         }
         if(attendanceStatus === '出勤') {
-            ActionSheet.show({
+            /*ActionSheet.show({
                 options: ['自驾', '搭车', '公交'],
                 destructiveButtonIndex: 0,
                 message: '外出方式',
@@ -750,23 +814,46 @@ class Calendar extends React.Component {
                             //记录出勤位置
                             t.attendanceUpdate(t,calendarID,'出勤',options[index],date,year,month)
                         },
-                        /*onCancel() {
-                        },*/
+                        /!*onCancel() {
+                        },*!/
                     });
                 }
-            });
-        }else if(attendanceStatus === '收工') {
+            });*/
             Dialog.confirm({
+                title: '提示',
+                content: '确定出勤?',
+                onConfirm() {
+                    //记录出勤位置
+                    t.attendanceUpdate(t, calendarID, '出勤', null, date, year, month)
+                },
+            onCancel() {
+                 }
+            })
+        }else if(attendanceStatus === '收工') {
+           /* Dialog.confirm({
                 title: '提示',
                 // locale: 'en_US',
                 content: '确定收工?',
                 onConfirm() {
                     //记录收工位置
-                    t.attendanceUpdate(t,calendarID,'收工',null,date,year,month)
+                    t.attendanceUpdate(t,calendarID,'收工',tripMode,date,year,month)
                 },
-                /*onCancel() {
-                },*/
-            });
+                /!*onCancel() {
+                },*!/
+            });*/
+          let options = ['自驾','搭车','公交'];
+            ActionSheet.show({
+                options:options ,
+                destructiveButtonIndex: 0,
+                message: '确定收工',
+                maskClosable: false,
+            }, (index) => {
+                if (index < 3) {
+                    t.attendanceUpdate(t,calendarID,'收工',options[index],date,year,month)
+
+                }
+
+            })
         }
     }
 
@@ -1057,39 +1144,6 @@ class Calendar extends React.Component {
 
               }
 
-         {/* <Scroller  mouseWheel >
-              <Group.Head className="t-FS12 t-LH2 t-PT16">列表标题1</Group.Head>
-              <Group.List >
-
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-              </Group.List>
-              <Group.Head className="tFS12 t-LH2 tPT16">列表标题2</Group.Head>
-              <Group.List>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-                  <div className="t-LH44 t-PL10">aa</div>
-              </Group.List>
-          </Scroller>*/}
 
       </VBox>
     )

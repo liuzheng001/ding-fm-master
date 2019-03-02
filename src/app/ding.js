@@ -217,11 +217,22 @@ if (!dd) {
 
                     loginCheck(response.userid,response.name);
 
+                    dd.device.screen.resetView({
+                        showStatusBar: true, // 否显示statusbar
+                        clockwise: true, // 是否顺时针方向
+                        onSuccess: function (result) {
+                            alert("adf");
+                        },
+                        onFail: function (err) {
+                            alert('旋转 error: ' + JSON.stringify(err));
+
+                        },
+                    })
                     dd.biz.navigation.setRight({
                         show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
                         control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
                         text: '已登录',//控制显示文本，空字符串表示显示默认文本
-                        onSuccess : function(result) {
+                      /*  onSuccess : function(result) {
                             //如果control为true，则onSuccess将在发生按钮点击事件被回调
                             dd.device.notification.confirm({
                                 message: "退出登录",
@@ -235,9 +246,9 @@ if (!dd) {
                                         if (result.buttonIndex == 1) {
                                             dd.biz.navigation.close({
                                                 onSuccess : function(result) {
-                                                    /*result结构
+                                                    /!*result结构
                                                     {}
-                                                    */
+                                                    *!/
                                                 },
                                                 onFail : function(err) {}
                                             })
@@ -248,9 +259,25 @@ if (!dd) {
                                 onFail : function(err) {}
                             });
 
+                        },*/
+                        // });
+
+                        onSuccess : function(result) {
+                            alert("adfw");
+                            dd.device.screen.resetView({
+                                showStatusBar: true, // 否显示statusbar
+                                clockwise: true, // 是否顺时针方向
+                                onSuccess: function (result) {
+                                    alert("adf");
+                                },
+                                onFail: function (err) {
+                                    alert('旋转 error: ' + JSON.stringify(err));
+
+                                },
+                            })
                         },
                         onFail : function(err) {}
-                    });
+                            });
 
 /*
                     Dialog.alert({
@@ -297,14 +324,15 @@ const getDingtalkConfig = async () => {
         'biz.map.view',
         'biz.map.search',
         'device.launcher.launchApp',
-
     ];
 
     //http://192.168.0.102:3001/  必须是鉴权发出的网址，localhost和127.0。0.1都不可以
      await   $.ajax({
         // url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'),
-        url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/?dd_orientation=auto'  ),
-        type: 'GET',
+        url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'  ),
+        //  url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/?dd_orientation=auto'  ),
+
+         type: 'GET',
         dataType: 'json',
         success: function (response) {
             if (response.errcode === 0) {
@@ -493,30 +521,30 @@ const loginCheck = (userId,username) => {
 
 
 export const DDReady = new Promise((resolve, reject) => {
-  getDingtalkConfig().then(data => {
-     // console.log(data);
-    dd.config(data);
-    getUserId(data.corpId);
-    dd.error(function(err) {
-      alert('dd error: ' + JSON.stringify(err));
-      reject(err);
-    });
-  })
-      .catch(function(){
-      //failure
-      dd.biz.navigation.setRight({
-          show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
-          control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
-          text: '未登录',//控制显示文本，空字符串表示显示默认文本
-          onSuccess : function(result) {
-              //如果control为true，则onSuccess将在发生按钮点击事件被回调
-              /*
-               {}
-               */
-              alert("尚未登录")
-          },
-          onFail : function(err) {}
-      });
-  });
+    getDingtalkConfig().then(data => {
+        // console.log(data);
+        dd.config(data);
+        getUserId(data.corpId);
+        dd.error(function (err) {
+            alert('dd error: ' + JSON.stringify(err));
+            reject(err);
+        });
+    }).catch(function () {
+            //failure
+            dd.biz.navigation.setRight({
+                show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
+                control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
+                text: '未登录',//控制显示文本，空字符串表示显示默认文本
+                onSuccess: function (result) {
+                    //如果control为true，则onSuccess将在发生按钮点击事件被回调
+                    /*
+                     {}
+                     */
+                    alert("尚未登录")
+                },
+                onFail: function (err) {
+                }
+            });
+        });
 });
 
