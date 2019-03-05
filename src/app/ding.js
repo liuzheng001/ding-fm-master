@@ -217,22 +217,12 @@ if (!dd) {
 
                     loginCheck(response.userid,response.name);
 
-                    dd.device.screen.resetView({
-                        showStatusBar: true, // 否显示statusbar
-                        clockwise: true, // 是否顺时针方向
-                        onSuccess: function (result) {
-                            alert("adf");
-                        },
-                        onFail: function (err) {
-                            alert('旋转 error: ' + JSON.stringify(err));
 
-                        },
-                    })
                     dd.biz.navigation.setRight({
                         show: true,//控制按钮显示， true 显示， false 隐藏， 默认true
                         control: true,//是否控制点击事件，true 控制，false 不控制， 默认false
                         text: '已登录',//控制显示文本，空字符串表示显示默认文本
-                      /*  onSuccess : function(result) {
+                        onSuccess : function(result) {
                             //如果control为true，则onSuccess将在发生按钮点击事件被回调
                             dd.device.notification.confirm({
                                 message: "退出登录",
@@ -240,15 +230,14 @@ if (!dd) {
                                 buttonLabels: ['取消', '确认'],
                                 onSuccess : function(result) {
                                     //onSuccess将在点击button之后回调
-
                                     {
                                         // buttonIndex: 0 //被点击按钮的索引值，Number类型，从0开始
                                         if (result.buttonIndex == 1) {
                                             dd.biz.navigation.close({
                                                 onSuccess : function(result) {
-                                                    /!*result结构
+                                                    /*result结构
                                                     {}
-                                                    *!/
+                                                    */
                                                 },
                                                 onFail : function(err) {}
                                             })
@@ -259,12 +248,12 @@ if (!dd) {
                                 onFail : function(err) {}
                             });
 
-                        },*/
-                        // });
+                        },
+                        });
 
-                        onSuccess : function(result) {
+                        /*onSuccess : function(result) {
                             alert("adfw");
-                            dd.device.screen.resetView({
+                            dd.device.screen.rotateView({
                                 showStatusBar: true, // 否显示statusbar
                                 clockwise: true, // 是否顺时针方向
                                 onSuccess: function (result) {
@@ -277,7 +266,7 @@ if (!dd) {
                             })
                         },
                         onFail : function(err) {}
-                            });
+                            });*/
 
 /*
                     Dialog.alert({
@@ -324,12 +313,14 @@ const getDingtalkConfig = async () => {
         'biz.map.view',
         'biz.map.search',
         'device.launcher.launchApp',
+        // 'device.screen.rotateView',
     ];
 
     //http://192.168.0.102:3001/  必须是鉴权发出的网址，localhost和127.0。0.1都不可以
      await   $.ajax({
         // url: 'http://r1w8478651.imwork.net:9998/corp_demo_php-master/getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'),
-        url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'  ),
+        //  url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'  ),
+         url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/'  ),
         //  url: login._host+login._corp+'getOapiByName.php?event=jsapi-oauth&href=' + encodeURIComponent('http://192.168.0.102:3001/?dd_orientation=auto'  ),
 
          type: 'GET',
@@ -500,7 +491,7 @@ const loginCheck = (userId,username) => {
                 // alert('调试:'+host+'?programme='+programme+'&script='+script+'&param='+param)
 
                 //使用iframe方式打开webdriect
-                hashHistory.push('fmdetails/'+ encodeURIComponent(host+'?programme='+programme+'&script='+script+'&param='+instanceID+'%20'+login._UserName+'&user=&pwd=') );
+                hashHistory.push('fmdetails/'+ encodeURIComponent(host+'?programme='+programme+'&script='+script+'&param='+instanceID+'%20'+login._UserName+'&user=&pwd='+'&isLink=true') );
             }
             else{
                 hashHistory.push('/');}

@@ -303,7 +303,7 @@ export default class Page extends Component {
             return;
         }
         const host = "../../openfm.html";
-        alert(param);
+        // alert(param);
         //使用iframe方式打开webdriect
         hashHistory.push('fmdetails/'+ encodeURIComponent(host+'?programme='+programme+'&script='+script+'&param='+param+'%20'+login._UserName+'&user=&pwd=') );
     }

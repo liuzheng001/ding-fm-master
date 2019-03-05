@@ -17,8 +17,12 @@ export default class Page extends Component {
 
     componentDidMount() {
 
-        //通过context回调改变App下Tabbar组件的activeIndex
-        this.context.callbackIndex(1)
+        let {url} = this.props.params
+        //如果是通过推送设定的链接打开,将带&isLink=true
+        if (url.indexOf("&isLink=true") < 0) {
+            //通过context回调改变App下Tabbar组件的activeIndex
+            this.context.callbackIndex(1);
+        }
     }
 
     load() {
